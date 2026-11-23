@@ -9,9 +9,12 @@ const coachingRepository = require('../../modules/coaching/coaching.repository')
 // never an arbitrary external API needing sandboxing (docs/ARCHITECTURE.md §7.2).
 function buildTools(orgId, userId) {
   return {
-    getLatestSkillGap: async () => {
-      const report = await coachingRepository.findLatestSkillGapReportForUser(orgId, userId);
-      return report ? { targetRole: report.targetRole, gaps: report.gaps } : { message: 'No skill gap analysis on file yet' };
+    getLatestSkillGap: {
+      description: "Fetch the user's most recent skill-gap analysis (target role and missing skills). Use when the question is about what to learn or how ready they are for a role.",
+      handler: async () => {
+        const report = await coachingRepository.findLatestSkillGapReportForUser(orgId, userId);
+        return report ? { targetRole: report.targetRole, gaps: report.gaps } : { message: 'No skill gap analysis on file yet' };
+      },
     },
   };
 }
@@ -33,7 +36,7 @@ async function converse({ orgId, userId, message, history }) {
   const retrievedContext = await retrieveTopChunks([...resumeChunks, ...conversationChunks], message);
 
   const { reply } = await runAgentStep({
-    promptVersion: 'careerCoach.v1',
+    promptVersion: 'careerCoach.v2',
     buildMessages: (toolResult) => careerCoachService.buildMessages({ message, history, retrievedContext, toolResult }),
     tools: buildTools(orgId, userId),
     mock: () => careerCoachService.mockReply({ message, retrievedContext }),

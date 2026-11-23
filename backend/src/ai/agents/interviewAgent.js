@@ -8,11 +8,14 @@ const resumeRepository = require('../../modules/resumes/resume.repository');
 // transcript in a vacuum. Same shape as careerCoachAgent.js's tools.
 function buildTools(orgId, userId) {
   return {
-    getResumeSummary: async () => {
-      const { items } = await resumeRepository.listByOrgUser(orgId, userId, { limit: 1 });
-      if (!items[0]) return { message: 'No resume on file' };
-      const resume = await resumeRepository.findByIdScoped(orgId, items[0]._id);
-      return resume?.currentVersionId?.structuredData.summary || { message: 'No resume content yet' };
+    getResumeSummary: {
+      description: "Fetch the candidate's resume summary so feedback can reference their real background.",
+      handler: async () => {
+        const { items } = await resumeRepository.listByOrgUser(orgId, userId, { limit: 1 });
+        if (!items[0]) return { message: 'No resume on file' };
+        const resume = await resumeRepository.findByIdScoped(orgId, items[0]._id);
+        return resume?.currentVersionId?.structuredData.summary || { message: 'No resume content yet' };
+      },
     },
   };
 }
@@ -25,7 +28,7 @@ function buildTools(orgId, userId) {
 // itself.
 async function evaluateSession({ orgId, userId, targetRole, transcript }) {
   const { reply } = await runAgentStep({
-    promptVersion: 'mockInterviewAgent.v1',
+    promptVersion: 'mockInterviewAgent.v2',
     buildMessages: (toolResult) => mockInterviewAgentService.buildMessages({ targetRole, transcript, toolResult }),
     tools: buildTools(orgId, userId),
     mock: () => mockInterviewAgentService.mockReply({ transcript }),

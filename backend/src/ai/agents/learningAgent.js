@@ -8,16 +8,19 @@ const learningRepository = require('../../modules/learning/learning.repository')
 // a repository read we already own.
 function buildTools(orgId, userId) {
   return {
-    getPreviousRecommendations: async () => {
-      const previous = await learningRepository.findLatestByUser(orgId, userId);
-      return previous ? previous.items.map((item) => item.title) : { message: 'No previous recommendations' };
+    getPreviousRecommendations: {
+      description: "Fetch titles of resources previously recommended to this user, to avoid repeating them.",
+      handler: async () => {
+        const previous = await learningRepository.findLatestByUser(orgId, userId);
+        return previous ? previous.items.map((item) => item.title) : { message: 'No previous recommendations' };
+      },
     },
   };
 }
 
 async function recommend({ orgId, userId, targetRole, gaps }) {
   const { reply } = await runAgentStep({
-    promptVersion: 'learningRecommender.v1',
+    promptVersion: 'learningRecommender.v2',
     buildMessages: (toolResult) => learningRecommenderService.buildMessages({ targetRole, gaps, toolResult }),
     tools: buildTools(orgId, userId),
     mock: () => learningRecommenderService.mockReply({ gaps }),
