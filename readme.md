@@ -8,7 +8,7 @@ A full-stack platform that helps candidates manage their job search — resume s
 - Node.js, Express 5
 - MongoDB (Mongoose) for persistence, Redis (ioredis) + BullMQ for background job queues
 - JWT-based auth (access + refresh tokens), bcrypt for password hashing
-- Pluggable AI provider layer (`AI_PROVIDER=stub | anthropic | openai`)
+- Pluggable AI provider layer using open models: completions via Groq, Hugging Face or local Ollama (`AI_PROVIDER=stub | groq | huggingface | ollama`), embeddings via Hugging Face or Ollama (`EMBEDDING_PROVIDER=stub | huggingface | ollama`).
 
 **Frontend** (`frontend/`)
 - React 19 + Vite
@@ -70,7 +70,20 @@ The app runs on `http://localhost:5173` by default and expects the API at `http:
 
 ## Environment Variables
 
-See [`backend/.env.example`](backend/.env.example) for the full list, including `MONGODB_URI`, `REDIS_HOST`/`REDIS_PORT`, JWT secrets, and `AI_PROVIDER` (`stub`, `anthropic`, or `openai`) with its corresponding API key.
+See [`backend/.env.example`](backend/.env.example) for the full list, including `MONGODB_URI`, `REDIS_HOST`/`REDIS_PORT` and JWT secrets.
+
+### AI providers
+
+The recommended setup is **Groq for chat and Hugging Face for embeddings** (both have free tiers). This is what `.env.example` is configured for:
+
+| Setup | `.env` | Cost |
+| --- | --- | --- |
+| **Groq + Hugging Face** (recommended) | `AI_PROVIDER=groq`, `GROQ_API_KEY=...`, `EMBEDDING_PROVIDER=huggingface`, `HF_TOKEN=...` | Free tiers available |
+| **Hugging Face only** | `AI_PROVIDER=huggingface`, `EMBEDDING_PROVIDER=huggingface`, `HF_TOKEN=...` | Free tier available |
+| **Fully local** | `AI_PROVIDER=ollama`, `EMBEDDING_PROVIDER=ollama` (first run `ollama pull llama3.1` and `ollama pull nomic-embed-text`) | Free, runs on your machine |
+| **No AI** | `AI_PROVIDER=stub`, `EMBEDDING_PROVIDER=stub` | Free; canned answers, match scores meaningless |
+
+Each provider has a default model; set `AI_MODEL` / `EMBEDDING_MODEL` to override. Groq has no embeddings API, so pair it with Hugging Face or Ollama embeddings. Every AI response is checked against its expected JSON shape, with one automatic retry if a model returns malformed output.
 
 ## Documentation
 
@@ -82,6 +95,7 @@ See [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) for a deeper dive into the sy
 | --- | --- | --- |
 | `backend/` | `npm run dev` | Start API in watch mode |
 | `backend/` | `npm run worker:dev` | Start background worker in watch mode |
+| `backend/` | `npm test` | Run backend tests (Vitest, no API calls) |
 | `frontend/` | `npm run dev` | Start Vite dev server |
 | `frontend/` | `npm run build` | Production build |
 | `frontend/` | `npm run test` | Run tests (Vitest) |
