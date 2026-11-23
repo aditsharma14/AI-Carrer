@@ -1,4 +1,5 @@
 const JSZip = require('jszip');
+const { PDFParse } = require('pdf-parse');
 const aiClient = require('../client/aiClient');
 const buildResumeParserPrompt = require('../prompts/resumeParser.v1');
 const ApiError = require('../../lib/ApiError');
@@ -19,19 +20,33 @@ function detectFileType(buffer) {
 // Real extraction: unzip the .docx, read its document XML, strip tags.
 async function extractTextFromDocx(buffer) {
   const zip = await JSZip.loadAsync(buffer);
-  const documentXml = await zip.file('word/document.xml').async('string');
+  const documentFile = zip.file('word/document.xml');
+  // Any zip passes the magic-byte check; only a real .docx has this entry.
+  if (!documentFile) throw ApiError.badRequest('Unsupported file type — please upload a PDF or DOCX file');
+  const documentXml = await documentFile.async('string');
   return documentXml.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
 }
 
-// Honest limitation, not a fake implementation: no PDF parsing library
-// (e.g. pdf-parse) is in this project's dependencies, and this pass was
-// scoped to not add new packages. A from-scratch PDF text extractor is
-// exactly the kind of fragile code that shouldn't be written without a
-// maintained library behind it — so this returns a clear placeholder and
-// logs the gap instead of pretending PDFs are supported.
-async function extractTextFromPdf() {
-  logger.warn('resumeParser: PDF text extraction is not implemented — add a library like pdf-parse to enable it');
-  return '[PDF text extraction not yet implemented for this resume]';
+// Below this many characters, a PDF almost certainly has no text layer
+// (a scanned image). OCR is not implemented yet, so tell the user plainly
+// instead of handing the model an empty resume to hallucinate from.
+const MIN_PDF_TEXT_CHARS = 50;
+
+async function extractTextFromPdf(buffer) {
+  const parser = new PDFParse({ data: new Uint8Array(buffer) });
+  try {
+    const { text } = await parser.getText();
+    const cleaned = (text || '').replace(/\s+/g, ' ').trim();
+    if (cleaned.length < MIN_PDF_TEXT_CHARS) {
+      logger.warn('resumeParser: PDF has little or no text layer (likely scanned)', { chars: cleaned.length });
+      throw ApiError.badRequest(
+        'This PDF looks like a scanned image with no selectable text. Please upload a text-based PDF or a DOCX file.'
+      );
+    }
+    return cleaned;
+  } finally {
+    await parser.destroy().catch(() => {});
+  }
 }
 
 async function extractText(buffer) {
