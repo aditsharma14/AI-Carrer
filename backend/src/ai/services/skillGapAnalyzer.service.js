@@ -1,5 +1,5 @@
 const aiClient = require('../client/aiClient');
-const buildSkillGapPrompt = require('../prompts/skillGapAnalyzer.v1');
+const buildSkillGapPrompt = require('../prompts/skillGapAnalyzer.v2');
 
 // No real role-taxonomy service exists yet — this is the seam where one
 // would plug in. A small lookup table with a generic fallback is an honest,
@@ -48,7 +48,7 @@ async function analyzeSkillGap({ resumeSkills, targetRole }) {
   let explanation;
   try {
     explanation = await aiClient.complete({
-      promptVersion: 'skillGapAnalyzer.v1',
+      promptVersion: 'skillGapAnalyzer.v2',
       messages: buildSkillGapPrompt({ targetRole, gaps, strengths }),
       mock: () =>
         gaps.length

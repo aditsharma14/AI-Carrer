@@ -1,4 +1,4 @@
-const buildLearningRecommenderPrompt = require('../prompts/learningRecommender.v1');
+const buildLearningRecommenderPrompt = require('../prompts/learningRecommender.v2');
 
 // Same honest, labeled-placeholder pattern as skillGapAnalyzer.service.js's
 // ROLE_SKILL_MAP: a small table of real, well-known resources with a generic

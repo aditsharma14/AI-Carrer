@@ -1,4 +1,4 @@
-const buildMockInterviewAgentPrompt = require('../prompts/mockInterviewAgent.v1');
+const buildMockInterviewAgentPrompt = require('../prompts/mockInterviewAgent.v2');
 
 // Single-call building block, same split as careerCoach.service.js and
 // candidateSummary.service.js — interviewAgent.js owns deciding whether it

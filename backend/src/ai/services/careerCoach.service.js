@@ -1,4 +1,4 @@
-const buildCareerCoachPrompt = require('../prompts/careerCoach.v1');
+const buildCareerCoachPrompt = require('../prompts/careerCoach.v2');
 
 // The single-call building block. No loop, no tools, no RAG fetching here —
 // careerCoachAgent.js owns all of that and calls into this file for just

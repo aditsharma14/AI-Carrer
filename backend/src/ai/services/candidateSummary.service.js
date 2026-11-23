@@ -1,4 +1,4 @@
-const buildCandidateSummaryPrompt = require('../prompts/candidateSummary.v1');
+const buildCandidateSummaryPrompt = require('../prompts/candidateSummary.v2');
 
 // Single-call building block, same split as careerCoach.service.js —
 // hiringAgent.js owns deciding whether it needs the candidate's full resume

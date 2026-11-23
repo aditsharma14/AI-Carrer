@@ -1,6 +1,6 @@
 const aiClient = require('../client/aiClient');
 const { cosineSimilarity } = require('../rag/embeddings');
-const buildJobMatcherPrompt = require('../prompts/jobMatcher.v1');
+const buildJobMatcherPrompt = require('../prompts/jobMatcher.v2');
 
 // Same shortlist size used throughout the cost-control pattern described in
 // docs/ARCHITECTURE.md §5.2/§12: cheap filter runs over everyone, expensive
@@ -59,7 +59,7 @@ async function matchApplicationsToJob({ jobTitle, jobDescription, jobSkills, app
   for (const candidate of shortlist.slice(0, EXPLAIN_TOP_N)) {
     try {
       candidate.explanation = await aiClient.complete({
-        promptVersion: 'jobMatcher.v1',
+        promptVersion: 'jobMatcher.v2',
         messages: buildJobMatcherPrompt({ jobTitle, ...candidate }),
         mock: () =>
           `Matches ${candidate.score}% on this role, with strength in ${candidate.matchedSkills.slice(0, 2).join(' and ') || 'their listed skills'}.`,
