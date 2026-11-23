@@ -1,6 +1,10 @@
 const env = require('./config/env');
 const logger = require('./config/logger');
 const { connectDb, disconnectDb } = require('./config/db');
+const { cacheConnection } = require('./config/redis');
+const { queueConnection } = require('./queue/connection');
+const { markShuttingDown } = require('./lib/health');
+const { registerShutdown } = require('./lib/shutdown');
 const app = require('./app');
 
 async function start() {
@@ -10,14 +14,29 @@ async function start() {
     logger.info('server started', { port: env.port, nodeEnv: env.nodeEnv });
   });
 
-  const shutdown = async () => {
-    logger.info('server shutting down');
-    server.close();
-    await disconnectDb();
-    process.exit(0);
-  };
-  process.on('SIGTERM', shutdown);
-  process.on('SIGINT', shutdown);
+  // Order matters:
+  //  1. /ready already returns 503 (onStart), so the load balancer stops
+  //     sending new requests while we finish the in-flight ones.
+  //  2. Pause briefly so the balancer notices before we stop accepting.
+  //  3. server.close() stops accepting and waits for open requests to finish.
+  //  4. Only then close the data connections those requests were using.
+  registerShutdown({
+    onStart: markShuttingDown,
+    steps: [
+      { name: 'drain', run: () => new Promise((resolve) => setTimeout(resolve, env.shutdownDrainMs)) },
+      {
+        name: 'http',
+        run: () =>
+          new Promise((resolve, reject) => {
+            server.close((err) => (err ? reject(err) : resolve()));
+            server.closeIdleConnections?.();
+          }),
+      },
+      { name: 'mongodb', run: disconnectDb },
+      { name: 'redis-cache', run: () => cacheConnection.quit() },
+      { name: 'redis-queue', run: () => queueConnection.quit() },
+    ],
+  });
 }
 
 start().catch((err) => {

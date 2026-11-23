@@ -82,6 +82,9 @@ module.exports = {
   nodeEnv: process.env.NODE_ENV || 'development',
   port: Number(process.env.PORT) || 4000,
   clientOrigin: process.env.CLIENT_ORIGIN || 'http://localhost:5173',
+  // How long the API keeps serving after /ready flips to 503, so the load
+  // balancer notices and stops routing before we close the listener.
+  shutdownDrainMs: Number(process.env.SHUTDOWN_DRAIN_MS ?? 5000),
 
   mongoUri: process.env.MONGODB_URI,
 

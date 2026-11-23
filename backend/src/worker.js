@@ -4,6 +4,9 @@
 // unit, in production) with the thing answering HTTP requests.
 const { connectDb, disconnectDb } = require('./config/db');
 const logger = require('./config/logger');
+const { cacheConnection } = require('./config/redis');
+const { queueConnection } = require('./queue/connection');
+const { registerShutdown } = require('./lib/shutdown');
 const { startAiWorkers } = require('./queue/workers/aiWorker');
 const { startNotificationWorkers } = require('./queue/workers/notificationWorker');
 const { startAnalyticsWorker } = require('./queue/workers/analyticsWorker');
@@ -14,14 +17,17 @@ async function start() {
   const workers = [...startAiWorkers(), ...startNotificationWorkers(), startAnalyticsWorker()];
   logger.info('worker process started', { queues: workers.map((w) => w.name) });
 
-  const shutdown = async () => {
-    logger.info('worker process shutting down');
-    await Promise.all(workers.map((w) => w.close()));
-    await disconnectDb();
-    process.exit(0);
-  };
-  process.on('SIGTERM', shutdown);
-  process.on('SIGINT', shutdown);
+  // worker.close() stops taking new jobs and waits for the job each worker is
+  // running to finish, so a deploy doesn't kill a resume parse half way (BullMQ
+  // would retry it, but that wastes an LLM call). Connections close after.
+  registerShutdown({
+    steps: [
+      { name: 'workers', run: () => Promise.all(workers.map((w) => w.close())) },
+      { name: 'mongodb', run: disconnectDb },
+      { name: 'redis-cache', run: () => cacheConnection.quit() },
+      { name: 'redis-queue', run: () => queueConnection.quit() },
+    ],
+  });
 }
 
 start().catch((err) => {
