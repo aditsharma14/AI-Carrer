@@ -16,6 +16,65 @@ function assertRequiredVarsExist() {
 
 assertRequiredVarsExist();
 
+// Per-provider defaults. AI_MODEL / EMBEDDING_MODEL override the default
+// for whichever provider is ACTIVE — so switching AI_PROVIDER without
+// touching AI_MODEL still picks a model that provider actually serves.
+const DEFAULT_CHAT_MODELS = {
+  stub: 'stub',
+  groq: 'llama-3.3-70b-versatile',
+  huggingface: 'openai/gpt-oss-120b:fastest',
+  ollama: 'llama3.1',
+};
+
+const DEFAULT_EMBEDDING_MODELS = {
+  stub: 'stub-64',
+  huggingface: 'BAAI/bge-small-en-v1.5',
+  ollama: 'nomic-embed-text',
+};
+
+// How to ask for JSON on OpenAI-compatible APIs (see openaiCompatibleProvider.js).
+const DEFAULT_JSON_MODES = { groq: 'json_object', huggingface: 'none' };
+
+function buildAiConfig() {
+  const provider = process.env.AI_PROVIDER || 'stub';
+  const embeddingProvider = process.env.EMBEDDING_PROVIDER || 'stub';
+
+  const modelFor = (name) =>
+    name === provider && process.env.AI_MODEL ? process.env.AI_MODEL : DEFAULT_CHAT_MODELS[name];
+  const embeddingModelFor = (name) =>
+    name === embeddingProvider && process.env.EMBEDDING_MODEL ? process.env.EMBEDDING_MODEL : DEFAULT_EMBEDDING_MODELS[name];
+  const jsonModeFor = (name) =>
+    name === provider && process.env.AI_JSON_MODE ? process.env.AI_JSON_MODE : DEFAULT_JSON_MODES[name] || 'none';
+
+  return {
+    // Completions: 'stub' | 'groq' | 'huggingface' | 'ollama'
+    provider,
+    model: modelFor(provider),
+    modelFor,
+    jsonModeFor,
+    maxTokens: Number(process.env.AI_MAX_TOKENS) || 4096,
+    // Local Ollama on a laptop can take a while on the first (cold) call.
+    timeoutMs: Number(process.env.AI_TIMEOUT_MS) || 120000,
+
+    groq: {
+      apiKey: process.env.GROQ_API_KEY || '',
+      baseUrl: process.env.GROQ_BASE_URL || 'https://api.groq.com/openai/v1',
+    },
+    huggingface: {
+      token: process.env.HF_TOKEN || '',
+      baseUrl: process.env.HF_BASE_URL || 'https://router.huggingface.co/v1',
+      embeddingUrl: process.env.HF_EMBEDDING_URL || '',
+    },
+    ollama: {
+      baseUrl: process.env.OLLAMA_BASE_URL || 'http://localhost:11434',
+    },
+    // Embeddings: 'stub' | 'huggingface' | 'ollama'
+    embeddingProvider,
+    embeddingModel: embeddingModelFor(embeddingProvider),
+    embeddingModelFor,
+  };
+}
+
 // Every other file in the app imports `config` from here instead of reading
 // `process.env` directly — one place to see every setting the app depends on,
 // and one place to add a default/validation if a new var is introduced.
@@ -39,9 +98,5 @@ module.exports = {
     refreshTtl: process.env.JWT_REFRESH_TTL || '30d',
   },
 
-  ai: {
-    provider: process.env.AI_PROVIDER || 'stub',
-    anthropicApiKey: process.env.ANTHROPIC_API_KEY || '',
-    openaiApiKey: process.env.OPENAI_API_KEY || '',
-  },
+  ai: buildAiConfig(),
 };
