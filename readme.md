@@ -58,6 +58,15 @@ npm run worker:dev      # starts the BullMQ worker (separate process)
 
 The API listens on `http://localhost:4000` by default, mounted under `/api/v1`.
 
+### Docker (whole stack in one command)
+
+```bash
+cp backend/.env.example backend/.env   # set AI_PROVIDER=stub for a no-keys run
+docker compose up --build
+```
+
+Starts MongoDB, Redis, the API (`http://localhost:4000`), the queue worker and the web app (`http://localhost:8080`). The API and worker are one image run with different commands. Health endpoints: `/health` (liveness, touches nothing) and `/ready` (readiness: MongoDB and Redis reachable, returns 503 while shutting down). Both processes finish in-flight work on `SIGTERM` before exiting. To reach Ollama running on your host, set `OLLAMA_BASE_URL=http://host.docker.internal:11434`.
+
 ### Frontend
 
 ```bash
@@ -96,6 +105,7 @@ See [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) for a deeper dive into the sy
 | `backend/` | `npm run dev` | Start API in watch mode |
 | `backend/` | `npm run worker:dev` | Start background worker in watch mode |
 | `backend/` | `npm test` | Run backend tests (Vitest, no API calls) |
+| repo root | `docker compose up --build` | Run the full stack in containers |
 | `frontend/` | `npm run dev` | Start Vite dev server |
 | `frontend/` | `npm run build` | Production build |
 | `frontend/` | `npm run test` | Run tests (Vitest) |
