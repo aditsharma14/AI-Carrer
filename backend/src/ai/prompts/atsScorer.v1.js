@@ -1,3 +1,5 @@
+const { dataBlock } = require('./dataBlock');
+
 // Note what this prompt is NOT asked to do: compute a score. It only ever
 // explains a score that was already computed deterministically (see
 // atsScorer.service.js) — see docs/ARCHITECTURE.md §5.2 and §11.5 for why.
@@ -15,7 +17,7 @@ module.exports = function buildAtsScorerPrompt(deterministicResult, jobDescripti
         `Score: ${deterministicResult.score}/100\n` +
         `Breakdown: ${JSON.stringify(deterministicResult.breakdown)}\n` +
         `Missing keywords: ${deterministicResult.missingKeywords.join(', ') || 'none'}\n` +
-        (jobDescription ? `<job_description>\n${jobDescription}\n</job_description>` : '(no target job specified)') +
+        (jobDescription ? dataBlock('job_description', jobDescription) : '(no target job specified)') +
         '\n\nWrite 2-3 sentences explaining this score to the candidate.',
     },
   ];

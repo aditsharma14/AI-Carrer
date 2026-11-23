@@ -1,3 +1,5 @@
+const { dataBlock } = require('./dataBlock');
+
 module.exports = function buildInterviewGeneratorPrompt({ targetRole, jobDescription, type }) {
   return [
     {
@@ -11,7 +13,7 @@ module.exports = function buildInterviewGeneratorPrompt({ targetRole, jobDescrip
       role: 'user',
       content:
         `Target role: ${targetRole}\n` +
-        (jobDescription ? `<job_description>\n${jobDescription}\n</job_description>\n` : '') +
+        (jobDescription ? `${dataBlock('job_description', jobDescription)}\n` : '') +
         'Generate 5 questions.',
     },
   ];

@@ -1,3 +1,5 @@
+const { dataBlock } = require('./dataBlock');
+
 module.exports = function buildResumeReviewerPrompt(structuredData) {
   return [
     {
@@ -9,7 +11,7 @@ module.exports = function buildResumeReviewerPrompt(structuredData) {
     {
       role: 'user',
       content:
-        `<resume_data>\n${JSON.stringify(structuredData)}\n</resume_data>\n\n` +
+        `${dataBlock('resume_data', structuredData)}\n\n` +
         'Return JSON: { suggestions: [{ section, issue, suggestion, severity: "low"|"medium"|"high" }] }',
     },
   ];

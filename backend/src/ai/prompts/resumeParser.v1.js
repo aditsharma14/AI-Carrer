@@ -1,3 +1,5 @@
+const { dataBlock } = require('./dataBlock');
+
 // v1 — bump the filename (v2, v3...) on any change to these instructions.
 // The version string travels with every AiJob record, so months from now we
 // can tell exactly which prompt produced a given parse.
@@ -17,7 +19,7 @@ module.exports = function buildResumeParserPrompt(rawText) {
     {
       role: 'user',
       content:
-        `<resume>\n${rawText}\n</resume>\n\n` +
+        `${dataBlock('resume', rawText)}\n\n` +
         'Return JSON: { summary, skills: string[], experience: [{title,company,startDate,endDate,description}], education: [{school,degree,year}] }',
     },
   ];
