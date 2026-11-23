@@ -41,7 +41,7 @@ The architectural bet: **both sides consume the same underlying AI primitives** 
 
 - **Why**: At Series A/B scale, your bottleneck is product iteration speed and AI cost, not horizontal team scaling. Microservices buy you independent deploys and fault isolation at the cost of distributed transactions, network calls for things that used to be function calls, and 3x the DevOps surface. You have one Mongo, one Node runtime — there's no polyglot need.
 - **Alternative considered**: separate "AI service" as its own deployable (Python/FastAPI) since AI workloads sometimes want Python's ecosystem.
-- **Tradeoff accepted**: keep AI orchestration in Node (calling OpenAI/Anthropic APIs is just HTTP — you don't need Python for that), but design the AI layer's *internal* interface so it could be extracted into its own service later without touching controllers. This is "modular monolith with a built-in seam," not "microservices."
+- **Tradeoff accepted**: keep AI orchestration in Node (calling hosted LLM APIs such as Groq or Hugging Face is just HTTP — you don't need Python for that), but design the AI layer's *internal* interface so it could be extracted into its own service later without touching controllers. This is "modular monolith with a built-in seam," not "microservices."
 - **Interview answer**: "We chose a modular monolith because our scaling bottleneck is LLM API latency/cost and iteration speed, not request volume per domain. We isolated AI orchestration behind a service interface so it's extractable later — premature service decomposition would have cost us velocity for no current benefit."
 
 ### 1.3 Data flow (request path, generic)
@@ -376,7 +376,7 @@ Shared infrastructure first, then each service.
 
 ### 5.1 Shared AI layer components
 
-- **Provider client wrapper**: one interface (`aiClient.complete()`, `aiClient.embed()`) wrapping the actual provider SDK (e.g., Anthropic/OpenAI). Every AI service calls this, never the SDK directly — this is *the* seam for swapping/multiplexing models, adding retries, and logging cost/latency in one place.
+- **Provider client wrapper**: one interface (`aiClient.complete()`, `aiClient.embed()`) wrapping the actual provider API (Groq, Hugging Face, Ollama). Every AI service calls this, never a provider directly — this is *the* seam for swapping/multiplexing models, adding retries, and logging cost/latency in one place.
 - **Prompt templates**: versioned, stored as code (not DB) under `ai/prompts/<service>/v{n}.js`, exporting a pure function `(input) => messages[]`. Versioned because changing a prompt changes output distribution — you need to know which version produced a stored score/report months later when debugging "why did this candidate's score change."
 - **Structured output enforcement**: every service requests JSON via function-calling/tool-schema (provider-native structured output) AND validates the result against a Zod schema before it's trusted. Two layers because providers occasionally violate their own schema contract under edge-case inputs.
 - **Cache**: Redis, keyed by `hash(promptVersion + normalized-input)`. Generic helper `withCache(key, ttl, fn)` wraps every AI call.
