@@ -76,16 +76,21 @@ function heuristicStructure(rawText) {
   };
 }
 
-async function parseResume({ fileBuffer }) {
-  const rawText = await extractText(fileBuffer);
-
-  const structuredData = await aiClient.complete({
+// Text -> structured resume. Split out from parseResume so the evaluation
+// suite (backend/eval) can measure extraction quality on plain text without
+// building PDF or DOCX files; parseResume is the file-handling wrapper.
+async function structureResume(rawText) {
+  return aiClient.complete({
     promptVersion: 'resumeParser.v1',
     messages: buildResumeParserPrompt(rawText),
     mock: () => heuristicStructure(rawText),
   });
+}
 
+async function parseResume({ fileBuffer }) {
+  const rawText = await extractText(fileBuffer);
+  const structuredData = await structureResume(rawText);
   return { rawText, structuredData };
 }
 
-module.exports = { parseResume };
+module.exports = { parseResume, structureResume };

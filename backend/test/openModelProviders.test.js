@@ -45,7 +45,7 @@ describe('Groq provider', () => {
     const calls = mockFetch(openAIReply('Hello there'));
     const result = await groq.complete({ messages: prompt, schema: z.string() });
 
-    expect(result).toEqual({ content: 'Hello there', tokensIn: 12, tokensOut: 3 });
+    expect(result).toEqual({ content: 'Hello there', tokensIn: 12, tokensOut: 3, attempts: 1 });
     expect(calls[0].url).toBe('https://api.groq.com/openai/v1/chat/completions');
     expect(calls[0].headers.Authorization).toBe('Bearer test-groq-key');
     expect(calls[0].body.model).toBe('llama-3.3-70b-versatile');
@@ -68,6 +68,7 @@ describe('Groq provider', () => {
 
     expect(result.content).toEqual(validQuestions);
     expect(result.tokensIn).toBe(24); // both attempts counted
+    expect(result.attempts).toBe(2);
     const retry = calls[1].body.messages;
     expect(retry.at(-2).role).toBe('assistant');
     expect(retry.at(-1).content).toContain('invalid');
@@ -132,7 +133,7 @@ describe('Ollama provider', () => {
     });
     const result = await ollama.complete({ messages: prompt, schema: questions, structured: true });
 
-    expect(result).toEqual({ content: validQuestions, tokensIn: 30, tokensOut: 9 });
+    expect(result).toEqual({ content: validQuestions, tokensIn: 30, tokensOut: 9, attempts: 1 });
     expect(calls[0].url).toBe('http://ollama.test:11434/api/chat');
     expect(calls[0].body.stream).toBe(false);
     expect(calls[0].body.model).toBe('llama3.1');

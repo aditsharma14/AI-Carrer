@@ -67,3 +67,28 @@ describe('runAgentStep', () => {
     ).rejects.toBeInstanceOf(aiClient.AiOutputError);
   });
 });
+
+describe('aiClient usage stats', () => {
+  it('counts calls and latencies, and resets', async () => {
+    aiClient.resetStats();
+    await aiClient.complete({ promptVersion: 'atsScorer.v1', messages: [], mock: () => 'ok' });
+    await aiClient.complete({ promptVersion: 'atsScorer.v1', messages: [], mock: () => 'ok' });
+    const stats = aiClient.getStats();
+    expect(stats.calls).toBe(2);
+    expect(stats.errors).toBe(0);
+    expect(stats.latenciesMs).toHaveLength(2);
+
+    aiClient.resetStats();
+    expect(aiClient.getStats().calls).toBe(0);
+  });
+
+  it('counts schema failures as output errors', async () => {
+    aiClient.resetStats();
+    await expect(
+      aiClient.complete({ promptVersion: 'resumeReviewer.v1', messages: [], mock: () => [{ bad: true }] })
+    ).rejects.toBeInstanceOf(aiClient.AiOutputError);
+    const stats = aiClient.getStats();
+    expect(stats.errors).toBe(1);
+    expect(stats.outputErrors).toBe(1);
+  });
+});

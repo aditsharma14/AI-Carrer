@@ -19,6 +19,19 @@ class AiOutputError extends Error {
   }
 }
 
+// In-process usage counters. Not a metrics system (that is Phase 3
+// observability) — just enough for the evaluation suite and local debugging to
+// answer "how many calls, how many tokens, how often did the repair retry
+// fire, how often did output fail validation" for a run.
+function freshStats() {
+  return { calls: 0, errors: 0, outputErrors: 0, repaired: 0, tokensIn: 0, tokensOut: 0, latenciesMs: [] };
+}
+let stats = freshStats();
+const getStats = () => ({ ...stats, latenciesMs: [...stats.latenciesMs] });
+const resetStats = () => {
+  stats = freshStats();
+};
+
 // Validates against the promptVersion's contract (ai/schemas.js) for EVERY
 // provider — including the stub, so a mock that drifts from what a real
 // model is constrained to return fails loudly in tests.
@@ -34,14 +47,28 @@ async function complete({ promptVersion, messages, mock, tools = [], agent = fal
   const provider = getProvider(env.ai.provider);
   const start = Date.now();
 
-  const result = await provider.complete({
-    messages,
-    mock,
-    tools,
-    agent,
-    schema: getSchema(promptVersion),
-    structured: isStructured(promptVersion),
-  });
+  let result;
+  try {
+    result = await provider.complete({
+      messages,
+      mock,
+      tools,
+      agent,
+      schema: getSchema(promptVersion),
+      structured: isStructured(promptVersion),
+    });
+  } catch (err) {
+    stats.calls += 1;
+    stats.errors += 1;
+    if (err.code === 'bad_output') stats.outputErrors += 1;
+    throw err;
+  }
+
+  stats.calls += 1;
+  stats.tokensIn += result.tokensIn || 0;
+  stats.tokensOut += result.tokensOut || 0;
+  stats.latenciesMs.push(Date.now() - start);
+  if (result.attempts > 1) stats.repaired += 1;
 
   logger.info('ai.complete', {
     provider: env.ai.provider,
@@ -52,12 +79,18 @@ async function complete({ promptVersion, messages, mock, tools = [], agent = fal
     latencyMs: Date.now() - start,
   });
 
-  if (!agent) return validate(promptVersion, result.content);
+  try {
+    if (!agent) return validate(promptVersion, result.content);
 
-  // Agent envelope: a tool call has no reply to validate yet.
-  const { reply, toolCall } = result.content;
-  if (toolCall) return { reply: null, toolCall };
-  return { reply: validate(promptVersion, reply), toolCall: null };
+    // Agent envelope: a tool call has no reply to validate yet.
+    const { reply, toolCall } = result.content;
+    if (toolCall) return { reply: null, toolCall };
+    return { reply: validate(promptVersion, reply), toolCall: null };
+  } catch (err) {
+    stats.errors += 1;
+    stats.outputErrors += 1;
+    throw err;
+  }
 }
 
 // inputType: 'query' | 'document' — a hint for retrieval-tuned embedding
@@ -83,4 +116,4 @@ async function embedMany(texts, { inputType } = {}) {
   return vectors;
 }
 
-module.exports = { complete, embed, embedMany, AiOutputError };
+module.exports = { complete, embed, embedMany, AiOutputError, getStats, resetStats };

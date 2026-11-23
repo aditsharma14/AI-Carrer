@@ -44,7 +44,11 @@ async function matchResumeToJob({ jobTitle, jobDescription, jobSkills, resumeTex
 // Stage 3 (the only LLM call, and only for the top N): a one-sentence
 // "why this matched" blurb, generated for the highest-scoring few candidates
 // only — this is the actual cost-controlled step.
-async function matchApplicationsToJob({ jobTitle, jobDescription, jobSkills, applications }) {
+// Stages 1 and 2 only (no LLM call): the part of matching that decides the
+// ORDER of candidates. Split out so the evaluation suite (backend/eval) can
+// measure ranking quality without paying for the explanation step. Returns
+// scores in input order; `similarity` is the unrounded cosine value.
+async function scoreApplications({ jobDescription, jobSkills, applications }) {
   // One batched embedding call for the whole applicant pool, not N calls.
   const [jobVector, resumeVectors] = await Promise.all([
     aiClient.embed(jobDescription, { inputType: 'query' }),
@@ -54,11 +58,21 @@ async function matchApplicationsToJob({ jobTitle, jobDescription, jobSkills, app
     ),
   ]);
 
-  const scored = applications.map((app, i) => {
+  return applications.map((app, i) => {
     const similarity = cosineSimilarity(jobVector, resumeVectors[i]);
     const { matchedSkills, gapSkills } = diffSkills(app.resumeSkills, jobSkills);
-    return { applicationId: app.applicationId, score: Math.round(similarity * 100), matchedSkills, gapSkills };
+    return {
+      applicationId: app.applicationId,
+      similarity,
+      score: Math.round(similarity * 100),
+      matchedSkills,
+      gapSkills,
+    };
   });
+}
+
+async function matchApplicationsToJob({ jobTitle, jobDescription, jobSkills, applications }) {
+  const scored = await scoreApplications({ jobDescription, jobSkills, applications });
 
   const ranked = scored.sort((a, b) => b.score - a.score);
   const shortlist = ranked.slice(0, Math.min(SHORTLIST_SIZE, ranked.length));
@@ -79,4 +93,4 @@ async function matchApplicationsToJob({ jobTitle, jobDescription, jobSkills, app
   return ranked;
 }
 
-module.exports = { matchResumeToJob, matchApplicationsToJob };
+module.exports = { matchResumeToJob, matchApplicationsToJob, scoreApplications };

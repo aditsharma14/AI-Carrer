@@ -122,7 +122,7 @@ async function runChat({ send, messages, schema, structured = false, tools = [],
     tokensOut += result.tokensOut || 0;
 
     if (result.toolCall && agent) {
-      return { content: { reply: null, toolCall: result.toolCall }, tokensIn, tokensOut };
+      return { content: { reply: null, toolCall: result.toolCall }, tokensIn, tokensOut, attempts: attempt };
     }
     if (result.finishReason === 'length') {
       throw new AiProviderError('Model output was cut off at the max token limit', { code: 'max_tokens' });
@@ -132,14 +132,19 @@ async function runChat({ send, messages, schema, structured = false, tools = [],
 
     if (!structured) {
       if (!text) throw new AiProviderError('Model returned an empty response', { code: 'bad_output' });
-      return { content: agent ? { reply: text, toolCall: null } : text, tokensIn, tokensOut };
+      return { content: agent ? { reply: text, toolCall: null } : text, tokensIn, tokensOut, attempts: attempt };
     }
 
     let problem;
     try {
       const parsed = schema.safeParse(extractJson(text));
       if (parsed.success) {
-        return { content: agent ? { reply: parsed.data, toolCall: null } : parsed.data, tokensIn, tokensOut };
+        return {
+          content: agent ? { reply: parsed.data, toolCall: null } : parsed.data,
+          tokensIn,
+          tokensOut,
+          attempts: attempt,
+        };
       }
       problem = parsed.error.issues
         .slice(0, 5)
