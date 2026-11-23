@@ -1,12 +1,12 @@
 const aiClient = require('../client/aiClient');
 
+// One batched call for all chunks instead of one HTTP round trip per chunk.
 async function embedChunks(chunks) {
-  const embedded = [];
-  for (const chunk of chunks) {
-    const vector = await aiClient.embed(chunk.text);
-    embedded.push({ ...chunk, vector });
-  }
-  return embedded;
+  const vectors = await aiClient.embedMany(
+    chunks.map((chunk) => chunk.text),
+    { inputType: 'document' }
+  );
+  return chunks.map((chunk, i) => ({ ...chunk, vector: vectors[i] }));
 }
 
 function cosineSimilarity(a, b) {

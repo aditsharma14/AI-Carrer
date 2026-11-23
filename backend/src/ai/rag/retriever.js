@@ -15,8 +15,10 @@ const DEFAULT_TOP_K = 5;
 async function retrieveTopChunks(chunks, query, topK = DEFAULT_TOP_K) {
   if (chunks.length === 0) return [];
 
-  const queryVector = await aiClient.embed(query);
-  const embeddedChunks = await embedChunks(chunks);
+  const [queryVector, embeddedChunks] = await Promise.all([
+    aiClient.embed(query, { inputType: 'query' }),
+    embedChunks(chunks),
+  ]);
 
   const scored = embeddedChunks.map((chunk) => ({
     ...chunk,

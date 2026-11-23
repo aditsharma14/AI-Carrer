@@ -22,7 +22,10 @@ function diffSkills(resumeSkills, jobSkills) {
 // Single-candidate score — used for the seeker's own "how do I match this
 // job" preview (one job, one resume, cheap enough to run synchronously).
 async function matchResumeToJob({ jobTitle, jobDescription, jobSkills, resumeText, resumeSkills }) {
-  const [jobVector, resumeVector] = await Promise.all([aiClient.embed(jobDescription), aiClient.embed(resumeText)]);
+  const [jobVector, resumeVector] = await Promise.all([
+    aiClient.embed(jobDescription, { inputType: 'query' }),
+    aiClient.embed(resumeText, { inputType: 'document' }),
+  ]);
   const similarity = cosineSimilarity(jobVector, resumeVector);
   const { matchedSkills, gapSkills } = diffSkills(resumeSkills, jobSkills);
   const score = Math.round(similarity * 100);
@@ -42,16 +45,20 @@ async function matchResumeToJob({ jobTitle, jobDescription, jobSkills, resumeTex
 // "why this matched" blurb, generated for the highest-scoring few candidates
 // only — this is the actual cost-controlled step.
 async function matchApplicationsToJob({ jobTitle, jobDescription, jobSkills, applications }) {
-  const jobVector = await aiClient.embed(jobDescription);
+  // One batched embedding call for the whole applicant pool, not N calls.
+  const [jobVector, resumeVectors] = await Promise.all([
+    aiClient.embed(jobDescription, { inputType: 'query' }),
+    aiClient.embedMany(
+      applications.map((app) => app.resumeText),
+      { inputType: 'document' }
+    ),
+  ]);
 
-  const scored = await Promise.all(
-    applications.map(async (app) => {
-      const resumeVector = await aiClient.embed(app.resumeText);
-      const similarity = cosineSimilarity(jobVector, resumeVector);
-      const { matchedSkills, gapSkills } = diffSkills(app.resumeSkills, jobSkills);
-      return { applicationId: app.applicationId, score: Math.round(similarity * 100), matchedSkills, gapSkills };
-    })
-  );
+  const scored = applications.map((app, i) => {
+    const similarity = cosineSimilarity(jobVector, resumeVectors[i]);
+    const { matchedSkills, gapSkills } = diffSkills(app.resumeSkills, jobSkills);
+    return { applicationId: app.applicationId, score: Math.round(similarity * 100), matchedSkills, gapSkills };
+  });
 
   const ranked = scored.sort((a, b) => b.score - a.score);
   const shortlist = ranked.slice(0, Math.min(SHORTLIST_SIZE, ranked.length));
