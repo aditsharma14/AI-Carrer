@@ -38,4 +38,8 @@ async function embed(text) {
   return vector.map((v) => v / magnitude);
 }
 
-module.exports = { complete, embed };
+async function embedMany(texts) {
+  return Promise.all(texts.map((text) => embed(text)));
+}
+
+module.exports = { complete, embed, embedMany };

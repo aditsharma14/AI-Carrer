@@ -41,10 +41,11 @@ function heuristicSuggestions(structuredData) {
 }
 
 async function reviewResume({ structuredData }) {
-  const suggestions = await aiClient.complete({
+  // Structured outputs need an object at the root, hence { suggestions }.
+  const { suggestions } = await aiClient.complete({
     promptVersion: 'resumeReviewer.v1',
     messages: buildResumeReviewerPrompt(structuredData),
-    mock: () => heuristicSuggestions(structuredData),
+    mock: () => ({ suggestions: heuristicSuggestions(structuredData) }),
   });
 
   return { suggestions };

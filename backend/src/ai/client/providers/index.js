@@ -1,22 +1,40 @@
 const stubProvider = require('./stubProvider');
 
-// Only 'stub' is implemented right now — that was a deliberate scope
-// decision (no LLM API key configured yet), not an oversight. Adding a real
-// provider later means writing one new file with the same { complete, embed }
-// shape and adding one line here — every AI service stays untouched.
-const PROVIDERS = {
-  stub: stubProvider,
+// Completions and embeddings are chosen independently (AI_PROVIDER and
+// EMBEDDING_PROVIDER): Groq has no embeddings endpoint, so the standard
+// setup is Groq for chat + Hugging Face for embeddings.
+//
+// Real providers are required lazily so the stub-only setup never loads
+// code or needs credentials for providers it doesn't use.
+const COMPLETION_PROVIDERS = {
+  stub: () => stubProvider,
+  groq: () => require('./groqProvider'),
+  huggingface: () => require('./huggingFaceProvider'),
+  ollama: () => require('./ollamaProvider'),
 };
 
-function getProvider(providerName) {
-  const provider = PROVIDERS[providerName];
-  if (!provider) {
+const EMBEDDING_PROVIDERS = {
+  stub: () => stubProvider,
+  huggingface: () => require('./huggingFaceEmbeddings'),
+  ollama: () => require('./ollamaProvider'),
+};
+
+function resolve(registry, kind, providerName) {
+  const load = registry[providerName];
+  if (!load) {
     throw new Error(
-      `AI provider '${providerName}' is not implemented yet. ` +
-      `Implement ai/client/providers/${providerName}.js with { complete, embed } and register it here.`
+      `${kind} provider '${providerName}' is not implemented. Available: ${Object.keys(registry).join(', ')}.`
     );
   }
-  return provider;
+  return load();
 }
 
-module.exports = { getProvider };
+function getProvider(providerName) {
+  return resolve(COMPLETION_PROVIDERS, 'AI', providerName);
+}
+
+function getEmbeddingProvider(providerName) {
+  return resolve(EMBEDDING_PROVIDERS, 'Embedding', providerName);
+}
+
+module.exports = { getProvider, getEmbeddingProvider, COMPLETION_PROVIDERS, EMBEDDING_PROVIDERS };
