@@ -2,11 +2,13 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const crypto = require('crypto');
 const env = require('../../config/env');
+const logger = require('../../config/logger');
 const ApiError = require('../../lib/ApiError');
 const userRepository = require('./user.repository');
 const organizationRepository = require('./organization.repository');
 const membershipRepository = require('./membership.repository');
 const auditService = require('../audit/audit.service');
+const { sendInviteEmail } = require('./inviteEmail');
 
 const BCRYPT_COST = 12;
 
@@ -166,10 +168,9 @@ async function listMembers(orgId) {
 async function inviteMember(orgId, invitedByUserId, { email, role }) {
   const invitee = await userRepository.findByEmail(email);
   // Scope limit, called out deliberately rather than silently half-built:
-  // this requires the invitee to already have an account. A full
-  // invite-by-email flow (signup link + token, for people without an
-  // account yet) needs an email-sending integration that wasn't part of
-  // this pass — this is the seam where that would plug in later.
+  // this requires the invitee to already have an account. They are emailed a
+  // link to sign in and accept. Inviting someone with NO account (a signup link
+  // carrying a single-use token) is still to do, now that email delivery exists.
   if (!invitee) {
     throw ApiError.badRequest('No account found for this email — ask them to sign up first, then invite them.');
   }
@@ -186,6 +187,15 @@ async function inviteMember(orgId, invitedByUserId, { email, role }) {
   });
 
   await auditService.record(orgId, invitedByUserId, 'member.invited', { targetType: 'Membership', targetId: membership._id, metadata: { email, role } });
+
+  // The membership exists now. Nothing about the notification email may turn a
+  // successful invite into an error, including these two lookups.
+  try {
+    const [org, inviter] = await Promise.all([organizationRepository.findById(orgId), userRepository.findById(invitedByUserId)]);
+    await sendInviteEmail({ to: email, inviterName: inviter?.name, orgName: org?.name, role });
+  } catch (err) {
+    logger.error('invite email skipped', { orgId: String(orgId), error: err.message });
+  }
 }
 
 async function removeMember(orgId, actorUserId, membershipId) {
