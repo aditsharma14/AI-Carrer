@@ -32,7 +32,8 @@
     "test": "vitest run",
     "eval:data": "node eval/generate-dataset.js",
     "eval": "node eval/run.js",
-    "eval:check": "node eval/run.js --provider stub --embedding stub --check"
+    "eval:check": "node eval/run.js --provider stub --embedding stub --check",
+    "check:deployment": "node scripts/check-deployment.js"
   },
   "keywords": [],
   "author": "",
