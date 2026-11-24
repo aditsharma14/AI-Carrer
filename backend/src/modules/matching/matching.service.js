@@ -136,8 +136,13 @@ async function getCandidateDetail(orgId, jobId, candidateUserId) {
   ]);
 
   const structuredData = resume?.currentVersionId?.structuredData;
+  const security = resume?.currentVersionId?.security;
   return {
     id: String(candidateUserId),
+    // True when the resume contained text aimed at AI screening tools, which
+    // was removed before parsing. Shown so a recruiter can look at the original.
+    resumeFlagged: Boolean(security?.suspicious),
+    flagReasons: security?.suspicious ? security.rules : [],
     name: candidateUser.name,
     headline: matchResult?.matchedSkills.slice(0, 2).join(', ') || undefined,
     score: matchResult?.score ?? null,

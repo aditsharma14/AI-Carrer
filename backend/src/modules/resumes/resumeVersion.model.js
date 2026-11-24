@@ -30,6 +30,16 @@ const resumeVersionSchema = new Schema(
         },
       ],
     },
+    // What the parse-time defenses found (ai/services/resumeParser.service.js).
+    // `suspicious` means text that read as an instruction to an AI was removed
+    // before parsing; recruiters should treat such a resume with care. Defaults
+    // to clean so versions created before this field existed read as unflagged.
+    security: {
+      suspicious: { type: Boolean, default: false },
+      rules: { type: [String], default: [] },
+      redactions: { type: Number, default: 0 },
+      droppedSkills: { type: [String], default: [] },
+    },
     // Denormalized cache of the most recent ATS score for this version, kept
     // here (instead of a separate AtsScore collection, which isn't part of
     // this project's existing file scaffold) so the dashboard widget and

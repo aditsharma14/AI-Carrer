@@ -14,12 +14,12 @@ module.exports = async function processResumeParseJob(job) {
   await aiJobRepository.markProcessing(orgId, aiJobId);
 
   try {
-    const { rawText, structuredData } = await resumeParserService.parseResume({
+    const { rawText, structuredData, security } = await resumeParserService.parseResume({
       fileBuffer: Buffer.from(fileBuffer, 'base64'),
       mimetype,
     });
 
-    const version = await resumeRepository.createVersion(orgId, resumeId, { rawText, structuredData });
+    const version = await resumeRepository.createVersion(orgId, resumeId, { rawText, structuredData, security });
     await resumeRepository.setCurrentVersion(orgId, resumeId, version._id, 'parsed');
     await aiJobRepository.markDone(orgId, aiJobId, { resumeId, versionId: String(version._id), structuredData });
 

@@ -12,8 +12,8 @@ module.exports = {
     return Resume.create({ orgId, userId, title, source, status });
   },
 
-  createVersion(orgId, resumeId, { rawText, structuredData }) {
-    return ResumeVersion.create({ orgId, resumeId, rawText, structuredData });
+  createVersion(orgId, resumeId, { rawText, structuredData, security }) {
+    return ResumeVersion.create({ orgId, resumeId, rawText, structuredData, security });
   },
 
   setCurrentVersion(orgId, resumeId, versionId, status) {
