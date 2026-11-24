@@ -36,7 +36,7 @@ jobs:
 
       # Tags: the version for a tag push (v1.2.3 -> 1.2.3, 1.2), plus the commit SHA.
       - id: api-meta
-        uses: docker/metadata-action@v5
+        uses: docker/metadata-action@v6
         with:
           images: ${{ env.REGISTRY }}/${{ github.repository_owner }}/ai-career-api
           tags: |
@@ -55,7 +55,7 @@ jobs:
           cache-to: type=gha,scope=backend,mode=max
 
       - id: web-meta
-        uses: docker/metadata-action@v5
+        uses: docker/metadata-action@v6
         with:
           images: ${{ env.REGISTRY }}/${{ github.repository_owner }}/ai-career-web
           tags: |
