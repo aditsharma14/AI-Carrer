@@ -7,13 +7,13 @@
 # and glibc has the widest prebuilt-binary support.
 
 # ---- deps: production dependencies only, cached until the lockfile changes ----
-FROM node:22-slim AS deps
+FROM node:25-slim AS deps
 WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm ci --omit=dev && npm cache clean --force
 
 # ---- runtime ------------------------------------------------------------------
-FROM node:22-slim AS runtime
+FROM node:25-slim AS runtime
 ENV NODE_ENV=production
 WORKDIR /app
 
