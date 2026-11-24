@@ -18,7 +18,7 @@
 //   - decoys: career changers who name every skill a job requires, but only to
 //     say they do not have it (a keyword matcher ranks them first)
 const { createRng } = require('./rng');
-const { SKILLS } = require('./taxonomy');
+const { SKILLS } = require('../../src/ai/skills/taxonomy');
 
 const ARCHETYPES = {
   backend_node: {

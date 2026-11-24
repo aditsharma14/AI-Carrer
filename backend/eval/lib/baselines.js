@@ -1,4 +1,4 @@
-const { SKILLS } = require('./taxonomy');
+const { SKILLS } = require('../../src/ai/skills/taxonomy');
 const { createRng } = require('./rng');
 
 // Matching baselines. A model only deserves credit for what it adds over

@@ -1,11 +1,12 @@
-// The skill vocabulary the evaluation is scored against.
-//
-// Each canonical skill has aliases that appear in resume text ("JS",
-// "Postgres", "k8s"). The generator renders random aliases into resumes; the
-// scorer maps a model's output back to canonical names, so "JS" and
-// "JavaScript" count as the same skill. This is the same idea the production
-// skill-gap analysis needs (roadmap Phase 2: a real skill taxonomy), so this
-// file is a starting point for it, not throwaway test data.
+// The skill vocabulary: canonical skill names and the aliases people write for
+// them ("JS", "Postgres", "k8s"). Two things use it:
+//   - output grounding (ai/security/grounding.js): a skill the model returns is
+//     only believed if the resume text actually states it, under any alias
+//   - the evaluation (backend/eval): the generator renders random aliases into
+//     resumes and the scorer maps model output back to canonical names, so
+//     "JS" and "JavaScript" count as one skill
+// It is also the starting point for the roadmap's Phase 2 skill taxonomy
+// (skill-gap analysis today compares exact strings).
 const SKILLS = {
   javascript: ['JavaScript', 'JS', 'ES6'],
   typescript: ['TypeScript', 'TS'],

@@ -1,4 +1,4 @@
-const { canonicalSkill } = require('./taxonomy');
+const { canonicalSkill } = require('../../src/ai/skills/taxonomy');
 
 // ---------------------------------------------------------------- skills
 // Compares a model's skill list with the gold labels after mapping both

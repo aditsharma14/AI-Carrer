@@ -5,7 +5,7 @@ import path from 'node:path';
 
 const require = createRequire(import.meta.url);
 const { buildDataset } = require('../eval/lib/dataset');
-const { SKILLS, canonicalSkill } = require('../eval/lib/taxonomy');
+const { SKILLS, canonicalSkill } = require('../src/ai/skills/taxonomy');
 
 const dataDir = path.join(import.meta.dirname, '../eval/data');
 const read = (name) => JSON.parse(fs.readFileSync(path.join(dataDir, `${name}.json`), 'utf8'));
