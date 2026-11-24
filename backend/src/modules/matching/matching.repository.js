@@ -5,13 +5,14 @@ module.exports = {
   // job with 200 applications becomes one round-trip instead of 200.
   // Note: bulkWrite() bypasses Mongoose query middleware entirely, so
   // tenantScope.plugin.js's defense-in-depth check does NOT run here — every
-  // op below must carry `orgId` by hand, which they do, in both the filter
-  // and the $set.
+  // op below must carry `orgId` by hand, in BOTH the filter and the $set.
+  // (The filter used to omit it, so an upsert could match another tenant's
+  // document; test/matchingTenancy.test.js now pins this for every op.)
   async upsertMany(orgId, jobId, results) {
     if (results.length === 0) return [];
     const ops = results.map((r) => ({
       updateOne: {
-        filter: { jobId, applicationId: r.applicationId },
+        filter: { orgId, jobId, applicationId: r.applicationId },
         update: { $set: { orgId, jobId, ...r } },
         upsert: true,
       },
