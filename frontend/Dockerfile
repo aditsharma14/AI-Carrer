@@ -1,5 +1,5 @@
 # ---- build: compile the Vite app to static files ------------------------------
-FROM node:22-slim AS build
+FROM node:25-slim AS build
 WORKDIR /app
 COPY package.json package-lock.json .npmrc ./
 RUN npm ci
