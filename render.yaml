@@ -1,0 +1,104 @@
+# Render Blueprint: creates the API, the queue worker and the web app, plus Redis,
+# from this repository. In the Render dashboard: New > Blueprint > pick the repo.
+#
+# NOT validated against Render's schema from this machine (no Render account or
+# CLI here). Validate it first with `render blueprints validate` or by creating
+# the Blueprint in the dashboard, which reports any error before spending
+# anything. docs/DEPLOYMENT.md explains every value and the manual alternative.
+#
+# Values marked `sync: false` are secrets you type into the dashboard; they are
+# deliberately NOT in this file.
+services:
+  # ------------------------------------------------------------------ API
+  - type: web
+    name: ai-career-api
+    runtime: docker
+    dockerfilePath: ./backend/Dockerfile
+    dockerContext: ./backend
+    healthCheckPath: /ready
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: TRUST_PROXY # Render's load balancer is one proxy in front of the app
+        value: "1"
+      - key: MONGODB_URI # MongoDB Atlas connection string
+        sync: false
+      - key: JWT_ACCESS_SECRET
+        generateValue: true
+      - key: JWT_REFRESH_SECRET
+        generateValue: true
+      - key: REDIS_HOST
+        fromService: { type: keyvalue, name: ai-career-redis, property: host }
+      - key: REDIS_PORT
+        fromService: { type: keyvalue, name: ai-career-redis, property: port }
+      - key: CLIENT_ORIGIN # the web app's URL, exactly (cookies and CORS depend on it)
+        sync: false
+      - key: COOKIE_SAMESITE # none when the web app and API are on different sites
+        value: none
+      - key: AI_PROVIDER
+        value: groq
+      - key: GROQ_API_KEY
+        sync: false
+      - key: EMBEDDING_PROVIDER
+        value: huggingface
+      - key: HF_TOKEN
+        sync: false
+      - key: AI_FALLBACK_PROVIDERS
+        value: huggingface
+      - key: METRICS_TOKEN
+        generateValue: true
+
+  # --------------------------------------------------------------- worker
+  # The same image as the API, started as the queue worker. It has no HTTP port.
+  - type: worker
+    name: ai-career-worker
+    runtime: docker
+    dockerfilePath: ./backend/Dockerfile
+    dockerContext: ./backend
+    dockerCommand: node src/worker.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGODB_URI
+        sync: false
+      - key: REDIS_HOST
+        fromService: { type: keyvalue, name: ai-career-redis, property: host }
+      - key: REDIS_PORT
+        fromService: { type: keyvalue, name: ai-career-redis, property: port }
+      # The worker verifies and signs nothing, but config/env.js requires these at boot.
+      - key: JWT_ACCESS_SECRET
+        sync: false
+      - key: JWT_REFRESH_SECRET
+        sync: false
+      - key: AI_PROVIDER
+        value: groq
+      - key: GROQ_API_KEY
+        sync: false
+      - key: EMBEDDING_PROVIDER
+        value: huggingface
+      - key: HF_TOKEN
+        sync: false
+      - key: AI_FALLBACK_PROVIDERS
+        value: huggingface
+
+  # ------------------------------------------------------------------ web
+  - type: web
+    name: ai-career-web
+    runtime: static
+    buildCommand: cd frontend && npm ci && npm run build
+    staticPublishPath: ./frontend/dist
+    envVars:
+      - key: VITE_API_URL # baked in at BUILD time; include /api/v1
+        sync: false
+    routes:
+      # Single-page app: any path that is not a file is a client-side route.
+      - type: rewrite
+        source: /*
+        destination: /index.html
+
+# ---------------------------------------------------------------- Redis
+keyvalues:
+  - name: ai-career-redis
+    plan: free
+    ipAllowList: [] # private network only: nothing on the public internet can connect
+    maxmemoryPolicy: noeviction # BullMQ must never have queued jobs evicted
