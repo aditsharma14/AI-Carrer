@@ -2,6 +2,8 @@ const env = require('../../config/env');
 const logger = require('../../config/logger');
 const { getProvider, getEmbeddingProvider } = require('./providers');
 const { getSchema, isStructured } = require('../schemas');
+const { CircuitBreaker } = require('./circuitBreaker');
+const { AiProviderError } = require('./providers/errors');
 
 // THE chokepoint. No module service, controller, or repository is allowed to
 // import a provider directly — they all call complete()/embed() here. This
@@ -24,7 +26,7 @@ class AiOutputError extends Error {
 // answer "how many calls, how many tokens, how often did the repair retry
 // fire, how often did output fail validation" for a run.
 function freshStats() {
-  return { calls: 0, errors: 0, outputErrors: 0, repaired: 0, tokensIn: 0, tokensOut: 0, latenciesMs: [] };
+  return { calls: 0, errors: 0, outputErrors: 0, repaired: 0, fallbacks: 0, breakerSkips: 0, tokensIn: 0, tokensOut: 0, latenciesMs: [] };
 }
 let stats = freshStats();
 const getStats = () => ({ ...stats, latenciesMs: [...stats.latenciesMs] });
@@ -41,10 +43,37 @@ function validate(promptVersion, value) {
   return result.data;
 }
 
-// tools: [{ name, description }] — only passed by agentOrchestrator.
-// agent: true makes the provider return { reply, toolCall }.
-async function complete({ promptVersion, messages, mock, tools = [], agent = false }) {
-  const provider = getProvider(env.ai.provider);
+// ---------------------------------------------------------------- fallback
+// AI_PROVIDER is tried first; AI_FALLBACK_PROVIDERS (comma separated) are tried
+// in order when it fails. Each provider has its own circuit breaker.
+//
+// Embeddings are deliberately NOT part of this: vectors from different models
+// live in different spaces, so falling back mid-way would silently mix them and
+// corrupt every similarity score. An embedding failure is an error, on purpose.
+const breakers = new Map();
+function breakerFor(name) {
+  if (!breakers.has(name)) {
+    breakers.set(name, new CircuitBreaker({ threshold: env.ai.breakerThreshold, cooldownMs: env.ai.breakerCooldownMs }));
+  }
+  return breakers.get(name);
+}
+const getBreakerStates = () => Object.fromEntries([...breakers].map(([name, b]) => [name, b.snapshot()]));
+const resetBreakers = () => breakers.clear();
+
+// The provider was unreachable or refused us: counts toward opening the breaker.
+const OUTAGE_CODES = new Set(['unreachable', 'timeout', 'rate_limited', 'http_error', 'auth']);
+// The provider answered but not usefully: try the next provider, but the
+// provider itself is healthy. Anything else (for example bad_prompt, our own
+// bug) is not retried elsewhere, since another provider would fail the same way.
+const CONTENT_CODES = new Set(['bad_output', 'max_tokens', 'model_missing']);
+
+function providerChain() {
+  return [env.ai.provider, ...env.ai.fallbackProviders.filter((name) => name !== env.ai.provider)];
+}
+
+// One attempt against one named provider, including output validation.
+async function completeWith(name, { promptVersion, messages, mock, tools, agent }) {
+  const provider = getProvider(name);
   const start = Date.now();
 
   let result;
@@ -71,8 +100,8 @@ async function complete({ promptVersion, messages, mock, tools = [], agent = fal
   if (result.attempts > 1) stats.repaired += 1;
 
   logger.info('ai.complete', {
-    provider: env.ai.provider,
-    model: env.ai.provider === 'stub' ? undefined : env.ai.model,
+    provider: name,
+    model: name === 'stub' ? undefined : env.ai.modelFor(name),
     promptVersion,
     tokensIn: result.tokensIn,
     tokensOut: result.tokensOut,
@@ -91,6 +120,54 @@ async function complete({ promptVersion, messages, mock, tools = [], agent = fal
     stats.outputErrors += 1;
     throw err;
   }
+}
+
+// tools: [{ name, description }] — only passed by agentOrchestrator.
+// agent: true makes the provider return { reply, toolCall }.
+async function complete({ promptVersion, messages, mock, tools = [], agent = false }) {
+  const chain = providerChain();
+  let lastError = null;
+
+  for (const [index, name] of chain.entries()) {
+    const breaker = breakerFor(name);
+    if (!breaker.canRequest()) {
+      stats.breakerSkips += 1;
+      continue;
+    }
+
+    try {
+      const output = await completeWith(name, { promptVersion, messages, mock, tools, agent });
+      breaker.recordSuccess();
+      if (index > 0) {
+        stats.fallbacks += 1;
+        logger.warn('ai.fallback', { served: name, primary: chain[0], promptVersion });
+      }
+      return output;
+    } catch (err) {
+      lastError = err;
+      const outage = OUTAGE_CODES.has(err.code);
+      // An output-validation failure (AiOutputError) is also a content failure.
+      const content = CONTENT_CODES.has(err.code) || err instanceof AiOutputError;
+      if (!outage && !content) throw err;
+
+      // The provider answered, so it is reachable: only outages hurt the breaker.
+      if (outage) breaker.recordFailure();
+      else breaker.recordSuccess();
+
+      logger.warn('ai.provider_failed', {
+        provider: name,
+        code: err.code || err.name,
+        promptVersion,
+        willTryNext: index < chain.length - 1,
+      });
+    }
+  }
+
+  if (lastError) throw lastError;
+  // Every provider's breaker was open: fail immediately instead of waiting.
+  throw new AiProviderError(`All AI providers are unavailable (${chain.join(', ')}); circuit breakers are open`, {
+    code: 'unavailable',
+  });
 }
 
 // inputType: 'query' | 'document' — a hint for retrieval-tuned embedding
@@ -116,4 +193,4 @@ async function embedMany(texts, { inputType } = {}) {
   return vectors;
 }
 
-module.exports = { complete, embed, embedMany, AiOutputError, getStats, resetStats };
+module.exports = { complete, embed, embedMany, AiOutputError, getStats, resetStats, getBreakerStates, resetBreakers };

@@ -52,6 +52,12 @@ function buildAiConfig() {
     model: modelFor(provider),
     modelFor,
     jsonModeFor,
+    // Tried in order when AI_PROVIDER fails, e.g. AI_FALLBACK_PROVIDERS=huggingface,ollama
+    fallbackProviders: (process.env.AI_FALLBACK_PROVIDERS || '').split(',').map((p) => p.trim()).filter(Boolean),
+    // A provider's circuit breaker opens after this many consecutive outage
+    // failures, and lets one trial request through again after the cooldown.
+    breakerThreshold: Number(process.env.AI_BREAKER_THRESHOLD) || 5,
+    breakerCooldownMs: Number(process.env.AI_BREAKER_COOLDOWN_MS) || 30000,
     maxTokens: Number(process.env.AI_MAX_TOKENS) || 4096,
     // Local Ollama on a laptop can take a while on the first (cold) call.
     timeoutMs: Number(process.env.AI_TIMEOUT_MS) || 120000,
