@@ -35,6 +35,17 @@ const DEFAULT_EMBEDDING_MODELS = {
 // How to ask for JSON on OpenAI-compatible APIs (see openaiCompatibleProvider.js).
 const DEFAULT_JSON_MODES = { groq: 'json_object', huggingface: 'none' };
 
+// AI_PRICING is JSON, USD per million tokens per provider (see ai/client/pricing.js).
+// Invalid JSON fails at boot instead of silently reporting no cost.
+function parsePricing(raw) {
+  if (!raw) return {};
+  try {
+    return JSON.parse(raw);
+  } catch {
+    throw new Error('AI_PRICING must be valid JSON, e.g. {"groq":{"in":0.59,"out":0.79}}');
+  }
+}
+
 function buildAiConfig() {
   const provider = process.env.AI_PROVIDER || 'stub';
   const embeddingProvider = process.env.EMBEDDING_PROVIDER || 'stub';
@@ -58,6 +69,7 @@ function buildAiConfig() {
     // failures, and lets one trial request through again after the cooldown.
     breakerThreshold: Number(process.env.AI_BREAKER_THRESHOLD) || 5,
     breakerCooldownMs: Number(process.env.AI_BREAKER_COOLDOWN_MS) || 30000,
+    pricing: parsePricing(process.env.AI_PRICING),
     maxTokens: Number(process.env.AI_MAX_TOKENS) || 4096,
     // Local Ollama on a laptop can take a while on the first (cold) call.
     timeoutMs: Number(process.env.AI_TIMEOUT_MS) || 120000,
@@ -91,6 +103,10 @@ module.exports = {
   // How long the API keeps serving after /ready flips to 503, so the load
   // balancer notices and stops routing before we close the listener.
   shutdownDrainMs: Number(process.env.SHUTDOWN_DRAIN_MS ?? 5000),
+
+  // Bearer token required to read GET /metrics. In production the endpoint is
+  // disabled entirely unless this is set.
+  metricsToken: process.env.METRICS_TOKEN || '',
 
   mongoUri: process.env.MONGODB_URI,
 
