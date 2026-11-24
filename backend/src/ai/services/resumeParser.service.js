@@ -1,8 +1,10 @@
 const JSZip = require('jszip');
 const { PDFParse } = require('pdf-parse');
 const aiClient = require('../client/aiClient');
-const buildResumeParserPrompt = require('../prompts/resumeParser.v1');
+const buildResumeParserPrompt = require('../prompts/resumeParser.v2');
 const ApiError = require('../../lib/ApiError');
+const { redactInjection } = require('../security/injectionGuard');
+const { groundSkills } = require('../security/grounding');
 const logger = require('../../config/logger');
 
 const PDF_MAGIC = Buffer.from('%PDF');
@@ -76,21 +78,51 @@ function heuristicStructure(rawText) {
   };
 }
 
-// Text -> structured resume. Split out from parseResume so the evaluation
-// suite (backend/eval) can measure extraction quality on plain text without
-// building PDF or DOCX files; parseResume is the file-handling wrapper.
-async function structureResume(rawText) {
-  return aiClient.complete({
-    promptVersion: 'resumeParser.v1',
-    messages: buildResumeParserPrompt(rawText),
-    mock: () => heuristicStructure(rawText),
+// Text -> structured resume, with the injection defenses applied:
+//   1. redactInjection removes sentences that read as instructions to an AI,
+//      BEFORE the model sees the text
+//   2. the prompt (resumeParser.v2) tells the model what attacks look like
+//   3. groundSkills drops any returned skill the text does not support
+// Returns what the product stores plus a `security` report for flagging.
+//
+// Split out from parseResume so the evaluation suite (backend/eval) can measure
+// extraction quality on plain text without building PDF or DOCX files.
+async function structureResumeDetailed(rawText) {
+  const guarded = redactInjection(rawText);
+
+  const data = await aiClient.complete({
+    promptVersion: 'resumeParser.v2',
+    messages: buildResumeParserPrompt(guarded.text),
+    mock: () => heuristicStructure(guarded.text),
   });
+
+  const { kept, dropped } = groundSkills(data.skills, guarded.text);
+  const security = {
+    suspicious: guarded.suspicious,
+    rules: guarded.rules,
+    redactions: guarded.redactions,
+    droppedSkills: dropped,
+  };
+
+  if (security.suspicious || dropped.length > 0) {
+    logger.warn('resumeParser: defenses acted on this resume', {
+      rules: security.rules,
+      redactions: security.redactions,
+      droppedSkillCount: dropped.length,
+    });
+  }
+
+  return { structuredData: { ...data, skills: kept }, security };
+}
+
+async function structureResume(rawText) {
+  return (await structureResumeDetailed(rawText)).structuredData;
 }
 
 async function parseResume({ fileBuffer }) {
   const rawText = await extractText(fileBuffer);
-  const structuredData = await structureResume(rawText);
-  return { rawText, structuredData };
+  const { structuredData, security } = await structureResumeDetailed(rawText);
+  return { rawText, structuredData, security };
 }
 
-module.exports = { parseResume, structureResume };
+module.exports = { parseResume, structureResume, structureResumeDetailed };

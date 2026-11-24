@@ -47,7 +47,7 @@ const builders = {
   'jobMatcher.v2': (b) => b({ jobTitle: 'dev', ...sample.candidate }),
   'learningRecommender.v2': (b) => b({ targetRole: 'dev', gaps: [{ skill: ATTACK, priority: 'high' }], toolResult: ATTACK }),
   'mockInterviewAgent.v2': (b) => b({ targetRole: 'dev', transcript: sample.transcript, toolResult: ATTACK }),
-  'resumeParser.v1': (b) => b(ATTACK),
+  'resumeParser.v2': (b) => b(ATTACK),
   'resumeReviewer.v1': (b) => b({ summary: ATTACK, skills: [], experience: [], education: [] }),
   'skillGapAnalyzer.v2': (b) => b({ targetRole: 'dev', gaps: [{ skill: 'go' }], strengths: [ATTACK] }),
 };

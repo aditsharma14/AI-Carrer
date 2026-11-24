@@ -70,7 +70,7 @@ const mockInterviewFeedback = z.object({
 });
 
 const SCHEMAS = {
-  'resumeParser.v1': resumeParser,
+  'resumeParser.v2': resumeParser,
   'interviewGenerator.v1': interviewGenerator,
   'resumeReviewer.v1': resumeReviewer,
   'learningRecommender.v2': learningRecommender,

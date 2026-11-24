@@ -239,7 +239,7 @@ describe('JSON helpers', () => {
   });
 
   it('closes every object in the strict schema', () => {
-    const schema = toStrictJsonSchema(SCHEMAS['resumeParser.v1']);
+    const schema = toStrictJsonSchema(SCHEMAS['resumeParser.v2']);
     expect(schema.additionalProperties).toBe(false);
     expect(schema.properties.experience.items.additionalProperties).toBe(false);
     expect(schema.properties.experience.items.required).toContain('startDate');

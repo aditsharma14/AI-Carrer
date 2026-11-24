@@ -5,8 +5,8 @@
   "embedModel": "stub",
   "key": "stub__stub__stub__stub",
   "metrics": {
-    "parse.skillF1": 0.49488054607508525,
-    "parse.skillPrecision": 0.6473214285714286,
+    "parse.skillF1": 0.5169340463458111,
+    "parse.skillPrecision": 0.7286432160804021,
     "parse.skillRecall": 0.4005524861878453,
     "parse.trapFalsePositiveRate": 0.43902439024390244,
     "parse.companyRecall": 0,
