@@ -1,0 +1,20 @@
+{
+  "provider": "stub",
+  "chatModel": "stub",
+  "embedding": "stub",
+  "embedModel": "stub",
+  "key": "stub__stub__stub__stub",
+  "metrics": {
+    "parse.skillF1": 0.49488054607508525,
+    "parse.skillPrecision": 0.6473214285714286,
+    "parse.skillRecall": 0.4005524861878453,
+    "parse.trapFalsePositiveRate": 0.43902439024390244,
+    "parse.companyRecall": 0,
+    "parse.schoolRecall": 0,
+    "parse.failureRate": 0,
+    "match.ndcg10": 0.1267478708302423,
+    "match.mrr": 0.2525617239902954,
+    "match.precision5": 0.07142857142857142,
+    "injection.attackSuccessRate": 0
+  }
+}

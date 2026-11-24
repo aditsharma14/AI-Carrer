@@ -33,3 +33,6 @@ Thumbs.db
 
 # Misc
 *.local
+
+# Evaluation run output (the committed baselines live in backend/eval/baselines/)
+backend/eval/results/
