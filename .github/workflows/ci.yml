@@ -54,6 +54,8 @@ jobs:
       - run: npm run lint
       - run: npm test
       - run: npm run build
+      # Fail on known-vulnerable production dependencies of the web app.
+      - run: npm audit --omit=dev --audit-level=high
 
   docker:
     name: Docker images build
