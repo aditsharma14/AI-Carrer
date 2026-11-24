@@ -31,6 +31,9 @@ jobs:
       # Tests run on the stub AI provider and fake credentials (test/setup.js),
       # so CI never needs secrets or network access to an AI API.
       - run: npm test
+      # AI quality gate on the deterministic stub: fails if a code change moves
+      # any parsing or ranking score from the committed baseline.
+      - run: npm run eval:check
       # Fail on known-vulnerable production dependencies of the API.
       - run: npm audit --omit=dev --audit-level=high
 

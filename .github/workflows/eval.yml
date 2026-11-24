@@ -1,0 +1,70 @@
+name: AI evaluation (manual)
+
+# Runs the accuracy evaluation against a real provider. Manual because it spends
+# API quota; the deterministic stub check already runs on every push in ci.yml.
+#
+# Setup: add GROQ_API_KEY and HF_TOKEN as repository secrets
+# (Settings > Secrets and variables > Actions).
+on:
+  workflow_dispatch:
+    inputs:
+      provider:
+        description: Chat provider
+        type: choice
+        options: [groq, huggingface]
+        default: groq
+      embedding:
+        description: Embedding provider
+        type: choice
+        options: [huggingface]
+        default: huggingface
+      model:
+        description: Chat model override (blank = provider default)
+        type: string
+        default: ""
+      check:
+        description: Fail if worse than the committed baseline for this configuration
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+jobs:
+  evaluate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    defaults:
+      run:
+        working-directory: backend
+    env:
+      GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+      HF_TOKEN: ${{ secrets.HF_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: backend/package-lock.json
+      - run: npm ci
+      - name: Run the evaluation
+        # Inputs go through environment variables, never interpolated into the
+        # script text, so an input value can't be executed as shell.
+        env:
+          PROVIDER: ${{ inputs.provider }}
+          EMBEDDING: ${{ inputs.embedding }}
+          MODEL: ${{ inputs.model }}
+          CHECK: ${{ inputs.check }}
+        run: |
+          args=(--provider "$PROVIDER" --embedding "$EMBEDDING" --concurrency 2)
+          if [ -n "$MODEL" ]; then args+=(--model "$MODEL"); fi
+          if [ "$CHECK" = "true" ]; then args+=(--check); fi
+          npm run eval -- "${args[@]}" | tee eval-report.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: eval-results
+          path: |
+            backend/eval-report.txt
+            backend/eval/results/
