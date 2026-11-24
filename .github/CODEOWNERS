@@ -1,0 +1,9 @@
+# Who is asked to review what. The last matching pattern wins.
+*                       @aditsharma14
+
+# Areas where a mistake is a security or data-isolation problem.
+/backend/src/ai/security/        @aditsharma14
+/backend/src/plugins/            @aditsharma14
+/backend/src/middleware/         @aditsharma14
+/backend/src/modules/identity/   @aditsharma14
+/docs/adr/                       @aditsharma14

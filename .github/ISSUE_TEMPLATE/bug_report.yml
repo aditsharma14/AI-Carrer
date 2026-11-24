@@ -1,0 +1,41 @@
+name: Bug report
+description: Something does not work as expected
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Do not report security problems here. Use **Security > Report a vulnerability** (see SECURITY.md).
+        Please remove personal data, resumes and keys from anything you paste.
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened, and what did you expect?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: "1. Sign in as a recruiter\n2. ...\n3. ..."
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options: [Sign-in and accounts, Resume upload and parsing, Job matching and ranking, Coaching and interviews, Recruiter pages, Emails, Deployment and operations, Other]
+    validations:
+      required: true
+  - type: input
+    id: providers
+    attributes:
+      label: AI providers in use
+      description: The values of AI_PROVIDER, EMBEDDING_PROVIDER and, if set, AI_MODEL (never the keys)
+      placeholder: groq / huggingface
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs or the request id
+      description: Responses include a `requestId`; searching the logs for it follows one request end to end.
+      render: shell
