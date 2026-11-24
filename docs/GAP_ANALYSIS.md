@@ -102,6 +102,9 @@ The single biggest gap: **no real LLM or embedding provider.** Most of the descr
 Ordered so each phase unlocks the next. Rough sizes assume one developer.
 
 ### Phase 0 — Foundations (≈1 week)
+
+> **Status (2026-11-24): done**, and then some. 17 direct dependencies (was 163); 159 backend and 31 frontend tests; Dockerfiles and compose; CI with tests, an AI quality gate, dependency audits, image builds and a full-stack smoke test that checks graceful shutdown; CodeQL and Dependabot. Production work beyond the original list: health/readiness probes, graceful shutdown, Prometheus metrics, AI provider fallback with circuit breakers, real email delivery, `TRUST_PROXY`/cookie/Redis-TLS settings, a deployment guide, a runbook and a post-deploy check script. **Open:** API-level tests against a real MongoDB (the `mongodb-memory-server` item).
+
 1. Trim `backend/package.json` to real direct dependencies; add `npm test` with Vitest or Jest + supertest and `mongodb-memory-server`.
 2. `docker-compose.yml` (api, worker, frontend, mongo, redis) + Dockerfiles.
 3. GitHub Actions: lint, test, build on PR.
@@ -109,7 +112,7 @@ Ordered so each phase unlocks the next. Rough sizes assume one developer.
 
 ### Phase 1 — Make the AI real (≈1–2 weeks) — *highest leverage*
 
-> **Status (2026-11-23):** items 1–4 done, except OCR. Providers: Groq, Hugging Face and local Ollama for completions; Hugging Face and Ollama for embeddings. Every AI response is validated against zod output contracts in `src/ai/schemas.js`, with one repair retry for malformed JSON. Also added: PDF text extraction (scanned PDFs are rejected with a clear message) and prompt hardening (untrusted text only as tagged user data, with tag break-outs neutralized). Backend tests: `npm test`. **Still open:** OCR fallback and item 5 (eval set).
+> **Status (2026-11-23):** items 1–4 done, except OCR. Providers: Groq, Hugging Face and local Ollama for completions; Hugging Face and Ollama for embeddings. Every AI response is validated against zod output contracts in `src/ai/schemas.js`, with one repair retry for malformed JSON. Also added: PDF text extraction (scanned PDFs are rejected with a clear message) and prompt hardening (untrusted text only as tagged user data, with tag break-outs neutralized). Backend tests: `npm test`. **Update 2026-11-24:** item 5 is done: a labeled synthetic evaluation (73 resumes, 14 jobs, decoys, injection payloads) with a CI regression gate (`backend/eval/README.md`), and a three-layer prompt-injection defense (`docs/adr/0004`). **Still open:** OCR fallback, and real-model numbers: the first local-model run was cut short by Ollama dropping out, and the injection re-measurement after hardening has not completed, so the defenses are tested but not yet measured on a real model.
 
 1. Implement real completion and embedding providers (done: Groq, Hugging Face, Ollama).
 2. Validate every LLM JSON response against a zod schema; retry/repair on failure.
