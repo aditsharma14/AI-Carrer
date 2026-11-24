@@ -96,7 +96,23 @@ Each provider has a default model; set `AI_MODEL` / `EMBEDDING_MODEL` to overrid
 
 ## Documentation
 
-See [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) for a deeper dive into the system design.
+| Document | What it covers |
+| --- | --- |
+| [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) | The system design |
+| [`docs/adr/`](docs/adr/) | Why it is built this way: eight decision records with the options rejected and when to revisit |
+| [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md) | Taking it to production: configuration, domains and cookies, verification, rollback |
+| [`docs/RUNBOOK.md`](docs/RUNBOOK.md) | What to check and do when something fails, with the metrics and alerts to use |
+| [`backend/eval/README.md`](backend/eval/README.md) | The AI accuracy evaluation, what it measures and where it is weak |
+| [`docs/GAP_ANALYSIS.md`](docs/GAP_ANALYSIS.md) | What is built, what is missing, and the roadmap |
+| [`SECURITY.md`](SECURITY.md), [`CONTRIBUTING.md`](CONTRIBUTING.md) | Reporting vulnerabilities; how to contribute |
+
+### Production readiness at a glance
+
+Built: health and readiness probes, graceful shutdown, Prometheus metrics (HTTP, AI, queues, cost), provider
+fallback with circuit breakers, prompt-injection defenses, a CI quality gate on AI accuracy, dependency and code
+scanning, container images, a post-deploy verification script. Not yet: a live deployment, API-level tenant
+isolation tests against a real database, account deletion and data export, a shared rate-limit store for running
+more than one API instance.
 
 ## Scripts
 
@@ -105,6 +121,8 @@ See [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) for a deeper dive into the sy
 | `backend/` | `npm run dev` | Start API in watch mode |
 | `backend/` | `npm run worker:dev` | Start background worker in watch mode |
 | `backend/` | `npm test` | Run backend tests (Vitest, no API calls) |
+| `backend/` | `npm run eval:check` | AI quality gate: fail if parsing or ranking got worse |
+| `backend/` | `npm run check:deployment -- <api> [web]` | Verify a live deployment |
 | repo root | `docker compose up --build` | Run the full stack in containers |
 | `frontend/` | `npm run dev` | Start Vite dev server |
 | `frontend/` | `npm run build` | Production build |
