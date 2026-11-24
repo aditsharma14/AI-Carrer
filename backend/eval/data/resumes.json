@@ -1,0 +1,2051 @@
+[
+  {
+    "id": "r001",
+    "archetype": "backend_node",
+    "seniority": "junior",
+    "style": "narrative",
+    "text": "Sahil Reddy\nSoftware Engineer | Bengaluru\n\nSoftware Engineer with under 1 years of experience building internal admin services. At Harbor Payments (2024-Present) I worked as Software Engineer. Worked with RESTful APIs and Mongo to speed up API responses on internal admin services. Built order-management APIs with Node.js and Postgres, which helped simplify partner integrations. Built a notification service using Express and Redis.\nI studied M.Tech in Computer Science, Lakeview College of Engineering (2024).",
+    "gold": {
+      "skills": [
+        "express",
+        "mongodb",
+        "node.js",
+        "postgresql",
+        "redis",
+        "rest apis"
+      ],
+      "hardNegatives": [],
+      "experience": [
+        {
+          "title": "Software Engineer",
+          "company": "Harbor Payments"
+        }
+      ],
+      "education": [
+        {
+          "school": "Lakeview College of Engineering",
+          "degree": "M.Tech in Computer Science"
+        }
+      ]
+    }
+  },
+  {
+    "id": "r002",
+    "archetype": "backend_node",
+    "seniority": "senior",
+    "style": "compact",
+    "text": "VIKRAM JOSHI\nSenior Backend Engineer | Bengaluru\nSUMMARY: Senior Backend Engineer with 6 years of experience building order-management APIs.\nSKILLS: continuous integration | Redis | Node.js | SQL | Express | PostgreSQL | Amazon Web Services | Docker | TS\nEXPERIENCE: Senior Backend Engineer - Pinecone Travel (2023-Present) Delivered a notification service with TypeScript and SQL, which helped simplify partner integrations. Maintained a payments backend using Amazon Web Services, CI-CD and PostgreSQL. || Backend Engineer - Harbor Payments (2021-2023) Migrated a notification service with Redis and Express, which helped simplify partner integrations. || Backend Engineer - Northwind Labs (2019-2021) Owned a notification service using Node.js and Docker.\nEDUCATION: MCA, Eastgate University (2018)\nADDITIONAL: Have never worked with ReactJS. Interested in moving into Swift roles in the future.",
+    "gold": {
+      "skills": [
+        "aws",
+        "ci/cd",
+        "docker",
+        "express",
+        "node.js",
+        "postgresql",
+        "redis",
+        "sql",
+        "typescript"
+      ],
+      "hardNegatives": [
+        "react",
+        "swift"
+      ],
+      "experience": [
+        {
+          "title": "Senior Backend Engineer",
+          "company": "Pinecone Travel"
+        },
+        {
+          "title": "Backend Engineer",
+          "company": "Harbor Payments"
+        },
+        {
+          "title": "Backend Engineer",
+          "company": "Northwind Labs"
+        }
+      ],
+      "education": [
+        {
+          "school": "Eastgate University",
+          "degree": "MCA"
+        }
+      ]
+    }
+  },
+  {
+    "id": "r003",
+    "archetype": "backend_node",
+    "seniority": "junior",
+    "style": "buried",
+    "text": "Tara Mehta\nBackend Engineer | Pune\n\nSUMMARY\nBackend Engineer with 2 years of experience building a payments backend.\n\n\nEXPERIENCE\nBackend Engineer - Quarry Media (2023-Present)\n- Built a notification service using REST, Postgres and Node.js.\n- Designed a notification service using Express.js and Redis.\n\nEDUCATION\nBCA, Riverside Institute of Technology (2022)\n",
+    "gold": {
+      "skills": [
+        "express",
+        "node.js",
+        "postgresql",
+        "redis",
+        "rest apis"
+      ],
+      "hardNegatives": [],
+      "experience": [
+        {
+          "title": "Backend Engineer",
+          "company": "Quarry Media"
+        }
+      ],
+      "education": [
+        {
+          "school": "Riverside Institute of Technology",
+          "degree": "BCA"
+        }
+      ]
+    }
+  },
+  {
+    "id": "r004",
+    "archetype": "backend_node",
+    "seniority": "mid",
+    "style": "standard",
+    "text": "Sahil Gupta\nSoftware Engineer | Gurugram\n\nSUMMARY\nSoftware Engineer with 4 years of experience building order-management APIs.\n\nSKILLS\nExpress.js, GraphQL, Redis, REST, SQL, Postgres, Docker\n\nEXPERIENCE\nSoftware Engineer - Lumen Retail (2023-Present)\n- Worked with Docker and GraphQL to speed up API responses on a notification service.\n- Maintained internal admin services using Redis and PostgreSQL.\n\nAPI Developer - Vantage Foods (2021-2023)\n- Improved a notification service using REST APIs, Express.js and SQL.\n\nEDUCATION\nBCA, Summit University (2020)\n\nADDITIONAL INFORMATION\nInterested in moving into Flutter roles in the future.",
+    "gold": {
+      "skills": [
+        "docker",
+        "express",
+        "graphql",
+        "postgresql",
+        "redis",
+        "rest apis",
+        "sql"
+      ],
+      "hardNegatives": [
+        "flutter"
+      ],
+      "experience": [
+        {
+          "title": "Software Engineer",
+          "company": "Lumen Retail"
+        },
+        {
+          "title": "API Developer",
+          "company": "Vantage Foods"
+        }
+      ],
+      "education": [
+        {
+          "school": "Summit University",
+          "degree": "BCA"
+        }
+      ]
+    }
+  },
+  {
+    "id": "r005",
+    "archetype": "backend_node",
+    "seniority": "junior",
+    "style": "buried",
+    "text": "Rahul Mehta\nSoftware Engineer | Gurugram\n\nSUMMARY\nSoftware Engineer with 1 year of experience building order-management APIs.\n\n\nEXPERIENCE\nSoftware Engineer - Pinecone Travel (2024-Present)\n- Maintained order-management APIs using MongoDB and Redis.\n- Worked with Express, NodeJS and REST APIs to speed up API responses on a payments backend.\n\nEDUCATION\nM.Tech in Computer Science, Riverside Institute of Technology (2024)\n\nADDITIONAL INFORMATION\nInterested in moving into TypeScript roles in the future. Interested in moving into Flutter roles in the future.",
+    "gold": {
+      "skills": [
+        "express",
+        "mongodb",
+        "node.js",
+        "redis",
+        "rest apis"
+      ],
+      "hardNegatives": [
+        "flutter",
+        "typescript"
+      ],
+      "experience": [
+        {
+          "title": "Software Engineer",
+          "company": "Pinecone Travel"
+        }
+      ],
+      "education": [
+        {
+          "school": "Riverside Institute of Technology",
+          "degree": "M.Tech in Computer Science"
+        }
+      ]
+    }
+  },
+  {
+    "id": "r006",
+    "archetype": "backend_node",
+    "seniority": "junior",
+    "style": "standard",
+    "text": "Anaya Sharma\nAPI Developer | Gurugram\n\nSUMMARY\nAPI Developer with 2 years of experience building a notification service.\n\nSKILLS\nSQL, Express, Redis, NodeJS, Mongo\n\nEXPERIENCE\nAPI Developer - Atlas Insurance (2023-Present)\n- Migrated order-management APIs using Node and Redis.\n- Maintained order-management APIs using MongoDB and Express.\n- Improved order-management APIs using SQL.\n\nEDUCATION\nB.Sc in Mathematics, Harborview College (2022)\n\nADDITIONAL INFORMATION\nInterested in moving into Golang roles in the future.",
+    "gold": {
+      "skills": [
+        "express",
+        "mongodb",
+        "node.js",
+        "redis",
+        "sql"
+      ],
+      "hardNegatives": [
+        "go"
+      ],
+      "experience": [
+        {
+          "title": "API Developer",
+          "company": "Atlas Insurance"
+        }
+      ],
+      "education": [
+        {
+          "school": "Harborview College",
+          "degree": "B.Sc in Mathematics"
+        }
+      ]
+    }
+  },
+  {
+    "id": "r007",
+    "archetype": "backend_java",
+    "seniority": "mid",
+    "style": "buried",
+    "text": "Aarav Mehta\nBackend Engineer | Mumbai\n\nSUMMARY\nBackend Engineer with 5 years of experience building event-driven microservices.\n\n\nEXPERIENCE\nBackend Engineer - Atlas Insurance (2022-Present)\n- Improved event-driven microservices with REST APIs and Docker, which helped migrate off a legacy monolith.\n- Migrated claims-processing services using GitHub, Java and Amazon Web Services.\n- Owned claims-processing services with SQL, which helped migrate off a legacy monolith.\n\nBackend Engineer - Orbit Logistics (2019-2022)\n- Migrated claims-processing services using Postgres, Spring Boot and Redis.\n\nEDUCATION\nB.Sc in Mathematics, Summit University (2020)\n\nADDITIONAL INFORMATION\nInterested in moving into Angular roles in the future.",
+    "gold": {
+      "skills": [
+        "aws",
+        "docker",
+        "git",
+        "java",
+        "postgresql",
+        "redis",
+        "rest apis",
+        "spring boot",
+        "sql"
+      ],
+      "hardNegatives": [
+        "angular"
+      ],
+      "experience": [
+        {
+          "title": "Backend Engineer",
+          "company": "Atlas Insurance"
+        },
+        {
+          "title": "Backend Engineer",
+          "company": "Orbit Logistics"
+        }
+      ],
+      "education": [
+        {
+          "school": "Summit University",
+          "degree": "B.Sc in Mathematics"
+        }
+      ]
+    }
+  },
+  {
+    "id": "r008",
+    "archetype": "backend_java",
+    "seniority": "senior",
+    "style": "narrative",
+    "text": "Kavya Bose\nSenior Software Engineer | Pune\n\nSenior Software Engineer with 9 years of experience building event-driven microservices. At Cedar Analytics (2022-Present) I worked as Senior Software Engineer. Built event-driven microservices with Spring Boot and Jenkins, which helped migrate off a legacy monolith. Delivered a ledger service with Postgres and CI/CD, which helped cut batch processing time. At Finch Health (2019-2022) I worked as Software Engineer. Worked with Kafka and SQL to cut batch processing time on event-driven microservices. Worked with REST and AWS to raise service reliability on a billing platform. At Harbor Payments (2016-2019) I worked as Java Developer. Worked with Redis, Docker and Java to migrate off a legacy monolith on a billing platform.\nI studied M.Tech in Computer Science, Lakeview College of Engineering (2015).",
+    "gold": {
+      "skills": [
+        "aws",
+        "ci/cd",
+        "docker",
+        "java",
+        "jenkins",
+        "kafka",
+        "postgresql",
+        "redis",
+        "rest apis",
+        "spring boot",
+        "sql"
+      ],
+      "hardNegatives": [],
+      "experience": [
+        {
+          "title": "Senior Software Engineer",
+          "company": "Cedar Analytics"
+        },
+        {
+          "title": "Software Engineer",
+          "company": "Finch Health"
+        },
+        {
+          "title": "Java Developer",
+          "company": "Harbor Payments"
+        }
+      ],
+      "education": [
+        {
+          "school": "Lakeview College of Engineering",
+          "degree": "M.Tech in Computer Science"
+        }
+      ]
+    }
+  },
+  {
+    "id": "r009",
+    "archetype": "backend_java",
+    "seniority": "mid",
+    "style": "buried",
+    "text": "Dev Mehta\nSoftware Engineer | Mumbai\n\nSUMMARY\nSoftware Engineer with 5 years of experience building a ledger service.\n\n\nEXPERIENCE\nSoftware Engineer - Harbor Payments (2022-Present)\n- Owned claims-processing services with Git and Redis, which helped migrate off a legacy monolith.\n- Worked with Java and Docker to cut batch processing time on a ledger service.\n\nBackend Engineer - Lumen Retail (2019-2022)\n- Delivered a billing platform using AWS, PostgreSQL and Jenkins.\n- Migrated claims-processing services using REST APIs and Apache Kafka.\n\nEDUCATION\nMCA, Eastgate University (2020)\n",
+    "gold": {
+      "skills": [
+        "aws",
+        "docker",
+        "git",
+        "java",
+        "jenkins",
+        "kafka",
+        "postgresql",
+        "redis",
+        "rest apis"
+      ],
+      "hardNegatives": [],
+      "experience": [
+        {
+          "title": "Software Engineer",
+          "company": "Harbor Payments"
+        },
+        {
+          "title": "Backend Engineer",
+          "company": "Lumen Retail"
+        }
+      ],
+      "education": [
+        {
+          "school": "Eastgate University",
+          "degree": "MCA"
+        }
+      ]
+    }
+  },
+  {
+    "id": "r010",
+    "archetype": "backend_java",
+    "seniority": "mid",
+    "style": "buried",
+    "text": "Dev Sharma\nSoftware Engineer | Gurugram\n\nSUMMARY\nSoftware Engineer with 4 years of experience building a ledger service.\n\n\nEXPERIENCE\nSoftware Engineer - Harbor Payments (2023-Present)\n- Improved a billing platform with Java and REST, which helped migrate off a legacy monolith.\n- Maintained event-driven microservices using Kafka and CI/CD.\n\nSoftware Engineer - Quarry Media (2021-2023)\n- Owned a ledger service using AWS and PostgreSQL.\n\nEDUCATION\nBCA, Summit University (2021)\n\nADDITIONAL INFORMATION\nCurrently learning Vue.js; no professional experience with it yet. Have never worked with Jenkins.",
+    "gold": {
+      "skills": [
+        "aws",
+        "ci/cd",
+        "java",
+        "kafka",
+        "postgresql",
+        "rest apis"
+      ],
+      "hardNegatives": [
+        "jenkins",
+        "vue"
+      ],
+      "experience": [
+        {
+          "title": "Software Engineer",
+          "company": "Harbor Payments"
+        },
+        {
+          "title": "Software Engineer",
+          "company": "Quarry Media"
+        }
+      ],
+      "education": [
+        {
+          "school": "Summit University",
+          "degree": "BCA"
+        }
+      ]
+    }
+  },
+  {
+    "id": "r011",
+    "archetype": "backend_java",
+    "seniority": "junior",
+    "style": "compact",
+    "text": "KABIR RAO\nBackend Engineer | Chennai\nSUMMARY: Backend Engineer with under 1 years of experience building a ledger service.\nSKILLS: Postgres | REST | Spring | Docker | Apache Kafka | Java\nEXPERIENCE: Backend Engineer - Cedar Analytics (2024-Present) Migrated claims-processing services with Spring Boot and Kafka, which helped cut batch processing time. Migrated a billing platform using REST APIs and Docker. Maintained a billing platform using Java and Postgres.\nEDUCATION: B.Sc in Mathematics, Lakeview College of Engineering (2024)",
+    "gold": {
+      "skills": [
+        "docker",
+        "java",
+        "kafka",
+        "postgresql",
+        "rest apis",
+        "spring boot"
+      ],
+      "hardNegatives": [],
+      "experience": [
+        {
+          "title": "Backend Engineer",
+          "company": "Cedar Analytics"
+        }
+      ],
+      "education": [
+        {
+          "school": "Lakeview College of Engineering",
+          "degree": "B.Sc in Mathematics"
+        }
+      ]
+    }
+  },
+  {
+    "id": "r012",
+    "archetype": "frontend",
+    "seniority": "mid",
+    "style": "narrative",
+    "text": "Ishita Das\nFrontend Engineer | Bengaluru\n\nFrontend Engineer with 4 years of experience building a checkout flow. At Maple Education (2023-Present) I worked as Frontend Engineer. Delivered a design-system component library using CSS, Next.js and React. Maintained an analytics console with ES6 and Vue, which helped raise accessibility scores. At Vantage Foods (2021-2023) I worked as UI Developer. Improved a design-system component library with TS and Redux, which helped raise accessibility scores. Designed an analytics console with GitHub and HTML, which helped improve page load time.\nI studied B.Tech in Computer Science, Harborview College (2021).\nHave never worked with Terraform. Currently learning REST; no professional experience with it yet.",
+    "gold": {
+      "skills": [
+        "css",
+        "git",
+        "html",
+        "javascript",
+        "next.js",
+        "react",
+        "redux",
+        "typescript",
+        "vue"
+      ],
+      "hardNegatives": [
+        "rest apis",
+        "terraform"
+      ],
+      "experience": [
+        {
+          "title": "Frontend Engineer",
+          "company": "Maple Education"
+        },
+        {
+          "title": "UI Developer",
+          "company": "Vantage Foods"
+        }
+      ],
+      "education": [
+        {
+          "school": "Harborview College",
+          "degree": "B.Tech in Computer Science"
+        }
+      ]
+    }
+  },
+  {
+    "id": "r013",
+    "archetype": "frontend",
+    "seniority": "mid",
+    "style": "narrative",
+    "text": "Rohan Gupta\nUI Developer | Mumbai\n\nUI Developer with 5 years of experience building a customer dashboard. At Harbor Payments (2022-Present) I worked as UI Developer. Delivered a customer dashboard using TS, React.js and JavaScript. At Finch Health (2019-2022) I worked as Frontend Engineer. Owned a design-system component library with Angular, Redux and CSS, which helped reduce UI bugs. Built a design-system component library with HTML5, which helped reduce UI bugs.\nI studied B.Tech in Computer Science, Riverside Institute of Technology (2020).\nCurrently learning Swift; no professional experience with it yet.",
+    "gold": {
+      "skills": [
+        "angular",
+        "css",
+        "html",
+        "javascript",
+        "react",
+        "redux",
+        "typescript"
+      ],
+      "hardNegatives": [
+        "swift"
+      ],
+      "experience": [
+        {
+          "title": "UI Developer",
+          "company": "Harbor Payments"
+        },
+        {
+          "title": "Frontend Engineer",
+          "company": "Finch Health"
+        }
+      ],
+      "education": [
+        {
+          "school": "Riverside Institute of Technology",
+          "degree": "B.Tech in Computer Science"
+        }
+      ]
+    }
+  },
+  {
+    "id": "r014",
+    "archetype": "frontend",
+    "seniority": "mid",
+    "style": "narrative",
+    "text": "Neha Mehta\nFrontend Engineer | Pune\n\nFrontend Engineer with 3 years of experience building an analytics console. At Atlas Insurance (2023-Present) I worked as Frontend Engineer. Migrated a customer dashboard using JavaScript and Jest. Owned an analytics console using Figma and TypeScript. At Quarry Media (2021-2023) I worked as UI Developer. Owned a checkout flow using Redux and React. Worked with HTML and Angular to raise accessibility scores on a customer dashboard.\nI studied B.Tech in Computer Science, Eastgate University (2022).\nInterested in moving into K8s roles in the future. Currently learning Python; no professional experience with it yet.",
+    "gold": {
+      "skills": [
+        "angular",
+        "figma",
+        "html",
+        "javascript",
+        "jest",
+        "react",
+        "redux",
+        "typescript"
+      ],
+      "hardNegatives": [
+        "kubernetes",
+        "python"
+      ],
+      "experience": [
+        {
+          "title": "Frontend Engineer",
+          "company": "Atlas Insurance"
+        },
+        {
+          "title": "UI Developer",
+          "company": "Quarry Media"
+        }
+      ],
+      "education": [
+        {
+          "school": "Eastgate University",
+          "degree": "B.Tech in Computer Science"
+        }
+      ]
+    }
+  },
+  {
+    "id": "r015",
+    "archetype": "frontend",
+    "seniority": "junior",
+    "style": "buried",
+    "text": "Arjun Iyer\nWeb Developer | Mumbai\n\nSUMMARY\nWeb Developer with 1 year of experience building a customer dashboard.\n\n\nEXPERIENCE\nWeb Developer - Quarry Media (2024-Present)\n- Worked with Redux, JS and TS to improve page load time on a customer dashboard.\n- Worked with Vue.js and CSS to improve page load time on a checkout flow.\n- Built a design-system component library with ReactJS, which helped raise accessibility scores.\n\nEDUCATION\nMCA, Crestwood Institute (2024)\n\nADDITIONAL INFORMATION\nCurrently learning GitHub; no professional experience with it yet.",
+    "gold": {
+      "skills": [
+        "css",
+        "javascript",
+        "react",
+        "redux",
+        "typescript",
+        "vue"
+      ],
+      "hardNegatives": [
+        "git"
+      ],
+      "experience": [
+        {
+          "title": "Web Developer",
+          "company": "Quarry Media"
+        }
+      ],
+      "education": [
+        {
+          "school": "Crestwood Institute",
+          "degree": "MCA"
+        }
+      ]
+    }
+  },
+  {
+    "id": "r016",
+    "archetype": "frontend",
+    "seniority": "senior",
+    "style": "buried",
+    "text": "Neha Nair\nSenior Web Developer | Mumbai\n\nSUMMARY\nSenior Web Developer with 6 years of experience building a customer dashboard.\n\n\nEXPERIENCE\nSenior Web Developer - Maple Education (2023-Present)\n- Owned a checkout flow using GitHub, TS and JavaScript.\n\nFrontend Engineer - Finch Health (2021-2023)\n- Delivered a checkout flow using Jest and React.\n- Designed a customer dashboard with CSS and HTML5, which helped raise accessibility scores.\n\nWeb Developer - Maple Education (2019-2021)\n- Maintained an analytics console with Angular, Redux and Next.js, which helped raise accessibility scores.\n\nEDUCATION\nBCA, Crestwood Institute (2018)\n\nADDITIONAL INFORMATION\nCurrently learning Spark; no professional experience with it yet.",
+    "gold": {
+      "skills": [
+        "angular",
+        "css",
+        "git",
+        "html",
+        "javascript",
+        "jest",
+        "next.js",
+        "react",
+        "redux",
+        "typescript"
+      ],
+      "hardNegatives": [
+        "spark"
+      ],
+      "experience": [
+        {
+          "title": "Senior Web Developer",
+          "company": "Maple Education"
+        },
+        {
+          "title": "Frontend Engineer",
+          "company": "Finch Health"
+        },
+        {
+          "title": "Web Developer",
+          "company": "Maple Education"
+        }
+      ],
+      "education": [
+        {
+          "school": "Crestwood Institute",
+          "degree": "BCA"
+        }
+      ]
+    }
+  },
+  {
+    "id": "r017",
+    "archetype": "frontend",
+    "seniority": "junior",
+    "style": "narrative",
+    "text": "Neha Reddy\nFrontend Engineer | Gurugram\n\nFrontend Engineer with 1 year of experience building a customer dashboard. At Northwind Labs (2024-Present) I worked as Frontend Engineer. Designed a design-system component library with CSS, Tailwind CSS and TypeScript, which helped improve page load time. Worked with React.js and ES6 to improve page load time on a checkout flow.\nI studied MCA, Lakeview College of Engineering (2023).\nInterested in moving into Kubernetes roles in the future.",
+    "gold": {
+      "skills": [
+        "css",
+        "javascript",
+        "react",
+        "tailwind css",
+        "typescript"
+      ],
+      "hardNegatives": [
+        "kubernetes"
+      ],
+      "experience": [
+        {
+          "title": "Frontend Engineer",
+          "company": "Northwind Labs"
+        }
+      ],
+      "education": [
+        {
+          "school": "Lakeview College of Engineering",
+          "degree": "MCA"
+        }
+      ]
+    }
+  },
+  {
+    "id": "r018",
+    "archetype": "fullstack",
+    "seniority": "junior",
+    "style": "compact",
+    "text": "TARA IYER\nFull-Stack Developer | Hyderabad\nSUMMARY: Full-Stack Developer with under 1 years of experience building a booking platform.\nSKILLS: Node.js | Mongo | TS | Express | ReactJS | REST APIs\nEXPERIENCE: Full-Stack Developer - Finch Health (2024-Present) Worked with MongoDB and TypeScript to reduce support tickets on an internal tools portal. Built an internal tools portal with ReactJS and Node, which helped launch an MVP. Worked with Express.js and RESTful APIs to ship features faster on a booking platform.\nEDUCATION: B.Tech in Computer Science, Lakeview College of Engineering (2024)",
+    "gold": {
+      "skills": [
+        "express",
+        "mongodb",
+        "node.js",
+        "react",
+        "rest apis",
+        "typescript"
+      ],
+      "hardNegatives": [],
+      "experience": [
+        {
+          "title": "Full-Stack Developer",
+          "company": "Finch Health"
+        }
+      ],
+      "education": [
+        {
+          "school": "Lakeview College of Engineering",
+          "degree": "B.Tech in Computer Science"
+        }
+      ]
+    }
+  },
+  {
+    "id": "r019",
+    "archetype": "fullstack",
+    "seniority": "mid",
+    "style": "buried",
+    "text": "Meera Mehta\nSoftware Engineer | Pune\n\nSUMMARY\nSoftware Engineer with 4 years of experience building an internal tools portal.\n\n\nEXPERIENCE\nSoftware Engineer - Lumen Retail (2023-Present)\n- Built a customer onboarding product with TypeScript and REST APIs, which helped reduce support tickets.\n- Designed an internal tools portal using React.js and Mongo.\n\nFull-Stack Developer - Northwind Labs (2021-2023)\n- Owned a booking platform using Express and PostgreSQL.\n- Delivered an internal tools portal with Redux, NodeJS and Git, which helped ship features faster.\n\nEDUCATION\nB.E. in Information Technology, Harborview College (2020)\n",
+    "gold": {
+      "skills": [
+        "express",
+        "git",
+        "mongodb",
+        "node.js",
+        "postgresql",
+        "react",
+        "redux",
+        "rest apis",
+        "typescript"
+      ],
+      "hardNegatives": [],
+      "experience": [
+        {
+          "title": "Software Engineer",
+          "company": "Lumen Retail"
+        },
+        {
+          "title": "Full-Stack Developer",
+          "company": "Northwind Labs"
+        }
+      ],
+      "education": [
+        {
+          "school": "Harborview College",
+          "degree": "B.E. in Information Technology"
+        }
+      ]
+    }
+  },
+  {
+    "id": "r020",
+    "archetype": "fullstack",
+    "seniority": "junior",
+    "style": "standard",
+    "text": "Diya Das\nSoftware Engineer | Mumbai\n\nSUMMARY\nSoftware Engineer with 1 year of experience building a customer onboarding product.\n\nSKILLS\nREST APIs, Mongo, TypeScript, React.js, Express\n\nEXPERIENCE\nSoftware Engineer - Atlas Insurance (2024-Present)\n- Worked with MongoDB, Express.js and REST APIs to reduce support tickets on an internal tools portal.\n- Worked with TypeScript and React.js to launch an MVP on a booking platform.\n\nEDUCATION\nM.Tech in Computer Science, Crestwood Institute (2023)\n\nADDITIONAL INFORMATION\nInterested in moving into Flutter roles in the future. Currently learning CSS3; no professional experience with it yet.",
+    "gold": {
+      "skills": [
+        "express",
+        "mongodb",
+        "react",
+        "rest apis",
+        "typescript"
+      ],
+      "hardNegatives": [
+        "css",
+        "flutter"
+      ],
+      "experience": [
+        {
+          "title": "Software Engineer",
+          "company": "Atlas Insurance"
+        }
+      ],
+      "education": [
+        {
+          "school": "Crestwood Institute",
+          "degree": "M.Tech in Computer Science"
+        }
+      ]
+    }
+  },
+  {
+    "id": "r021",
+    "archetype": "fullstack",
+    "seniority": "junior",
+    "style": "buried",
+    "text": "Aarav Iyer\nFull-Stack Developer | Bengaluru\n\nSUMMARY\nFull-Stack Developer with 2 years of experience building a customer onboarding product.\n\n\nEXPERIENCE\nFull-Stack Developer - Orbit Logistics (2023-Present)\n- Migrated a marketplace web app using ReactJS and Express.\n- Worked with Node and TS to reduce support tickets on a booking platform.\n- Owned an internal tools portal using RESTful APIs and Mongo.\n\nEDUCATION\nB.Tech in Computer Science, Summit University (2023)\n\nADDITIONAL INFORMATION\nCurrently learning Firebase; no professional experience with it yet.",
+    "gold": {
+      "skills": [
+        "express",
+        "mongodb",
+        "node.js",
+        "react",
+        "rest apis",
+        "typescript"
+      ],
+      "hardNegatives": [
+        "firebase"
+      ],
+      "experience": [
+        {
+          "title": "Full-Stack Developer",
+          "company": "Orbit Logistics"
+        }
+      ],
+      "education": [
+        {
+          "school": "Summit University",
+          "degree": "B.Tech in Computer Science"
+        }
+      ]
+    }
+  },
+  {
+    "id": "r022",
+    "archetype": "fullstack",
+    "seniority": "junior",
+    "style": "buried",
+    "text": "Kavya Iyer\nFull-Stack Engineer | Gurugram\n\nSUMMARY\nFull-Stack Engineer with 2 years of experience building a customer onboarding product.\n\n\nEXPERIENCE\nFull-Stack Engineer - Atlas Insurance (2023-Present)\n- Worked with REST and Mongo to launch an MVP on a marketplace web app.\n- Worked with Express.js and TS to ship features faster on a booking platform.\n\nEDUCATION\nMCA, Eastgate University (2023)\n\nADDITIONAL INFORMATION\nInterested in moving into Spring roles in the future. Currently learning Vue; no professional experience with it yet.",
+    "gold": {
+      "skills": [
+        "express",
+        "mongodb",
+        "rest apis",
+        "typescript"
+      ],
+      "hardNegatives": [
+        "spring boot",
+        "vue"
+      ],
+      "experience": [
+        {
+          "title": "Full-Stack Engineer",
+          "company": "Atlas Insurance"
+        }
+      ],
+      "education": [
+        {
+          "school": "Eastgate University",
+          "degree": "MCA"
+        }
+      ]
+    }
+  },
+  {
+    "id": "r023",
+    "archetype": "fullstack",
+    "seniority": "junior",
+    "style": "standard",
+    "text": "Rohan Patel\nFull-Stack Engineer | Gurugram\n\nSUMMARY\nFull-Stack Engineer with under 1 years of experience building a marketplace web app.\n\nSKILLS\nNode.js, React.js, Express, TypeScript, MongoDB\n\nEXPERIENCE\nFull-Stack Engineer - Orbit Logistics (2024-Present)\n- Worked with TS and Express to launch an MVP on an internal tools portal.\n- Worked with Node, React and MongoDB to launch an MVP on a customer onboarding product.\n\nEDUCATION\nB.Sc in Mathematics, Eastgate University (2024)\n",
+    "gold": {
+      "skills": [
+        "express",
+        "mongodb",
+        "node.js",
+        "react",
+        "typescript"
+      ],
+      "hardNegatives": [],
+      "experience": [
+        {
+          "title": "Full-Stack Engineer",
+          "company": "Orbit Logistics"
+        }
+      ],
+      "education": [
+        {
+          "school": "Eastgate University",
+          "degree": "B.Sc in Mathematics"
+        }
+      ]
+    }
+  },
+  {
+    "id": "r024",
+    "archetype": "fullstack",
+    "seniority": "junior",
+    "style": "compact",
+    "text": "MEERA GUPTA\nSoftware Engineer | Hyderabad\nSUMMARY: Software Engineer with 2 years of experience building a booking platform.\nSKILLS: ReactJS | Node | Express | RESTful APIs | GitHub | TS\nEXPERIENCE: Software Engineer - Orbit Logistics (2023-Present) Improved a marketplace web app with REST APIs and Express.js, which helped reduce support tickets. Delivered a booking platform with React and GitHub, which helped reduce support tickets. Migrated a marketplace web app with Node.js and TypeScript, which helped reduce support tickets.\nEDUCATION: B.Tech in Computer Science, Crestwood Institute (2022)",
+    "gold": {
+      "skills": [
+        "express",
+        "git",
+        "node.js",
+        "react",
+        "rest apis",
+        "typescript"
+      ],
+      "hardNegatives": [],
+      "experience": [
+        {
+          "title": "Software Engineer",
+          "company": "Orbit Logistics"
+        }
+      ],
+      "education": [
+        {
+          "school": "Crestwood Institute",
+          "degree": "B.Tech in Computer Science"
+        }
+      ]
+    }
+  },
+  {
+    "id": "r025",
+    "archetype": "data_scientist",
+    "seniority": "junior",
+    "style": "buried",
+    "text": "Vikram Das\nData Scientist | Pune\n\nSUMMARY\nData Scientist with under 1 years of experience building a pricing experiment.\n\n\nEXPERIENCE\nData Scientist - Atlas Insurance (2024-Present)\n- Designed a demand-forecasting pipeline with Pandas and ML, which helped inform pricing decisions.\n- Migrated a churn model with Python, SQL and statistics, which helped reduce forecast error.\n\nEDUCATION\nB.E. in Information Technology, Harborview College (2025)\n\nADDITIONAL INFORMATION\nHave never worked with Jenkins. Currently learning Selenium; no professional experience with it yet.",
+    "gold": {
+      "skills": [
+        "machine learning",
+        "pandas",
+        "python",
+        "sql",
+        "statistics"
+      ],
+      "hardNegatives": [
+        "jenkins",
+        "selenium"
+      ],
+      "experience": [
+        {
+          "title": "Data Scientist",
+          "company": "Atlas Insurance"
+        }
+      ],
+      "education": [
+        {
+          "school": "Harborview College",
+          "degree": "B.E. in Information Technology"
+        }
+      ]
+    }
+  },
+  {
+    "id": "r026",
+    "archetype": "data_scientist",
+    "seniority": "mid",
+    "style": "buried",
+    "text": "Sahil Das\nMachine Learning Analyst | Chennai\n\nSUMMARY\nMachine Learning Analyst with 3 years of experience building a demand-forecasting pipeline.\n\n\nEXPERIENCE\nMachine Learning Analyst - Quarry Media (2023-Present)\n- Built a demand-forecasting pipeline with scikit-learn and SQL, which helped inform pricing decisions.\n- Designed a pricing experiment using Pandas, NumPy and machine learning.\n\nMachine Learning Analyst - Northwind Labs (2021-2023)\n- Worked with Apache Airflow, statistics and Spark to lift conversion on a pricing experiment.\n\nEDUCATION\nMCA, Summit University (2022)\n\nADDITIONAL INFORMATION\nHave never worked with Redux.",
+    "gold": {
+      "skills": [
+        "airflow",
+        "machine learning",
+        "numpy",
+        "pandas",
+        "scikit-learn",
+        "spark",
+        "sql",
+        "statistics"
+      ],
+      "hardNegatives": [
+        "redux"
+      ],
+      "experience": [
+        {
+          "title": "Machine Learning Analyst",
+          "company": "Quarry Media"
+        },
+        {
+          "title": "Machine Learning Analyst",
+          "company": "Northwind Labs"
+        }
+      ],
+      "education": [
+        {
+          "school": "Summit University",
+          "degree": "MCA"
+        }
+      ]
+    }
+  },
+  {
+    "id": "r027",
+    "archetype": "data_scientist",
+    "seniority": "mid",
+    "style": "narrative",
+    "text": "Sahil Khan\nApplied Scientist | Gurugram\n\nApplied Scientist with 5 years of experience building a churn model. At Maple Education (2022-Present) I worked as Applied Scientist. Designed a demand-forecasting pipeline with Tableau and Git, which helped inform pricing decisions. Migrated a demand-forecasting pipeline using NumPy and SQL. At Vantage Foods (2019-2022) I worked as Machine Learning Analyst. Maintained a pricing experiment using scikit-learn and statistics. Improved a pricing experiment with Pandas and Python, which helped inform pricing decisions.\nI studied M.Tech in Computer Science, Crestwood Institute (2019).",
+    "gold": {
+      "skills": [
+        "git",
+        "numpy",
+        "pandas",
+        "python",
+        "scikit-learn",
+        "sql",
+        "statistics",
+        "tableau"
+      ],
+      "hardNegatives": [],
+      "experience": [
+        {
+          "title": "Applied Scientist",
+          "company": "Maple Education"
+        },
+        {
+          "title": "Machine Learning Analyst",
+          "company": "Vantage Foods"
+        }
+      ],
+      "education": [
+        {
+          "school": "Crestwood Institute",
+          "degree": "M.Tech in Computer Science"
+        }
+      ]
+    }
+  },
+  {
+    "id": "r028",
+    "archetype": "data_scientist",
+    "seniority": "mid",
+    "style": "compact",
+    "text": "KAVYA KHAN\nData Scientist | Chennai\nSUMMARY: Data Scientist with 4 years of experience building a churn model.\nSKILLS: statistics | Python | SQL | Spark | machine learning | GitHub | Pandas | sklearn | NumPy\nEXPERIENCE: Data Scientist - Maple Education (2023-Present) Improved a churn model with Apache Spark, Git and SQL, which helped lift conversion. Worked with scikit-learn and machine learning to reduce forecast error on a pricing experiment. || Machine Learning Analyst - Maple Education (2021-2023) Improved a pricing experiment with Python and Pandas, which helped reduce forecast error. Maintained a demand-forecasting pipeline using statistics and NumPy.\nEDUCATION: B.Sc in Mathematics, Eastgate University (2020)",
+    "gold": {
+      "skills": [
+        "git",
+        "machine learning",
+        "numpy",
+        "pandas",
+        "python",
+        "scikit-learn",
+        "spark",
+        "sql",
+        "statistics"
+      ],
+      "hardNegatives": [],
+      "experience": [
+        {
+          "title": "Data Scientist",
+          "company": "Maple Education"
+        },
+        {
+          "title": "Machine Learning Analyst",
+          "company": "Maple Education"
+        }
+      ],
+      "education": [
+        {
+          "school": "Eastgate University",
+          "degree": "B.Sc in Mathematics"
+        }
+      ]
+    }
+  },
+  {
+    "id": "r029",
+    "archetype": "data_scientist",
+    "seniority": "mid",
+    "style": "compact",
+    "text": "KAVYA JOSHI\nMachine Learning Analyst | Chennai\nSUMMARY: Machine Learning Analyst with 4 years of experience building a pricing experiment.\nSKILLS: SQL | ML | NumPy | Python | Tableau | Pandas | statistics | deep learning | Spark\nEXPERIENCE: Machine Learning Analyst - Brightpath Systems (2023-Present) Owned a pricing experiment with NumPy, Tableau and ML, which helped reduce forecast error. Built a customer-segmentation analysis using Pandas, deep learning and statistical modelling. Worked with SQL to inform pricing decisions on a pricing experiment. || Data Scientist - Brightpath Systems (2021-2023) Migrated a demand-forecasting pipeline using Python and Apache Spark.\nEDUCATION: MCA, Lakeview College of Engineering (2020)\nADDITIONAL: Currently learning CSS; no professional experience with it yet. Have never worked with Linux.",
+    "gold": {
+      "skills": [
+        "deep learning",
+        "machine learning",
+        "numpy",
+        "pandas",
+        "python",
+        "spark",
+        "sql",
+        "statistics",
+        "tableau"
+      ],
+      "hardNegatives": [
+        "css",
+        "linux"
+      ],
+      "experience": [
+        {
+          "title": "Machine Learning Analyst",
+          "company": "Brightpath Systems"
+        },
+        {
+          "title": "Data Scientist",
+          "company": "Brightpath Systems"
+        }
+      ],
+      "education": [
+        {
+          "school": "Lakeview College of Engineering",
+          "degree": "MCA"
+        }
+      ]
+    }
+  },
+  {
+    "id": "r030",
+    "archetype": "data_scientist",
+    "seniority": "junior",
+    "style": "narrative",
+    "text": "Kavya Rao\nData Scientist | Mumbai\n\nData Scientist with under 1 years of experience building a churn model. At Lumen Retail (2024-Present) I worked as Data Scientist. Worked with SQL and Python to reduce forecast error on a demand-forecasting pipeline. Built a churn model using sklearn, statistical modelling and Pandas.\nI studied B.Tech in Computer Science, Eastgate University (2025).\nCurrently learning Linux; no professional experience with it yet.",
+    "gold": {
+      "skills": [
+        "pandas",
+        "python",
+        "scikit-learn",
+        "sql",
+        "statistics"
+      ],
+      "hardNegatives": [
+        "linux"
+      ],
+      "experience": [
+        {
+          "title": "Data Scientist",
+          "company": "Lumen Retail"
+        }
+      ],
+      "education": [
+        {
+          "school": "Eastgate University",
+          "degree": "B.Tech in Computer Science"
+        }
+      ]
+    }
+  },
+  {
+    "id": "r031",
+    "archetype": "ml_engineer",
+    "seniority": "junior",
+    "style": "narrative",
+    "text": "Dev Reddy\nMachine Learning Engineer | Chennai\n\nMachine Learning Engineer with 2 years of experience building a document-classification model. At Harbor Payments (2023-Present) I worked as Machine Learning Engineer. Designed an inference API with TensorFlow, Python and ML, which helped move models into production. Delivered a recommendation service with PyTorch and deep learning, which helped move models into production.\nI studied B.E. in Information Technology, Crestwood Institute (2023).",
+    "gold": {
+      "skills": [
+        "deep learning",
+        "machine learning",
+        "python",
+        "pytorch",
+        "tensorflow"
+      ],
+      "hardNegatives": [],
+      "experience": [
+        {
+          "title": "Machine Learning Engineer",
+          "company": "Harbor Payments"
+        }
+      ],
+      "education": [
+        {
+          "school": "Crestwood Institute",
+          "degree": "B.E. in Information Technology"
+        }
+      ]
+    }
+  },
+  {
+    "id": "r032",
+    "archetype": "ml_engineer",
+    "seniority": "mid",
+    "style": "narrative",
+    "text": "Aarav Rao\nMachine Learning Engineer | Gurugram\n\nMachine Learning Engineer with 3 years of experience building an inference API. At Brightpath Systems (2023-Present) I worked as Machine Learning Engineer. Worked with Kubernetes, Python and computer vision to cut inference latency on a text-embedding pipeline. At Atlas Insurance (2021-2023) I worked as Machine Learning Engineer. Worked with deep learning, TensorFlow and machine learning to improve model accuracy on a recommendation service. Improved a text-embedding pipeline with PyTorch, which helped improve model accuracy.\nI studied BCA, Eastgate University (2021).\nInterested in moving into Golang roles in the future.",
+    "gold": {
+      "skills": [
+        "computer vision",
+        "deep learning",
+        "kubernetes",
+        "machine learning",
+        "python",
+        "pytorch",
+        "tensorflow"
+      ],
+      "hardNegatives": [
+        "go"
+      ],
+      "experience": [
+        {
+          "title": "Machine Learning Engineer",
+          "company": "Brightpath Systems"
+        },
+        {
+          "title": "Machine Learning Engineer",
+          "company": "Atlas Insurance"
+        }
+      ],
+      "education": [
+        {
+          "school": "Eastgate University",
+          "degree": "BCA"
+        }
+      ]
+    }
+  },
+  {
+    "id": "r033",
+    "archetype": "ml_engineer",
+    "seniority": "junior",
+    "style": "narrative",
+    "text": "Diya Mehta\nResearch Engineer | Hyderabad\n\nResearch Engineer with under 1 years of experience building a recommendation service. At Maple Education (2024-Present) I worked as Research Engineer. Migrated a document-classification model using deep learning and Docker. Worked with Python and TensorFlow to improve model accuracy on a document-classification model. Migrated a document-classification model with ML and NumPy, which helped cut inference latency.\nI studied BCA, Riverside Institute of Technology (2025).",
+    "gold": {
+      "skills": [
+        "deep learning",
+        "docker",
+        "machine learning",
+        "numpy",
+        "python",
+        "tensorflow"
+      ],
+      "hardNegatives": [],
+      "experience": [
+        {
+          "title": "Research Engineer",
+          "company": "Maple Education"
+        }
+      ],
+      "education": [
+        {
+          "school": "Riverside Institute of Technology",
+          "degree": "BCA"
+        }
+      ]
+    }
+  },
+  {
+    "id": "r034",
+    "archetype": "ml_engineer",
+    "seniority": "mid",
+    "style": "standard",
+    "text": "Sneha Bose\nResearch Engineer | Bengaluru\n\nSUMMARY\nResearch Engineer with 5 years of experience building a recommendation service.\n\nSKILLS\nPyTorch, TensorFlow, GitHub, NumPy, Kubernetes, deep learning, machine learning, Python\n\nEXPERIENCE\nResearch Engineer - Maple Education (2022-Present)\n- Worked with TensorFlow, PyTorch and Kubernetes to improve model accuracy on a text-embedding pipeline.\n- Improved a recommendation service using ML, GitHub and NumPy.\n\nResearch Engineer - Orbit Logistics (2019-2022)\n- Owned an inference API using Python and deep learning.\n\nEDUCATION\nBCA, Eastgate University (2020)\n",
+    "gold": {
+      "skills": [
+        "deep learning",
+        "git",
+        "kubernetes",
+        "machine learning",
+        "numpy",
+        "python",
+        "pytorch",
+        "tensorflow"
+      ],
+      "hardNegatives": [],
+      "experience": [
+        {
+          "title": "Research Engineer",
+          "company": "Maple Education"
+        },
+        {
+          "title": "Research Engineer",
+          "company": "Orbit Logistics"
+        }
+      ],
+      "education": [
+        {
+          "school": "Eastgate University",
+          "degree": "BCA"
+        }
+      ]
+    }
+  },
+  {
+    "id": "r035",
+    "archetype": "ml_engineer",
+    "seniority": "junior",
+    "style": "buried",
+    "text": "Arjun Gupta\nAI Engineer | Bengaluru\n\nSUMMARY\nAI Engineer with 2 years of experience building a document-classification model.\n\n\nEXPERIENCE\nAI Engineer - Maple Education (2023-Present)\n- Improved an inference API with Python and Kubernetes, which helped cut inference latency.\n- Worked with Docker, machine learning and PyTorch to cut inference latency on an inference API.\n- Owned a text-embedding pipeline using Git.\n\nEDUCATION\nM.Tech in Computer Science, Crestwood Institute (2022)\n\nADDITIONAL INFORMATION\nCurrently learning Jenkins; no professional experience with it yet. Interested in moving into Redux roles in the future.",
+    "gold": {
+      "skills": [
+        "docker",
+        "git",
+        "kubernetes",
+        "machine learning",
+        "python",
+        "pytorch"
+      ],
+      "hardNegatives": [
+        "jenkins",
+        "redux"
+      ],
+      "experience": [
+        {
+          "title": "AI Engineer",
+          "company": "Maple Education"
+        }
+      ],
+      "education": [
+        {
+          "school": "Crestwood Institute",
+          "degree": "M.Tech in Computer Science"
+        }
+      ]
+    }
+  },
+  {
+    "id": "r036",
+    "archetype": "data_analyst",
+    "seniority": "mid",
+    "style": "buried",
+    "text": "Vikram Bose\nData Analyst | Pune\n\nSUMMARY\nData Analyst with 4 years of experience building weekly sales dashboards.\n\n\nEXPERIENCE\nData Analyst - Maple Education (2023-Present)\n- Migrated weekly sales dashboards with statistics, Pandas and Git, which helped speed up month-end close.\n\nData Analyst - Northwind Labs (2021-2023)\n- Worked with Power BI, Python and Tableau to surface churn drivers on a funnel analysis.\n- Worked with SQL to replace manual reporting on a funnel analysis.\n\nEDUCATION\nB.Sc in Mathematics, Harborview College (2020)\n\nADDITIONAL INFORMATION\nCurrently learning deep learning; no professional experience with it yet.",
+    "gold": {
+      "skills": [
+        "git",
+        "pandas",
+        "power bi",
+        "python",
+        "sql",
+        "statistics",
+        "tableau"
+      ],
+      "hardNegatives": [
+        "deep learning"
+      ],
+      "experience": [
+        {
+          "title": "Data Analyst",
+          "company": "Maple Education"
+        },
+        {
+          "title": "Data Analyst",
+          "company": "Northwind Labs"
+        }
+      ],
+      "education": [
+        {
+          "school": "Harborview College",
+          "degree": "B.Sc in Mathematics"
+        }
+      ]
+    }
+  },
+  {
+    "id": "r037",
+    "archetype": "data_analyst",
+    "seniority": "mid",
+    "style": "standard",
+    "text": "Rahul Reddy\nData Analyst | Pune\n\nSUMMARY\nData Analyst with 3 years of experience building operations reports.\n\nSKILLS\nTableau, Pandas, Git, statistical modelling, Excel, Power BI, Python\n\nEXPERIENCE\nData Analyst - Vantage Foods (2023-Present)\n- Worked with statistical modelling, Excel and Pandas to surface churn drivers on operations reports.\n\nBI Analyst - Finch Health (2021-2023)\n- Worked with GitHub, Tableau and Python to replace manual reporting on a funnel analysis.\n- Worked with Power BI to speed up month-end close on a revenue-reporting suite.\n\nEDUCATION\nM.Tech in Computer Science, Eastgate University (2021)\n\nADDITIONAL INFORMATION\nInterested in moving into PyTorch roles in the future. Currently learning Apache Kafka; no professional experience with it yet.",
+    "gold": {
+      "skills": [
+        "excel",
+        "git",
+        "pandas",
+        "power bi",
+        "python",
+        "statistics",
+        "tableau"
+      ],
+      "hardNegatives": [
+        "kafka",
+        "pytorch"
+      ],
+      "experience": [
+        {
+          "title": "Data Analyst",
+          "company": "Vantage Foods"
+        },
+        {
+          "title": "BI Analyst",
+          "company": "Finch Health"
+        }
+      ],
+      "education": [
+        {
+          "school": "Eastgate University",
+          "degree": "M.Tech in Computer Science"
+        }
+      ]
+    }
+  },
+  {
+    "id": "r038",
+    "archetype": "data_analyst",
+    "seniority": "mid",
+    "style": "standard",
+    "text": "Rohan Reddy\nBI Analyst | Bengaluru\n\nSUMMARY\nBI Analyst with 3 years of experience building a revenue-reporting suite.\n\nSKILLS\nPandas, Python, Power BI, SQL, statistics, Tableau\n\nEXPERIENCE\nBI Analyst - Quarry Media (2023-Present)\n- Worked with Python, SQL and Power BI to surface churn drivers on operations reports.\n\nData Analyst - Vantage Foods (2021-2023)\n- Migrated operations reports with Tableau, statistics and Pandas, which helped replace manual reporting.\n\nEDUCATION\nBCA, Summit University (2022)\n\nADDITIONAL INFORMATION\nInterested in moving into PostgreSQL roles in the future.",
+    "gold": {
+      "skills": [
+        "pandas",
+        "power bi",
+        "python",
+        "sql",
+        "statistics",
+        "tableau"
+      ],
+      "hardNegatives": [
+        "postgresql"
+      ],
+      "experience": [
+        {
+          "title": "BI Analyst",
+          "company": "Quarry Media"
+        },
+        {
+          "title": "Data Analyst",
+          "company": "Vantage Foods"
+        }
+      ],
+      "education": [
+        {
+          "school": "Summit University",
+          "degree": "BCA"
+        }
+      ]
+    }
+  },
+  {
+    "id": "r039",
+    "archetype": "data_analyst",
+    "seniority": "junior",
+    "style": "buried",
+    "text": "Anaya Rao\nBI Analyst | Chennai\n\nSUMMARY\nBI Analyst with 2 years of experience building weekly sales dashboards.\n\n\nEXPERIENCE\nBI Analyst - Lumen Retail (2023-Present)\n- Built a revenue-reporting suite using Excel, SQL and statistics.\n- Worked with Pandas and Power BI to speed up month-end close on operations reports.\n\nEDUCATION\nM.Tech in Computer Science, Crestwood Institute (2022)\n",
+    "gold": {
+      "skills": [
+        "excel",
+        "pandas",
+        "power bi",
+        "sql",
+        "statistics"
+      ],
+      "hardNegatives": [],
+      "experience": [
+        {
+          "title": "BI Analyst",
+          "company": "Lumen Retail"
+        }
+      ],
+      "education": [
+        {
+          "school": "Crestwood Institute",
+          "degree": "M.Tech in Computer Science"
+        }
+      ]
+    }
+  },
+  {
+    "id": "r040",
+    "archetype": "devops",
+    "seniority": "mid",
+    "style": "standard",
+    "text": "Vikram Iyer\nPlatform Engineer | Mumbai\n\nSUMMARY\nPlatform Engineer with 3 years of experience building cluster infrastructure.\n\nSKILLS\nCI/CD, GitHub, Redis, Jenkins, Terraform, Docker, Kubernetes, Python, Linux\n\nEXPERIENCE\nPlatform Engineer - Brightpath Systems (2023-Present)\n- Built an observability stack with Docker, Python and Terraform, which helped reduce cloud spend.\n- Worked with Redis and Jenkins to cut deploy time on cluster infrastructure.\n\nDevOps Engineer - Finch Health (2021-2023)\n- Owned a disaster-recovery setup using K8s and Linux.\n- Improved a multi-environment deployment pipeline using Git and CI-CD.\n\nEDUCATION\nMCA, Summit University (2022)\n\nADDITIONAL INFORMATION\nInterested in moving into Power BI roles in the future.",
+    "gold": {
+      "skills": [
+        "ci/cd",
+        "docker",
+        "git",
+        "jenkins",
+        "kubernetes",
+        "linux",
+        "python",
+        "redis",
+        "terraform"
+      ],
+      "hardNegatives": [
+        "power bi"
+      ],
+      "experience": [
+        {
+          "title": "Platform Engineer",
+          "company": "Brightpath Systems"
+        },
+        {
+          "title": "DevOps Engineer",
+          "company": "Finch Health"
+        }
+      ],
+      "education": [
+        {
+          "school": "Summit University",
+          "degree": "MCA"
+        }
+      ]
+    }
+  },
+  {
+    "id": "r041",
+    "archetype": "devops",
+    "seniority": "junior",
+    "style": "compact",
+    "text": "NEHA KHAN\nDevOps Engineer | Chennai\nSUMMARY: DevOps Engineer with 1 year of experience building a multi-environment deployment pipeline.\nSKILLS: Terraform | Redis | continuous integration | Docker | Amazon Web Services | K8s\nEXPERIENCE: DevOps Engineer - Cedar Analytics (2024-Present) Worked with Terraform, K8s and Docker to cut deploy time on cluster infrastructure. Owned a disaster-recovery setup using Redis, CI-CD and Amazon Web Services.\nEDUCATION: B.Sc in Mathematics, Eastgate University (2024)\nADDITIONAL: Have never worked with Kotlin.",
+    "gold": {
+      "skills": [
+        "aws",
+        "ci/cd",
+        "docker",
+        "kubernetes",
+        "redis",
+        "terraform"
+      ],
+      "hardNegatives": [
+        "kotlin"
+      ],
+      "experience": [
+        {
+          "title": "DevOps Engineer",
+          "company": "Cedar Analytics"
+        }
+      ],
+      "education": [
+        {
+          "school": "Eastgate University",
+          "degree": "B.Sc in Mathematics"
+        }
+      ]
+    }
+  },
+  {
+    "id": "r042",
+    "archetype": "devops",
+    "seniority": "mid",
+    "style": "compact",
+    "text": "DIYA KHAN\nSite Reliability Engineer | Gurugram\nSUMMARY: Site Reliability Engineer with 3 years of experience building a multi-environment deployment pipeline.\nSKILLS: Linux | Redis | GitHub | K8s | Docker | AWS | CI-CD\nEXPERIENCE: Site Reliability Engineer - Finch Health (2023-Present) Migrated an observability stack using GitHub and Kubernetes. Owned an observability stack with AWS and Linux, which helped reduce cloud spend. || Site Reliability Engineer - Maple Education (2021-2023) Worked with CI/CD and Redis to reduce cloud spend on a multi-environment deployment pipeline. Maintained an observability stack using Docker.\nEDUCATION: B.Sc in Mathematics, Summit University (2021)\nADDITIONAL: Have never worked with Vue.",
+    "gold": {
+      "skills": [
+        "aws",
+        "ci/cd",
+        "docker",
+        "git",
+        "kubernetes",
+        "linux",
+        "redis"
+      ],
+      "hardNegatives": [
+        "vue"
+      ],
+      "experience": [
+        {
+          "title": "Site Reliability Engineer",
+          "company": "Finch Health"
+        },
+        {
+          "title": "Site Reliability Engineer",
+          "company": "Maple Education"
+        }
+      ],
+      "education": [
+        {
+          "school": "Summit University",
+          "degree": "B.Sc in Mathematics"
+        }
+      ]
+    }
+  },
+  {
+    "id": "r043",
+    "archetype": "devops",
+    "seniority": "mid",
+    "style": "compact",
+    "text": "ISHITA NAIR\nSite Reliability Engineer | Pune\nSUMMARY: Site Reliability Engineer with 3 years of experience building a disaster-recovery setup.\nSKILLS: Redis | continuous integration | Jenkins | Docker | K8s | Amazon Web Services\nEXPERIENCE: Site Reliability Engineer - Brightpath Systems (2023-Present) Worked with K8s and CI/CD to cut deploy time on a disaster-recovery setup. Built an observability stack using Docker and Jenkins. || DevOps Engineer - Vantage Foods (2021-2023) Worked with Redis and AWS to reduce cloud spend on cluster infrastructure.\nEDUCATION: B.Tech in Computer Science, Lakeview College of Engineering (2022)\nADDITIONAL: Currently learning Swift; no professional experience with it yet.",
+    "gold": {
+      "skills": [
+        "aws",
+        "ci/cd",
+        "docker",
+        "jenkins",
+        "kubernetes",
+        "redis"
+      ],
+      "hardNegatives": [
+        "swift"
+      ],
+      "experience": [
+        {
+          "title": "Site Reliability Engineer",
+          "company": "Brightpath Systems"
+        },
+        {
+          "title": "DevOps Engineer",
+          "company": "Vantage Foods"
+        }
+      ],
+      "education": [
+        {
+          "school": "Lakeview College of Engineering",
+          "degree": "B.Tech in Computer Science"
+        }
+      ]
+    }
+  },
+  {
+    "id": "r044",
+    "archetype": "devops",
+    "seniority": "mid",
+    "style": "standard",
+    "text": "Neha Gupta\nDevOps Engineer | Mumbai\n\nSUMMARY\nDevOps Engineer with 4 years of experience building an observability stack.\n\nSKILLS\nDocker, Python, Amazon Web Services, continuous integration, Kubernetes, Redis, Terraform\n\nEXPERIENCE\nDevOps Engineer - Brightpath Systems (2023-Present)\n- Built a disaster-recovery setup using CI-CD and Amazon Web Services.\n- Owned an observability stack using Terraform, K8s and Python.\n\nSite Reliability Engineer - Maple Education (2021-2023)\n- Owned cluster infrastructure using Redis and Docker.\n\nEDUCATION\nM.Tech in Computer Science, Eastgate University (2021)\n\nADDITIONAL INFORMATION\nHave never worked with Airflow.",
+    "gold": {
+      "skills": [
+        "aws",
+        "ci/cd",
+        "docker",
+        "kubernetes",
+        "python",
+        "redis",
+        "terraform"
+      ],
+      "hardNegatives": [
+        "airflow"
+      ],
+      "experience": [
+        {
+          "title": "DevOps Engineer",
+          "company": "Brightpath Systems"
+        },
+        {
+          "title": "Site Reliability Engineer",
+          "company": "Maple Education"
+        }
+      ],
+      "education": [
+        {
+          "school": "Eastgate University",
+          "degree": "M.Tech in Computer Science"
+        }
+      ]
+    }
+  },
+  {
+    "id": "r045",
+    "archetype": "devops",
+    "seniority": "junior",
+    "style": "buried",
+    "text": "Rahul Joshi\nSite Reliability Engineer | Hyderabad\n\nSUMMARY\nSite Reliability Engineer with 2 years of experience building a disaster-recovery setup.\n\n\nEXPERIENCE\nSite Reliability Engineer - Orbit Logistics (2023-Present)\n- Worked with Terraform, Python and Git to reduce cloud spend on a multi-environment deployment pipeline.\n- Delivered a multi-environment deployment pipeline using AWS, Linux and Docker.\n\nEDUCATION\nM.Tech in Computer Science, Summit University (2023)\n",
+    "gold": {
+      "skills": [
+        "aws",
+        "docker",
+        "git",
+        "linux",
+        "python",
+        "terraform"
+      ],
+      "hardNegatives": [],
+      "experience": [
+        {
+          "title": "Site Reliability Engineer",
+          "company": "Orbit Logistics"
+        }
+      ],
+      "education": [
+        {
+          "school": "Summit University",
+          "degree": "M.Tech in Computer Science"
+        }
+      ]
+    }
+  },
+  {
+    "id": "r046",
+    "archetype": "mobile",
+    "seniority": "senior",
+    "style": "buried",
+    "text": "Neha Patel\nSenior Flutter Developer | Hyderabad\n\nSUMMARY\nSenior Flutter Developer with 7 years of experience building a fitness app.\n\n\nEXPERIENCE\nSenior Flutter Developer - Pinecone Travel (2023-Present)\n- Improved a field-service app with CI/CD and JS, which helped cut crash rate.\n- Owned a fitness app using Flutter and RESTful APIs.\n\nMobile Developer - Pinecone Travel (2021-2023)\n- Owned a fitness app using Kotlin and Swift.\n\nAndroid Developer - Atlas Insurance (2019-2021)\n- Designed a delivery-tracking app using Firebase and Git.\n\nEDUCATION\nM.Tech in Computer Science, Crestwood Institute (2018)\n\nADDITIONAL INFORMATION\nHave never worked with Node. Currently learning HTML5; no professional experience with it yet.",
+    "gold": {
+      "skills": [
+        "ci/cd",
+        "firebase",
+        "flutter",
+        "git",
+        "javascript",
+        "kotlin",
+        "rest apis",
+        "swift"
+      ],
+      "hardNegatives": [
+        "html",
+        "node.js"
+      ],
+      "experience": [
+        {
+          "title": "Senior Flutter Developer",
+          "company": "Pinecone Travel"
+        },
+        {
+          "title": "Mobile Developer",
+          "company": "Pinecone Travel"
+        },
+        {
+          "title": "Android Developer",
+          "company": "Atlas Insurance"
+        }
+      ],
+      "education": [
+        {
+          "school": "Crestwood Institute",
+          "degree": "M.Tech in Computer Science"
+        }
+      ]
+    }
+  },
+  {
+    "id": "r047",
+    "archetype": "mobile",
+    "seniority": "mid",
+    "style": "buried",
+    "text": "Pooja Khan\nFlutter Developer | Bengaluru\n\nSUMMARY\nFlutter Developer with 5 years of experience building a field-service app.\n\n\nEXPERIENCE\nFlutter Developer - Maple Education (2022-Present)\n- Worked with Flutter, CI-CD and GitHub to raise store ratings on a fitness app.\n\nFlutter Developer - Brightpath Systems (2019-2022)\n- Designed a retail loyalty app using Kotlin, RESTful APIs and Firebase.\n\nEDUCATION\nB.Tech in Computer Science, Riverside Institute of Technology (2020)\n\nADDITIONAL INFORMATION\nCurrently learning Airflow; no professional experience with it yet.",
+    "gold": {
+      "skills": [
+        "ci/cd",
+        "firebase",
+        "flutter",
+        "git",
+        "kotlin",
+        "rest apis"
+      ],
+      "hardNegatives": [
+        "airflow"
+      ],
+      "experience": [
+        {
+          "title": "Flutter Developer",
+          "company": "Maple Education"
+        },
+        {
+          "title": "Flutter Developer",
+          "company": "Brightpath Systems"
+        }
+      ],
+      "education": [
+        {
+          "school": "Riverside Institute of Technology",
+          "degree": "B.Tech in Computer Science"
+        }
+      ]
+    }
+  },
+  {
+    "id": "r048",
+    "archetype": "mobile",
+    "seniority": "mid",
+    "style": "buried",
+    "text": "Ishita Reddy\nMobile Developer | Bengaluru\n\nSUMMARY\nMobile Developer with 4 years of experience building a field-service app.\n\n\nEXPERIENCE\nMobile Developer - Quarry Media (2023-Present)\n- Migrated a retail loyalty app using Kotlin, REST and CI-CD.\n- Delivered a fitness app using Flutter.\n\nAndroid Developer - Cedar Analytics (2021-2023)\n- Worked with Swift and Firebase to support offline use on a delivery-tracking app.\n\nEDUCATION\nM.Tech in Computer Science, Harborview College (2020)\n\nADDITIONAL INFORMATION\nHave never worked with Redux.",
+    "gold": {
+      "skills": [
+        "ci/cd",
+        "firebase",
+        "flutter",
+        "kotlin",
+        "rest apis",
+        "swift"
+      ],
+      "hardNegatives": [
+        "redux"
+      ],
+      "experience": [
+        {
+          "title": "Mobile Developer",
+          "company": "Quarry Media"
+        },
+        {
+          "title": "Android Developer",
+          "company": "Cedar Analytics"
+        }
+      ],
+      "education": [
+        {
+          "school": "Harborview College",
+          "degree": "M.Tech in Computer Science"
+        }
+      ]
+    }
+  },
+  {
+    "id": "r049",
+    "archetype": "mobile",
+    "seniority": "senior",
+    "style": "buried",
+    "text": "Dev Joshi\nSenior Android Developer | Gurugram\n\nSUMMARY\nSenior Android Developer with 7 years of experience building a fitness app.\n\n\nEXPERIENCE\nSenior Android Developer - Harbor Payments (2023-Present)\n- Migrated a fitness app using Firebase and Swift.\n\nMobile Developer - Maple Education (2021-2023)\n- Delivered a field-service app with Git, CI-CD and JavaScript, which helped cut crash rate.\n\nFlutter Developer - Brightpath Systems (2019-2021)\n- Worked with Kotlin and Flutter to cut crash rate on a field-service app.\n\nEDUCATION\nB.Sc in Mathematics, Crestwood Institute (2018)\n\nADDITIONAL INFORMATION\nCurrently learning natural language processing; no professional experience with it yet.",
+    "gold": {
+      "skills": [
+        "ci/cd",
+        "firebase",
+        "flutter",
+        "git",
+        "javascript",
+        "kotlin",
+        "swift"
+      ],
+      "hardNegatives": [
+        "nlp"
+      ],
+      "experience": [
+        {
+          "title": "Senior Android Developer",
+          "company": "Harbor Payments"
+        },
+        {
+          "title": "Mobile Developer",
+          "company": "Maple Education"
+        },
+        {
+          "title": "Flutter Developer",
+          "company": "Brightpath Systems"
+        }
+      ],
+      "education": [
+        {
+          "school": "Crestwood Institute",
+          "degree": "B.Sc in Mathematics"
+        }
+      ]
+    }
+  },
+  {
+    "id": "r050",
+    "archetype": "qa",
+    "seniority": "junior",
+    "style": "compact",
+    "text": "MEERA NAIR\nQA Automation Engineer | Hyderabad\nSUMMARY: QA Automation Engineer with 1 year of experience building a regression suite.\nSKILLS: Java | Selenium | GitHub | RESTful APIs\nEXPERIENCE: QA Automation Engineer - Cedar Analytics (2024-Present) Delivered a release-certification process with Selenium and Git, which helped stabilise flaky tests. Built an API test framework with RESTful APIs and Java, which helped catch regressions earlier.\nEDUCATION: B.E. in Information Technology, Lakeview College of Engineering (2023)\nADDITIONAL: Currently learning MongoDB; no professional experience with it yet. Have never worked with NLP.",
+    "gold": {
+      "skills": [
+        "git",
+        "java",
+        "rest apis",
+        "selenium"
+      ],
+      "hardNegatives": [
+        "mongodb",
+        "nlp"
+      ],
+      "experience": [
+        {
+          "title": "QA Automation Engineer",
+          "company": "Cedar Analytics"
+        }
+      ],
+      "education": [
+        {
+          "school": "Lakeview College of Engineering",
+          "degree": "B.E. in Information Technology"
+        }
+      ]
+    }
+  },
+  {
+    "id": "r051",
+    "archetype": "qa",
+    "seniority": "mid",
+    "style": "compact",
+    "text": "MEERA REDDY\nTest Engineer | Chennai\nSUMMARY: Test Engineer with 5 years of experience building an API test framework.\nSKILLS: RESTful APIs | Selenium | Git | CI/CD | SQL | Jest | Python | Jenkins\nEXPERIENCE: Test Engineer - Lumen Retail (2022-Present) Built an API test framework using Jenkins and CI-CD. Delivered a regression suite using RESTful APIs, Selenium and Python. || QA Automation Engineer - Brightpath Systems (2019-2022) Built a regression suite using SQL and GitHub. Migrated cross-browser tests using Jest.\nEDUCATION: M.Tech in Computer Science, Crestwood Institute (2019)\nADDITIONAL: Interested in moving into Airflow roles in the future.",
+    "gold": {
+      "skills": [
+        "ci/cd",
+        "git",
+        "jenkins",
+        "jest",
+        "python",
+        "rest apis",
+        "selenium",
+        "sql"
+      ],
+      "hardNegatives": [
+        "airflow"
+      ],
+      "experience": [
+        {
+          "title": "Test Engineer",
+          "company": "Lumen Retail"
+        },
+        {
+          "title": "QA Automation Engineer",
+          "company": "Brightpath Systems"
+        }
+      ],
+      "education": [
+        {
+          "school": "Crestwood Institute",
+          "degree": "M.Tech in Computer Science"
+        }
+      ]
+    }
+  },
+  {
+    "id": "r052",
+    "archetype": "qa",
+    "seniority": "mid",
+    "style": "standard",
+    "text": "Pooja Das\nSDET | Chennai\n\nSUMMARY\nSDET with 3 years of experience building cross-browser tests.\n\nSKILLS\nSelenium, Jenkins, SQL, CI/CD, GitHub, REST APIs, Python, Jest, Java\n\nEXPERIENCE\nSDET - Quarry Media (2023-Present)\n- Worked with Jest, REST APIs and SQL to stabilise flaky tests on a release-certification process.\n\nSDET - Harbor Payments (2021-2023)\n- Owned a regression suite using Java, Jenkins and Python.\n- Worked with Selenium, continuous integration and GitHub to stabilise flaky tests on a regression suite.\n\nEDUCATION\nB.Sc in Mathematics, Crestwood Institute (2022)\n\nADDITIONAL INFORMATION\nHave never worked with GraphQL.",
+    "gold": {
+      "skills": [
+        "ci/cd",
+        "git",
+        "java",
+        "jenkins",
+        "jest",
+        "python",
+        "rest apis",
+        "selenium",
+        "sql"
+      ],
+      "hardNegatives": [
+        "graphql"
+      ],
+      "experience": [
+        {
+          "title": "SDET",
+          "company": "Quarry Media"
+        },
+        {
+          "title": "SDET",
+          "company": "Harbor Payments"
+        }
+      ],
+      "education": [
+        {
+          "school": "Crestwood Institute",
+          "degree": "B.Sc in Mathematics"
+        }
+      ]
+    }
+  },
+  {
+    "id": "r053",
+    "archetype": "qa",
+    "seniority": "mid",
+    "style": "narrative",
+    "text": "Aarav Das\nQA Automation Engineer | Mumbai\n\nQA Automation Engineer with 3 years of experience building an API test framework. At Harbor Payments (2023-Present) I worked as QA Automation Engineer. Built a regression suite using Jest, Git and Python. At Maple Education (2021-2023) I worked as Test Engineer. Worked with Java, REST APIs and CI/CD to stabilise flaky tests on cross-browser tests.\nI studied B.E. in Information Technology, Summit University (2022).",
+    "gold": {
+      "skills": [
+        "ci/cd",
+        "git",
+        "java",
+        "jest",
+        "python",
+        "rest apis"
+      ],
+      "hardNegatives": [],
+      "experience": [
+        {
+          "title": "QA Automation Engineer",
+          "company": "Harbor Payments"
+        },
+        {
+          "title": "Test Engineer",
+          "company": "Maple Education"
+        }
+      ],
+      "education": [
+        {
+          "school": "Summit University",
+          "degree": "B.E. in Information Technology"
+        }
+      ]
+    }
+  },
+  {
+    "id": "r054",
+    "archetype": "chef",
+    "seniority": "mid",
+    "style": "standard",
+    "text": "Diya Gupta\nHead Cook | Hyderabad\n\nSUMMARY\nHead Cook with 9 years of experience.\n\n\nEXPERIENCE\nHead Cook - Brightpath Systems (2016-Present)\n- Led a kitchen team of 8 preparing about 200 covers a night.\n- Cut food waste by 18% through portion planning and stock rotation.\n- Designed a seasonal menu that raised average spend per table.\n\nEDUCATION\nDiploma in Culinary Arts, Harborview College (2015)\n",
+    "gold": {
+      "skills": [],
+      "hardNegatives": [],
+      "experience": [
+        {
+          "title": "Head Cook",
+          "company": "Brightpath Systems"
+        }
+      ],
+      "education": [
+        {
+          "school": "Harborview College",
+          "degree": "Diploma in Culinary Arts"
+        }
+      ]
+    }
+  },
+  {
+    "id": "r055",
+    "archetype": "chef",
+    "seniority": "mid",
+    "style": "narrative",
+    "text": "Vikram Rao\nPastry Chef | Bengaluru\n\nPastry Chef with 9 years of experience. At Quarry Media (2016-Present) I worked as Pastry Chef. Led a kitchen team of 8 preparing about 200 covers a night. Cut food waste by 18% through portion planning and stock rotation. Designed a seasonal menu that raised average spend per table.\nI studied Diploma in Culinary Arts, Eastgate University (2015).",
+    "gold": {
+      "skills": [],
+      "hardNegatives": [],
+      "experience": [
+        {
+          "title": "Pastry Chef",
+          "company": "Quarry Media"
+        }
+      ],
+      "education": [
+        {
+          "school": "Eastgate University",
+          "degree": "Diploma in Culinary Arts"
+        }
+      ]
+    }
+  },
+  {
+    "id": "r056",
+    "archetype": "accountant",
+    "seniority": "mid",
+    "style": "standard",
+    "text": "Sneha Patel\nAccountant | Mumbai\n\nSUMMARY\nAccountant with 4 years of experience.\n\nSKILLS\nMicrosoft Excel\n\nEXPERIENCE\nAccountant - Harbor Payments (2021-Present)\n- Closed monthly books for 4 business units within 5 working days.\n- Reconciled vendor accounts and cleared a backlog of 300 open invoices.\n- Prepared GST filings and quarterly management reports.\n\nEDUCATION\nB.Com, Crestwood Institute (2020)\n",
+    "gold": {
+      "skills": [
+        "excel"
+      ],
+      "hardNegatives": [],
+      "experience": [
+        {
+          "title": "Accountant",
+          "company": "Harbor Payments"
+        }
+      ],
+      "education": [
+        {
+          "school": "Crestwood Institute",
+          "degree": "B.Com"
+        }
+      ]
+    }
+  },
+  {
+    "id": "r057",
+    "archetype": "accountant",
+    "seniority": "mid",
+    "style": "standard",
+    "text": "Rohan Sharma\nSenior Accounts Executive | Pune\n\nSUMMARY\nSenior Accounts Executive with 3 years of experience.\n\nSKILLS\nExcel\n\nEXPERIENCE\nSenior Accounts Executive - Cedar Analytics (2022-Present)\n- Closed monthly books for 4 business units within 5 working days.\n- Reconciled vendor accounts and cleared a backlog of 300 open invoices.\n- Prepared GST filings and quarterly management reports.\n\nEDUCATION\nB.Com, Summit University (2021)\n",
+    "gold": {
+      "skills": [
+        "excel"
+      ],
+      "hardNegatives": [],
+      "experience": [
+        {
+          "title": "Senior Accounts Executive",
+          "company": "Cedar Analytics"
+        }
+      ],
+      "education": [
+        {
+          "school": "Summit University",
+          "degree": "B.Com"
+        }
+      ]
+    }
+  },
+  {
+    "id": "r058",
+    "archetype": "teacher",
+    "seniority": "mid",
+    "style": "standard",
+    "text": "Meera Bose\nScience Teacher | Gurugram\n\nSUMMARY\nScience Teacher with 7 years of experience.\n\n\nEXPERIENCE\nScience Teacher - Quarry Media (2018-Present)\n- Taught physics to 140 students across five sections.\n- Raised average exam scores by 12% with weekly practice sessions.\n- Coordinated the school science fair for three years.\n\nEDUCATION\nB.Sc in Physics, Riverside Institute of Technology (2017)\n",
+    "gold": {
+      "skills": [],
+      "hardNegatives": [],
+      "experience": [
+        {
+          "title": "Science Teacher",
+          "company": "Quarry Media"
+        }
+      ],
+      "education": [
+        {
+          "school": "Riverside Institute of Technology",
+          "degree": "B.Sc in Physics"
+        }
+      ]
+    }
+  },
+  {
+    "id": "r059",
+    "archetype": "teacher",
+    "seniority": "mid",
+    "style": "compact",
+    "text": "KAVYA DAS\nScience Teacher | Gurugram\nSUMMARY: Science Teacher with 7 years of experience.\nEXPERIENCE: Science Teacher - Atlas Insurance (2018-Present) Taught physics to 140 students across five sections. Raised average exam scores by 12% with weekly practice sessions. Coordinated the school science fair for three years.\nEDUCATION: B.Sc in Physics, Harborview College (2017)",
+    "gold": {
+      "skills": [],
+      "hardNegatives": [],
+      "experience": [
+        {
+          "title": "Science Teacher",
+          "company": "Atlas Insurance"
+        }
+      ],
+      "education": [
+        {
+          "school": "Harborview College",
+          "degree": "B.Sc in Physics"
+        }
+      ]
+    }
+  },
+  {
+    "id": "r060",
+    "archetype": "sales",
+    "seniority": "mid",
+    "style": "narrative",
+    "text": "Kabir Iyer\nSales Executive | Pune\n\nSales Executive with 4 years of experience. At Brightpath Systems (2021-Present) I worked as Sales Executive. Exceeded annual quota by 22% selling to mid-size retailers. Built a pipeline of 60 qualified accounts through cold outreach. Negotiated multi-year contracts worth 1.4 crore in total.\nI studied MBA, Crestwood Institute (2020).",
+    "gold": {
+      "skills": [],
+      "hardNegatives": [],
+      "experience": [
+        {
+          "title": "Sales Executive",
+          "company": "Brightpath Systems"
+        }
+      ],
+      "education": [
+        {
+          "school": "Crestwood Institute",
+          "degree": "MBA"
+        }
+      ]
+    }
+  },
+  {
+    "id": "r061",
+    "archetype": "sales",
+    "seniority": "mid",
+    "style": "compact",
+    "text": "DIYA REDDY\nSales Executive | Hyderabad\nSUMMARY: Sales Executive with 4 years of experience.\nEXPERIENCE: Sales Executive - Northwind Labs (2021-Present) Exceeded annual quota by 22% selling to mid-size retailers. Built a pipeline of 60 qualified accounts through cold outreach. Negotiated multi-year contracts worth 1.4 crore in total.\nEDUCATION: BBA, Eastgate University (2020)",
+    "gold": {
+      "skills": [],
+      "hardNegatives": [],
+      "experience": [
+        {
+          "title": "Sales Executive",
+          "company": "Northwind Labs"
+        }
+      ],
+      "education": [
+        {
+          "school": "Eastgate University",
+          "degree": "BBA"
+        }
+      ]
+    }
+  }
+]

@@ -27,7 +27,8 @@
     "dev": "nodemon src/server.js",
     "worker": "node src/worker.js",
     "worker:dev": "nodemon src/worker.js",
-    "test": "vitest run"
+    "test": "vitest run",
+    "eval:data": "node eval/generate-dataset.js"
   },
   "keywords": [],
   "author": "",

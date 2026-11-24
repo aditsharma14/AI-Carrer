@@ -1,0 +1,196 @@
+[
+  {
+    "id": "j01",
+    "title": "Backend Engineer",
+    "archetype": "backend_node",
+    "requiredSkills": [
+      "docker",
+      "express",
+      "mongodb",
+      "node.js",
+      "redis",
+      "rest apis"
+    ],
+    "description": "We are hiring a Backend Engineer to work on internal admin services. You will work hands-on with NodeJS, Express, MongoDB, RESTful APIs, Redis and Docker and collaborate closely with product and design. We value clear communication, ownership and a habit of measuring the impact of your work."
+  },
+  {
+    "id": "j02",
+    "title": "Senior Backend Engineer",
+    "archetype": "backend_node",
+    "requiredSkills": [
+      "aws",
+      "docker",
+      "kafka",
+      "node.js",
+      "postgresql",
+      "redis",
+      "rest apis"
+    ],
+    "description": "We are hiring a Senior Backend Engineer to work on internal admin services. You will work hands-on with Node, PostgreSQL, Kafka, AWS, Docker, REST APIs and Redis and collaborate closely with product and design. We value clear communication, ownership and a habit of measuring the impact of your work."
+  },
+  {
+    "id": "j03",
+    "title": "Java Backend Developer",
+    "archetype": "backend_java",
+    "requiredSkills": [
+      "docker",
+      "java",
+      "kafka",
+      "postgresql",
+      "rest apis",
+      "spring boot"
+    ],
+    "description": "We are hiring a Java Backend Developer to work on claims-processing services. You will work hands-on with Java, Spring, PostgreSQL, Kafka, Docker and REST and collaborate closely with product and design. We value clear communication, ownership and a habit of measuring the impact of your work."
+  },
+  {
+    "id": "j04",
+    "title": "Frontend Engineer",
+    "archetype": "frontend",
+    "requiredSkills": [
+      "css",
+      "html",
+      "javascript",
+      "jest",
+      "react",
+      "typescript"
+    ],
+    "description": "We are hiring a Frontend Engineer to work on a checkout flow. You will work hands-on with ReactJS, TS, JS, CSS, HTML5 and Jest and collaborate closely with product and design. We value clear communication, ownership and a habit of measuring the impact of your work."
+  },
+  {
+    "id": "j05",
+    "title": "Frontend Engineer (Next.js)",
+    "archetype": "frontend",
+    "requiredSkills": [
+      "next.js",
+      "react",
+      "redux",
+      "tailwind css",
+      "typescript"
+    ],
+    "description": "We are hiring a Frontend Engineer (Next.js) to work on a checkout flow. You will work hands-on with Next.js, React, TypeScript, Tailwind and Redux and collaborate closely with product and design. We value clear communication, ownership and a habit of measuring the impact of your work."
+  },
+  {
+    "id": "j06",
+    "title": "Full-Stack Engineer",
+    "archetype": "fullstack",
+    "requiredSkills": [
+      "express",
+      "mongodb",
+      "node.js",
+      "react",
+      "rest apis",
+      "typescript"
+    ],
+    "description": "We are hiring a Full-Stack Engineer to work on an internal tools portal. You will work hands-on with ReactJS, Node.js, Express, Mongo, TypeScript and RESTful APIs and collaborate closely with product and design. We value clear communication, ownership and a habit of measuring the impact of your work."
+  },
+  {
+    "id": "j07",
+    "title": "Full-Stack Engineer (Postgres)",
+    "archetype": "fullstack",
+    "requiredSkills": [
+      "ci/cd",
+      "docker",
+      "git",
+      "node.js",
+      "postgresql",
+      "react"
+    ],
+    "description": "We are hiring a Full-Stack Engineer (Postgres) to work on a customer onboarding product. You will work hands-on with React, Node, Postgres, Docker, continuous integration and GitHub and collaborate closely with product and design. We value clear communication, ownership and a habit of measuring the impact of your work."
+  },
+  {
+    "id": "j08",
+    "title": "Data Scientist",
+    "archetype": "data_scientist",
+    "requiredSkills": [
+      "machine learning",
+      "pandas",
+      "python",
+      "scikit-learn",
+      "sql",
+      "statistics"
+    ],
+    "description": "We are hiring a Data Scientist to work on a pricing experiment. You will work hands-on with Python, Pandas, scikit-learn, statistical modelling, SQL and ML and collaborate closely with product and design. We value clear communication, ownership and a habit of measuring the impact of your work."
+  },
+  {
+    "id": "j09",
+    "title": "Machine Learning Engineer",
+    "archetype": "ml_engineer",
+    "requiredSkills": [
+      "aws",
+      "deep learning",
+      "docker",
+      "machine learning",
+      "python",
+      "pytorch"
+    ],
+    "description": "We are hiring a Machine Learning Engineer to work on a recommendation service. You will work hands-on with Python, PyTorch, deep learning, Docker, AWS and machine learning and collaborate closely with product and design. We value clear communication, ownership and a habit of measuring the impact of your work."
+  },
+  {
+    "id": "j10",
+    "title": "NLP Engineer",
+    "archetype": "ml_engineer",
+    "requiredSkills": [
+      "deep learning",
+      "docker",
+      "machine learning",
+      "nlp",
+      "python",
+      "pytorch"
+    ],
+    "description": "We are hiring a NLP Engineer to work on a document-classification model. You will work hands-on with Python, natural language processing, PyTorch, deep learning, machine learning and Docker and collaborate closely with product and design. We value clear communication, ownership and a habit of measuring the impact of your work."
+  },
+  {
+    "id": "j11",
+    "title": "DevOps Engineer",
+    "archetype": "devops",
+    "requiredSkills": [
+      "aws",
+      "ci/cd",
+      "docker",
+      "jenkins",
+      "kubernetes",
+      "linux",
+      "terraform"
+    ],
+    "description": "We are hiring a DevOps Engineer to work on a disaster-recovery setup. You will work hands-on with Docker, K8s, Terraform, AWS, continuous integration, Linux and Jenkins and collaborate closely with product and design. We value clear communication, ownership and a habit of measuring the impact of your work."
+  },
+  {
+    "id": "j12",
+    "title": "Flutter Developer",
+    "archetype": "mobile",
+    "requiredSkills": [
+      "firebase",
+      "flutter",
+      "git",
+      "rest apis"
+    ],
+    "description": "We are hiring a Flutter Developer to work on a fitness app. You will work hands-on with Flutter, Firebase, GitHub and REST APIs and collaborate closely with product and design. We value clear communication, ownership and a habit of measuring the impact of your work."
+  },
+  {
+    "id": "j13",
+    "title": "QA Automation Engineer",
+    "archetype": "qa",
+    "requiredSkills": [
+      "ci/cd",
+      "git",
+      "java",
+      "rest apis",
+      "selenium"
+    ],
+    "description": "We are hiring a QA Automation Engineer to work on a release-certification process. You will work hands-on with Selenium, Java, CI-CD, Git and RESTful APIs and collaborate closely with product and design. We value clear communication, ownership and a habit of measuring the impact of your work."
+  },
+  {
+    "id": "j14",
+    "title": "Data Analyst",
+    "archetype": "data_analyst",
+    "requiredSkills": [
+      "excel",
+      "power bi",
+      "python",
+      "sql",
+      "statistics",
+      "tableau"
+    ],
+    "description": "We are hiring a Data Analyst to work on operations reports. You will work hands-on with SQL, Microsoft Excel, Tableau, Power BI, statistical modelling and Python and collaborate closely with product and design. We value clear communication, ownership and a habit of measuring the impact of your work."
+  }
+]
