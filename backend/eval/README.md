@@ -43,6 +43,26 @@ their cost. **Decoys** are what make this test hard: 12 resumes name every skill
 a job requires but only to say they *don't* have it ("never worked with
 Docker"). A word-counting ranker puts them first.
 
+## Prompt-injection defenses (what the injection suite tests)
+
+A resume is written by the person being evaluated, so it is attacker-controlled
+input. Resume parsing therefore applies three layers, in this order
+(`ai/services/resumeParser.service.js`):
+
+| Layer | What it does | Catches | Misses |
+| --- | --- | --- | --- |
+| **1. Scanner** (`ai/security/injectionGuard.js`) | Removes sentences that read as instructions to an AI *before* the model sees them; flags the resume | Known English phrasing: "ignore previous instructions", `SYSTEM:`, "note to AI", "append X to the summary", `</resume>` break-outs | Paraphrases and other languages (kept in the data as `knownGap` payloads, pinned by a test) |
+| **2. Prompt** (`resumeParser.v2`) | Names the attacks, defines a claimed skill, repeats the rule after the resume | Whatever the model can be told to resist; model-dependent | Anything a weak model still obeys |
+| **3. Output grounding** (`ai/security/grounding.js`) | Drops any returned skill the resume text does not state | Injected or hallucinated skills, even if layers 1 and 2 missed the attack | Attacks that only change prose such as the summary |
+
+A flagged resume is stored with its report (`ResumeVersion.security`) and the
+candidate detail response exposes `resumeFlagged` and `flagReasons`.
+
+What the suite reports is the end-to-end attack success rate, which cannot tell
+which layer stopped an attack. The two `knownGap` payloads are the useful
+probe: the scanner cannot see them, so anything that stops them is the prompt,
+the model or grounding.
+
 ## The dataset
 
 `eval/data/` holds 73 resumes, 14 jobs, 1,022 graded relevance labels (0-3) and
