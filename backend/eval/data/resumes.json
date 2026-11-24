@@ -2047,5 +2047,379 @@
         }
       ]
     }
+  },
+  {
+    "id": "r062",
+    "archetype": "chef",
+    "seniority": "mid",
+    "style": "narrative",
+    "text": "Rohan Das\nSous Chef | Mumbai\n\nSous Chef with 2 years of experience. At Harbor Payments (2023-Present) I worked as Sous Chef. Led a kitchen team of 8 preparing about 200 covers a night. Cut food waste by 18% through portion planning and stock rotation. Designed a seasonal menu that raised average spend per table.\nI studied Diploma in Culinary Arts, Crestwood Institute (2022).\nHave never worked with Docker. Currently learning Express; no professional experience with it yet. Interested in moving into MongoDB roles in the future. Have never worked with NodeJS. Currently learning Redis; no professional experience with it yet. Currently learning REST; no professional experience with it yet.",
+    "gold": {
+      "skills": [],
+      "hardNegatives": [
+        "docker",
+        "express",
+        "mongodb",
+        "node.js",
+        "redis",
+        "rest apis"
+      ],
+      "experience": [
+        {
+          "title": "Sous Chef",
+          "company": "Harbor Payments"
+        }
+      ],
+      "education": [
+        {
+          "school": "Crestwood Institute",
+          "degree": "Diploma in Culinary Arts"
+        }
+      ]
+    },
+    "decoyFor": "j01"
+  },
+  {
+    "id": "r063",
+    "archetype": "teacher",
+    "seniority": "mid",
+    "style": "compact",
+    "text": "ISHITA GUPTA\nScience Teacher | Bengaluru\nSUMMARY: Science Teacher with 4 years of experience.\nEXPERIENCE: Science Teacher - Northwind Labs (2021-Present) Taught physics to 140 students across five sections. Raised average exam scores by 12% with weekly practice sessions. Coordinated the school science fair for three years.\nEDUCATION: B.Ed, Eastgate University (2020)\nADDITIONAL: Currently learning Docker; no professional experience with it yet. Currently learning Express.js; no professional experience with it yet. Currently learning Mongo; no professional experience with it yet. Have never worked with Node.js. Currently learning Redis; no professional experience with it yet. Interested in moving into RESTful APIs roles in the future.",
+    "gold": {
+      "skills": [],
+      "hardNegatives": [
+        "docker",
+        "express",
+        "mongodb",
+        "node.js",
+        "redis",
+        "rest apis"
+      ],
+      "experience": [
+        {
+          "title": "Science Teacher",
+          "company": "Northwind Labs"
+        }
+      ],
+      "education": [
+        {
+          "school": "Eastgate University",
+          "degree": "B.Ed"
+        }
+      ]
+    },
+    "decoyFor": "j01"
+  },
+  {
+    "id": "r064",
+    "archetype": "chef",
+    "seniority": "mid",
+    "style": "narrative",
+    "text": "Tara Bose\nPastry Chef | Hyderabad\n\nPastry Chef with 4 years of experience. At Brightpath Systems (2021-Present) I worked as Pastry Chef. Led a kitchen team of 8 preparing about 200 covers a night. Cut food waste by 18% through portion planning and stock rotation. Designed a seasonal menu that raised average spend per table.\nI studied Diploma in Culinary Arts, Summit University (2020).\nHave never worked with CSS. Currently learning HTML; no professional experience with it yet. Currently learning ES6; no professional experience with it yet. Currently learning Jest; no professional experience with it yet. Interested in moving into React roles in the future. Have never worked with TypeScript.",
+    "gold": {
+      "skills": [],
+      "hardNegatives": [
+        "css",
+        "html",
+        "javascript",
+        "jest",
+        "react",
+        "typescript"
+      ],
+      "experience": [
+        {
+          "title": "Pastry Chef",
+          "company": "Brightpath Systems"
+        }
+      ],
+      "education": [
+        {
+          "school": "Summit University",
+          "degree": "Diploma in Culinary Arts"
+        }
+      ]
+    },
+    "decoyFor": "j04"
+  },
+  {
+    "id": "r065",
+    "archetype": "teacher",
+    "seniority": "mid",
+    "style": "standard",
+    "text": "Nikhil Khan\nScience Teacher | Chennai\n\nSUMMARY\nScience Teacher with 2 years of experience.\n\n\nEXPERIENCE\nScience Teacher - Northwind Labs (2023-Present)\n- Taught physics to 140 students across five sections.\n- Raised average exam scores by 12% with weekly practice sessions.\n- Coordinated the school science fair for three years.\n\nEDUCATION\nB.Sc in Physics, Crestwood Institute (2022)\n\nADDITIONAL INFORMATION\nCurrently learning CSS; no professional experience with it yet. Interested in moving into HTML5 roles in the future. Have never worked with ES6. Currently learning Jest; no professional experience with it yet. Currently learning React.js; no professional experience with it yet. Currently learning TypeScript; no professional experience with it yet.",
+    "gold": {
+      "skills": [],
+      "hardNegatives": [
+        "css",
+        "html",
+        "javascript",
+        "jest",
+        "react",
+        "typescript"
+      ],
+      "experience": [
+        {
+          "title": "Science Teacher",
+          "company": "Northwind Labs"
+        }
+      ],
+      "education": [
+        {
+          "school": "Crestwood Institute",
+          "degree": "B.Sc in Physics"
+        }
+      ]
+    },
+    "decoyFor": "j04"
+  },
+  {
+    "id": "r066",
+    "archetype": "sales",
+    "seniority": "mid",
+    "style": "compact",
+    "text": "DEV DAS\nSales Executive | Gurugram\nSUMMARY: Sales Executive with 2 years of experience.\nEXPERIENCE: Sales Executive - Pinecone Travel (2023-Present) Exceeded annual quota by 22% selling to mid-size retailers. Built a pipeline of 60 qualified accounts through cold outreach. Negotiated multi-year contracts worth 1.4 crore in total.\nEDUCATION: MBA, Riverside Institute of Technology (2022)\nADDITIONAL: Have never worked with Express. Interested in moving into MongoDB roles in the future. Have never worked with Node. Currently learning React.js; no professional experience with it yet. Interested in moving into REST roles in the future. Interested in moving into TypeScript roles in the future.",
+    "gold": {
+      "skills": [],
+      "hardNegatives": [
+        "express",
+        "mongodb",
+        "node.js",
+        "react",
+        "rest apis",
+        "typescript"
+      ],
+      "experience": [
+        {
+          "title": "Sales Executive",
+          "company": "Pinecone Travel"
+        }
+      ],
+      "education": [
+        {
+          "school": "Riverside Institute of Technology",
+          "degree": "MBA"
+        }
+      ]
+    },
+    "decoyFor": "j06"
+  },
+  {
+    "id": "r067",
+    "archetype": "chef",
+    "seniority": "mid",
+    "style": "narrative",
+    "text": "Sneha Reddy\nPastry Chef | Bengaluru\n\nPastry Chef with 2 years of experience. At Harbor Payments (2023-Present) I worked as Pastry Chef. Led a kitchen team of 8 preparing about 200 covers a night. Cut food waste by 18% through portion planning and stock rotation. Designed a seasonal menu that raised average spend per table.\nI studied Diploma in Culinary Arts, Crestwood Institute (2022).\nCurrently learning Express; no professional experience with it yet. Have never worked with MongoDB. Interested in moving into Node.js roles in the future. Have never worked with React. Currently learning REST; no professional experience with it yet. Interested in moving into TS roles in the future.",
+    "gold": {
+      "skills": [],
+      "hardNegatives": [
+        "express",
+        "mongodb",
+        "node.js",
+        "react",
+        "rest apis",
+        "typescript"
+      ],
+      "experience": [
+        {
+          "title": "Pastry Chef",
+          "company": "Harbor Payments"
+        }
+      ],
+      "education": [
+        {
+          "school": "Crestwood Institute",
+          "degree": "Diploma in Culinary Arts"
+        }
+      ]
+    },
+    "decoyFor": "j06"
+  },
+  {
+    "id": "r068",
+    "archetype": "teacher",
+    "seniority": "mid",
+    "style": "standard",
+    "text": "Sneha Sharma\nScience Teacher | Mumbai\n\nSUMMARY\nScience Teacher with 5 years of experience.\n\n\nEXPERIENCE\nScience Teacher - Brightpath Systems (2020-Present)\n- Taught physics to 140 students across five sections.\n- Raised average exam scores by 12% with weekly practice sessions.\n- Coordinated the school science fair for three years.\n\nEDUCATION\nB.Sc in Physics, Summit University (2019)\n\nADDITIONAL INFORMATION\nHave never worked with machine learning. Have never worked with Pandas. Interested in moving into Python roles in the future. Currently learning scikit-learn; no professional experience with it yet. Currently learning SQL; no professional experience with it yet. Interested in moving into statistics roles in the future.",
+    "gold": {
+      "skills": [],
+      "hardNegatives": [
+        "machine learning",
+        "pandas",
+        "python",
+        "scikit-learn",
+        "sql",
+        "statistics"
+      ],
+      "experience": [
+        {
+          "title": "Science Teacher",
+          "company": "Brightpath Systems"
+        }
+      ],
+      "education": [
+        {
+          "school": "Summit University",
+          "degree": "B.Sc in Physics"
+        }
+      ]
+    },
+    "decoyFor": "j08"
+  },
+  {
+    "id": "r069",
+    "archetype": "sales",
+    "seniority": "mid",
+    "style": "narrative",
+    "text": "Rohan Bose\nAccount Manager | Bengaluru\n\nAccount Manager with 3 years of experience. At Pinecone Travel (2022-Present) I worked as Account Manager. Exceeded annual quota by 22% selling to mid-size retailers. Built a pipeline of 60 qualified accounts through cold outreach. Negotiated multi-year contracts worth 1.4 crore in total.\nI studied MBA, Riverside Institute of Technology (2021).\nInterested in moving into ML roles in the future. Have never worked with Pandas. Interested in moving into Python roles in the future. Currently learning scikit-learn; no professional experience with it yet. Interested in moving into SQL roles in the future. Currently learning statistics; no professional experience with it yet.",
+    "gold": {
+      "skills": [],
+      "hardNegatives": [
+        "machine learning",
+        "pandas",
+        "python",
+        "scikit-learn",
+        "sql",
+        "statistics"
+      ],
+      "experience": [
+        {
+          "title": "Account Manager",
+          "company": "Pinecone Travel"
+        }
+      ],
+      "education": [
+        {
+          "school": "Riverside Institute of Technology",
+          "degree": "MBA"
+        }
+      ]
+    },
+    "decoyFor": "j08"
+  },
+  {
+    "id": "r070",
+    "archetype": "sales",
+    "seniority": "mid",
+    "style": "narrative",
+    "text": "Ishita Iyer\nSales Executive | Pune\n\nSales Executive with 9 years of experience. At Harbor Payments (2016-Present) I worked as Sales Executive. Exceeded annual quota by 22% selling to mid-size retailers. Built a pipeline of 60 qualified accounts through cold outreach. Negotiated multi-year contracts worth 1.4 crore in total.\nI studied BBA, Riverside Institute of Technology (2015).\nHave never worked with Amazon Web Services. Have never worked with deep learning. Interested in moving into Docker roles in the future. Have never worked with ML. Interested in moving into Python roles in the future. Have never worked with PyTorch.",
+    "gold": {
+      "skills": [],
+      "hardNegatives": [
+        "aws",
+        "deep learning",
+        "docker",
+        "machine learning",
+        "python",
+        "pytorch"
+      ],
+      "experience": [
+        {
+          "title": "Sales Executive",
+          "company": "Harbor Payments"
+        }
+      ],
+      "education": [
+        {
+          "school": "Riverside Institute of Technology",
+          "degree": "BBA"
+        }
+      ]
+    },
+    "decoyFor": "j09"
+  },
+  {
+    "id": "r071",
+    "archetype": "chef",
+    "seniority": "mid",
+    "style": "compact",
+    "text": "MEERA PATEL\nHead Cook | Gurugram\nSUMMARY: Head Cook with 8 years of experience.\nEXPERIENCE: Head Cook - Brightpath Systems (2017-Present) Led a kitchen team of 8 preparing about 200 covers a night. Cut food waste by 18% through portion planning and stock rotation. Designed a seasonal menu that raised average spend per table.\nEDUCATION: Diploma in Culinary Arts, Harborview College (2016)\nADDITIONAL: Interested in moving into Amazon Web Services roles in the future. Currently learning deep learning; no professional experience with it yet. Currently learning Docker; no professional experience with it yet. Currently learning machine learning; no professional experience with it yet. Have never worked with Python. Have never worked with PyTorch.",
+    "gold": {
+      "skills": [],
+      "hardNegatives": [
+        "aws",
+        "deep learning",
+        "docker",
+        "machine learning",
+        "python",
+        "pytorch"
+      ],
+      "experience": [
+        {
+          "title": "Head Cook",
+          "company": "Brightpath Systems"
+        }
+      ],
+      "education": [
+        {
+          "school": "Harborview College",
+          "degree": "Diploma in Culinary Arts"
+        }
+      ]
+    },
+    "decoyFor": "j09"
+  },
+  {
+    "id": "r072",
+    "archetype": "teacher",
+    "seniority": "mid",
+    "style": "compact",
+    "text": "AARAV GUPTA\nHigh School Teacher | Mumbai\nSUMMARY: High School Teacher with 4 years of experience.\nEXPERIENCE: High School Teacher - Finch Health (2021-Present) Taught physics to 140 students across five sections. Raised average exam scores by 12% with weekly practice sessions. Coordinated the school science fair for three years.\nEDUCATION: B.Sc in Physics, Crestwood Institute (2020)\nADDITIONAL: Have never worked with Amazon Web Services. Have never worked with continuous integration. Have never worked with Docker. Interested in moving into Jenkins roles in the future. Have never worked with K8s. Currently learning Linux; no professional experience with it yet. Currently learning Terraform; no professional experience with it yet.",
+    "gold": {
+      "skills": [],
+      "hardNegatives": [
+        "aws",
+        "ci/cd",
+        "docker",
+        "jenkins",
+        "kubernetes",
+        "linux",
+        "terraform"
+      ],
+      "experience": [
+        {
+          "title": "High School Teacher",
+          "company": "Finch Health"
+        }
+      ],
+      "education": [
+        {
+          "school": "Crestwood Institute",
+          "degree": "B.Sc in Physics"
+        }
+      ]
+    },
+    "decoyFor": "j11"
+  },
+  {
+    "id": "r073",
+    "archetype": "sales",
+    "seniority": "mid",
+    "style": "narrative",
+    "text": "Aarav Bose\nAccount Manager | Bengaluru\n\nAccount Manager with 4 years of experience. At Pinecone Travel (2021-Present) I worked as Account Manager. Exceeded annual quota by 22% selling to mid-size retailers. Built a pipeline of 60 qualified accounts through cold outreach. Negotiated multi-year contracts worth 1.4 crore in total.\nI studied BBA, Summit University (2020).\nCurrently learning AWS; no professional experience with it yet. Have never worked with CI/CD. Currently learning Docker; no professional experience with it yet. Interested in moving into Jenkins roles in the future. Interested in moving into K8s roles in the future. Currently learning Linux; no professional experience with it yet. Currently learning Terraform; no professional experience with it yet.",
+    "gold": {
+      "skills": [],
+      "hardNegatives": [
+        "aws",
+        "ci/cd",
+        "docker",
+        "jenkins",
+        "kubernetes",
+        "linux",
+        "terraform"
+      ],
+      "experience": [
+        {
+          "title": "Account Manager",
+          "company": "Pinecone Travel"
+        }
+      ],
+      "education": [
+        {
+          "school": "Summit University",
+          "degree": "BBA"
+        }
+      ]
+    },
+    "decoyFor": "j11"
   }
 ]

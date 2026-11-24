@@ -99,6 +99,18 @@ describe('evaluation dataset', () => {
     }
   });
 
+  it('decoys name every required skill of their job but claim none, and fit no job', () => {
+    const decoys = data.resumes.filter((r) => r.decoyFor);
+    expect(decoys.length).toBeGreaterThanOrEqual(10);
+    for (const d of decoys) {
+      const job = data.jobs.find((j) => j.id === d.decoyFor);
+      expect([...d.gold.hardNegatives].sort()).toEqual([...job.requiredSkills].sort());
+      expect(d.gold.skills).toEqual([]);
+      for (const skill of job.requiredSkills) expect(skillsMentioned(d.text).has(skill), `${d.id} ${skill}`).toBe(true);
+      for (const j of data.jobs) expect(data.relevance[j.id][d.id], `${d.id} vs ${j.id}`).toBe(0);
+    }
+  });
+
   it('injection cases contain their marker, and the clean resume does not', () => {
     for (const inj of data.injections) {
       expect(inj.resumeText.toLowerCase()).toContain(inj.marker);

@@ -15,6 +15,8 @@
 //     "currently learning Rust"): the word appears but the skill is NOT claimed
 //   - four layouts, including prose with no skills section at all
 //   - non-technical resumes that should match no technical job
+//   - decoys: career changers who name every skill a job requires, but only to
+//     say they do not have it (a keyword matcher ranks them first)
 const { createRng } = require('./rng');
 const { SKILLS } = require('./taxonomy');
 
@@ -298,7 +300,7 @@ function buildTechResume(rng, id, key, used, forcedSeniority) {
   };
 }
 
-function buildNonTechResume(rng, id, key, used) {
+function buildNonTechResume(rng, id, key, used, decoyLines = []) {
   const spec = NONTECH[key];
   const name = pickName(rng, used);
   const years = rng.int(2, 9);
@@ -315,13 +317,15 @@ function buildNonTechResume(rng, id, key, used) {
     skills: style === 'narrative' ? [] : skillWords,
     experience: [{ title, company, period: `${2025 - years}-Present`, bullets: spec.bullets }],
     education: `${degree}, ${school} (${2025 - years - 1})`,
-    extra: style === 'narrative' && skillWords.length ? `Comfortable with ${skillWords.join(', ')}.` : '',
+    extra: [style === 'narrative' && skillWords.length ? `Comfortable with ${skillWords.join(', ')}.` : '', ...decoyLines]
+      .filter(Boolean)
+      .join(' '),
   };
   return {
     id, archetype: key, seniority: 'mid', style,
     text: layout(style, draft),
     gold: {
-      skills: [...spec.skills], hardNegatives: [],
+      skills: [...spec.skills], hardNegatives: decoyLines.skills || [],
       experience: [{ title, company }], education: [{ school, degree }],
     },
   };
@@ -358,6 +362,21 @@ function buildJob(rng, spec, index) {
       `You will work hands-on with ${list(words)} and collaborate closely with product and design. ` +
       `We value clear communication, ownership and a habit of measuring the impact of your work.`,
   };
+}
+
+// Decoys: a career changer whose resume names EVERY skill a job requires, but
+// only to say they don't have it yet. A keyword matcher ranks them first; a
+// system that reads the sentence should not. Built on non-technical bases with
+// no skills of their own, so the labels are unambiguous (grade 0 for every job).
+const DECOY_BASES = ['chef', 'teacher', 'sales'];
+const DECOY_JOBS = [0, 3, 5, 7, 8, 10]; // indexes into JOB_SPECS
+const DECOYS_PER_JOB = 2;
+
+function buildDecoy(rng, id, used, job, base) {
+  const lines = job.requiredSkills.map((skill) => rng.pick(HARD_NEGATIVE_LINES)(alias(rng, skill)));
+  lines.skills = [...job.requiredSkills];
+  const resume = buildNonTechResume(rng, id, base, used, lines);
+  return { ...resume, decoyFor: job.id };
 }
 
 // Graded relevance 0-3 from the role family and skill coverage:
@@ -400,6 +419,11 @@ function buildDataset(seed = 1337) {
   }
 
   const jobs = JOB_SPECS.map((spec, i) => buildJob(rng, spec, i));
+  for (const jobIndex of DECOY_JOBS) {
+    for (let k = 0; k < DECOYS_PER_JOB; k++) {
+      resumes.push(buildDecoy(rng, nextId(), used, jobs[jobIndex], DECOY_BASES[(jobIndex + k) % DECOY_BASES.length]));
+    }
+  }
   const rel = {};
   for (const job of jobs) {
     rel[job.id] = Object.fromEntries(resumes.map((r) => [r.id, relevance(job, r)]));
