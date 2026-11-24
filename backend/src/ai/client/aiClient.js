@@ -4,6 +4,8 @@ const { getProvider, getEmbeddingProvider } = require('./providers');
 const { getSchema, isStructured } = require('../schemas');
 const { CircuitBreaker } = require('./circuitBreaker');
 const { AiProviderError } = require('./providers/errors');
+const { estimateCostUsd } = require('./pricing');
+const metrics = require('../../lib/metrics');
 
 // THE chokepoint. No module service, controller, or repository is allowed to
 // import a provider directly — they all call complete()/embed() here. This
@@ -90,6 +92,7 @@ async function completeWith(name, { promptVersion, messages, mock, tools, agent 
     stats.calls += 1;
     stats.errors += 1;
     if (err.code === 'bad_output') stats.outputErrors += 1;
+    metrics.observeAiCall({ provider: name, outcome: 'error', latencyMs: Date.now() - start });
     throw err;
   }
 
@@ -105,19 +108,32 @@ async function completeWith(name, { promptVersion, messages, mock, tools, agent 
     promptVersion,
     tokensIn: result.tokensIn,
     tokensOut: result.tokensOut,
+    costUsd: estimateCostUsd(name, result.tokensIn, result.tokensOut) ?? undefined,
     latencyMs: Date.now() - start,
   });
 
   try {
-    if (!agent) return validate(promptVersion, result.content);
-
-    // Agent envelope: a tool call has no reply to validate yet.
-    const { reply, toolCall } = result.content;
-    if (toolCall) return { reply: null, toolCall };
-    return { reply: validate(promptVersion, reply), toolCall: null };
+    let output;
+    if (!agent) {
+      output = validate(promptVersion, result.content);
+    } else {
+      // Agent envelope: a tool call has no reply to validate yet.
+      const { reply, toolCall } = result.content;
+      output = toolCall ? { reply: null, toolCall } : { reply: validate(promptVersion, reply), toolCall: null };
+    }
+    metrics.observeAiCall({
+      provider: name, outcome: 'success', latencyMs: Date.now() - start,
+      tokensIn: result.tokensIn, tokensOut: result.tokensOut,
+    });
+    return output;
   } catch (err) {
     stats.errors += 1;
     stats.outputErrors += 1;
+    // The call itself worked and was billed; only its output was unusable.
+    metrics.observeAiCall({
+      provider: name, outcome: 'invalid_output', latencyMs: Date.now() - start,
+      tokensIn: result.tokensIn, tokensOut: result.tokensOut,
+    });
     throw err;
   }
 }
@@ -140,6 +156,7 @@ async function complete({ promptVersion, messages, mock, tools = [], agent = fal
       breaker.recordSuccess();
       if (index > 0) {
         stats.fallbacks += 1;
+        metrics.observeFallback();
         logger.warn('ai.fallback', { served: name, primary: chain[0], promptVersion });
       }
       return output;

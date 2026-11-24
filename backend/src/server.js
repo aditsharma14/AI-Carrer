@@ -4,11 +4,16 @@ const { connectDb, disconnectDb } = require('./config/db');
 const { cacheConnection } = require('./config/redis');
 const { queueConnection } = require('./queue/connection');
 const { markShuttingDown } = require('./lib/health');
+const { registerQueueDepth } = require('./lib/metrics');
 const { registerShutdown } = require('./lib/shutdown');
 const app = require('./app');
 
 async function start() {
   await connectDb();
+
+  // Queue backlog per state on /metrics. Registered here, not at import, so the
+  // metrics module never needs Redis just to be loaded.
+  registerQueueDepth(() => require('./queue/queues').queues);
 
   const server = app.listen(env.port, () => {
     logger.info('server started', { port: env.port, nodeEnv: env.nodeEnv });

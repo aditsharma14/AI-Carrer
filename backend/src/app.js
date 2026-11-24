@@ -10,6 +10,7 @@ const errorHandler = require('./middleware/error.middleware');
 const ApiError = require('./lib/ApiError');
 const routes = require('./routes');
 const { readiness } = require('./lib/health');
+const { httpMetrics, metricsHandler } = require('./lib/metrics');
 
 const app = express();
 
@@ -28,6 +29,9 @@ app.use(cors({ origin: env.clientOrigin, credentials: true }));
 // /health = liveness (process is up, touches nothing else).
 // /ready  = readiness (MongoDB + Redis reachable, not shutting down).
 app.get('/health', (req, res) => res.status(200).json({ status: 'ok' }));
+// Prometheus scrape endpoint. Before rate limiting and body parsing, like the
+// probes, so a scraper never competes with real traffic for its budget.
+app.get('/metrics', metricsHandler);
 app.get('/ready', async (req, res) => {
   const { ready, status, checks } = await readiness();
   res.status(ready ? 200 : 503).json({ status, checks });
@@ -36,6 +40,7 @@ app.get('/ready', async (req, res) => {
 // Ahead of body parsing so a malformed-JSON request still gets a requestId
 // on its error response, not just well-formed ones.
 app.use(requestId);
+app.use(httpMetrics);
 app.use(morgan(env.nodeEnv === 'production' ? 'combined' : 'dev'));
 
 app.use(express.json());
