@@ -14,6 +14,10 @@ const { httpMetrics, metricsHandler } = require('./lib/metrics');
 
 const app = express();
 
+// Behind a hosting provider's proxy, read the real client address (see
+// config/parsers.js). Must be set before any middleware that uses req.ip.
+app.set('trust proxy', env.trustProxy);
+
 // helmet first — security headers should apply to every response, including
 // ones that error out before reaching a route.
 app.use(helmet());

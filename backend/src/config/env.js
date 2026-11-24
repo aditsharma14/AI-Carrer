@@ -1,5 +1,7 @@
 require('dotenv').config();
 
+const { parseTrustProxy, parseSameSite } = require('./parsers');
+
 // Anything the app cannot run without. If one of these is missing, we want
 // the process to crash on boot — not 10 minutes into production traffic when
 // some request finally exercises the code path that needed it.
@@ -115,6 +117,14 @@ module.exports = {
   // balancer notices and stops routing before we close the listener.
   shutdownDrainMs: Number(process.env.SHUTDOWN_DRAIN_MS ?? 5000),
 
+  // Reverse proxies in front of the app (see config/parsers.js). Set TRUST_PROXY=1
+  // behind a hosting provider's load balancer, or every user shares one rate limit.
+  trustProxy: parseTrustProxy(process.env.TRUST_PROXY),
+
+  // Refresh-token cookie. Use COOKIE_SAMESITE=none when the web app and the API
+  // are on different sites; the default suits a shared parent domain.
+  cookie: { sameSite: parseSameSite(process.env.COOKIE_SAMESITE, process.env.NODE_ENV || 'development') },
+
   // Outbound email. 'log' (default) sends nothing; 'smtp' delivers via SMTP_URL.
   email: buildEmailConfig(),
 
@@ -128,6 +138,9 @@ module.exports = {
     host: process.env.REDIS_HOST || 'localhost',
     port: Number(process.env.REDIS_PORT) || 6379,
     password: process.env.REDIS_PASSWORD || undefined,
+    // Managed Redis (Upstash, ElastiCache, Render with TLS) usually requires an
+    // encrypted connection. Local and private-network Redis does not.
+    tls: process.env.REDIS_TLS === 'true',
   },
 
   jwt: {

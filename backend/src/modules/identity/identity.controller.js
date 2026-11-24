@@ -10,7 +10,7 @@ const REFRESH_COOKIE = 'refreshToken';
 const REFRESH_COOKIE_OPTIONS = {
   httpOnly: true, // never readable by frontend JS — the #1 XSS mitigation for this token
   secure: env.nodeEnv === 'production',
-  sameSite: 'lax',
+  sameSite: env.cookie.sameSite, // COOKIE_SAMESITE: lax by default, none for a cross-site web app
   maxAge: ms(env.jwt.refreshTtl),
 };
 
