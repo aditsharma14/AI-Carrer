@@ -46,6 +46,17 @@ function parsePricing(raw) {
   }
 }
 
+function buildEmailConfig() {
+  const provider = process.env.EMAIL_PROVIDER || 'log';
+  if (!['log', 'smtp'].includes(provider)) throw new Error(`EMAIL_PROVIDER must be 'log' or 'smtp', got '${provider}'`);
+  if (provider === 'smtp' && !process.env.SMTP_URL) throw new Error('EMAIL_PROVIDER=smtp requires SMTP_URL');
+  return {
+    provider,
+    smtpUrl: process.env.SMTP_URL || '',
+    from: process.env.EMAIL_FROM || 'AI Career <no-reply@localhost>',
+  };
+}
+
 function buildAiConfig() {
   const provider = process.env.AI_PROVIDER || 'stub';
   const embeddingProvider = process.env.EMBEDDING_PROVIDER || 'stub';
@@ -103,6 +114,9 @@ module.exports = {
   // How long the API keeps serving after /ready flips to 503, so the load
   // balancer notices and stops routing before we close the listener.
   shutdownDrainMs: Number(process.env.SHUTDOWN_DRAIN_MS ?? 5000),
+
+  // Outbound email. 'log' (default) sends nothing; 'smtp' delivers via SMTP_URL.
+  email: buildEmailConfig(),
 
   // Bearer token required to read GET /metrics. In production the endpoint is
   // disabled entirely unless this is set.
