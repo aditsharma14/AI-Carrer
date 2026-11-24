@@ -44,6 +44,10 @@ async function runMatch({ resumes, jobs, relevance, scoreApplications, onProgres
       failed += 1;
       const code = err.code || err.name || 'error';
       errorCodes[code] = (errorCodes[code] || 0) + 1;
+      // Skip the baselines for this job too: every row of the report must be
+      // averaged over the SAME jobs, or the comparison is not like-for-like.
+      onProgress?.(i + 1, jobs.length);
+      continue;
     }
     for (const [name, fn] of Object.entries(baselines)) {
       const s = fn(job, resumes);
