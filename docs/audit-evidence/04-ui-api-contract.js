@@ -4,9 +4,10 @@ const REPO = require('node:path').resolve(__dirname, '../..').split(require('nod
 // Compare every API call in the frontend with the real backend route table.
 const fs = require('fs');
 const path = require('path');
-const { execSync } = require('child_process');
+const { execFileSync } = require('child_process');
 
-const table = execSync(`node "${__dirname}/03-route-table.js"`, { cwd: REPO + '/backend', encoding: 'utf8' });
+// Arguments are passed as an array: no shell, so the path is never interpreted as a command.
+const table = execFileSync(process.execPath, [path.join(__dirname, '03-route-table.js')], { cwd: REPO + '/backend', encoding: 'utf8' });
 const backend = [...table.matchAll(/^(GET|POST|PUT|PATCH|DELETE)\s+(\S+)/gm)].map((m) => ({
   method: m[1],
   re: new RegExp('^' + m[2].replace(/:[A-Za-z]+/g, '[^/]+') + '$'),

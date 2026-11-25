@@ -4,7 +4,7 @@ const REPO = require('node:path').resolve(__dirname, '../..').split(require('nod
 // Mechanical consistency checks across the five governance documents.
 const fs = require('fs');
 const path = require('path');
-const { execSync } = require('child_process');
+const { execFileSync } = require('child_process');
 
 const ROOT = REPO;
 const DOCS = {
@@ -39,7 +39,7 @@ console.log(`  ${brokenLinks} broken`);
 
 // ---- 2. cited file:line references ---------------------------------------------
 console.log('\n== 2. Cited file:line references (audit)');
-const tracked = execSync('git ls-files', { cwd: ROOT, encoding: 'utf8' }).split('\n').filter(Boolean);
+const tracked = execFileSync('git', ['ls-files'], { cwd: ROOT, encoding: 'utf8' }).split('\n').filter(Boolean);
 const byBase = {};
 for (const f of tracked) (byBase[path.basename(f)] ||= []).push(f);
 let badRefs = 0;
