@@ -37,6 +37,73 @@ jobs:
       # Fail on known-vulnerable production dependencies of the API.
       - run: npm audit --omit=dev --audit-level=high
 
+  # Real-database integration tests (milestone M1.0): the actual Express app over
+  # HTTP against a real MongoDB replica set and a real Redis. Nothing is mocked.
+  # See docs/INTEGRATION_TESTING.md.
+  #
+  # NOTE: the suite currently contains deliberate known-defect tests for TEN-01
+  # (the tenant plugin throws on every query). They assert the failure as it is
+  # today, so this job is green WHILE THE DEFECT EXISTS. Green here does not mean
+  # TEN-01 is fixed; it is closed only by milestone M1.1, which converts those
+  # tests (see the transition note in test/integration/tenant.test.js).
+  integration:
+    name: Integration tests (real MongoDB and Redis)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: backend
+    env:
+      # The database name must end in _integration: the harness empties it.
+      INTEGRATION_MONGODB_URI: mongodb://localhost:27017/ai_career_integration?directConnection=true
+      REDIS_HOST: localhost
+      REDIS_PORT: 6379
+    services:
+      redis:
+        image: redis:7-alpine
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 5s
+          --health-timeout 3s
+          --health-retries 10
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: backend/package-lock.json
+      # MongoDB is started with `docker run` rather than a `services:` entry
+      # because a replica set needs the `--replSet` argument, and Actions service
+      # containers cannot pass command arguments. Transactions (M1.4a) need a
+      # replica set, so a standalone server would not be enough.
+      - name: Start MongoDB 7 as a single-node replica set
+        working-directory: .
+        run: docker run -d --name mongo -p 27017:27017 mongo:7 --replSet rs0 --bind_ip_all
+      - name: Wait for MongoDB, initiate the replica set, wait for a primary
+        working-directory: .
+        run: |
+          ready=false
+          for i in $(seq 1 30); do
+            if docker exec mongo mongosh --quiet --eval "db.adminCommand('ping').ok" | grep -q 1; then ready=true; break; fi
+            sleep 2
+          done
+          if [ "$ready" != "true" ]; then echo "MongoDB did not start"; docker logs mongo; exit 1; fi
+
+          docker exec mongo mongosh --quiet --eval "rs.initiate({_id: 'rs0', members: [{_id: 0, host: 'localhost:27017'}]})"
+
+          primary=false
+          for i in $(seq 1 30); do
+            if docker exec mongo mongosh --quiet --eval "db.hello().isWritablePrimary" | grep -q true; then primary=true; break; fi
+            sleep 2
+          done
+          if [ "$primary" != "true" ]; then echo "No replica-set primary elected"; docker logs mongo; exit 1; fi
+          echo "MongoDB replica set is ready"
+      - run: npm ci
+      - run: npm run test:integration
+
   frontend:
     name: Frontend lint, test and build
     runs-on: ubuntu-latest
