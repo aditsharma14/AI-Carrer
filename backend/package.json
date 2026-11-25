@@ -30,6 +30,7 @@
     "worker": "node src/worker.js",
     "worker:dev": "nodemon src/worker.js",
     "test": "vitest run",
+    "test:integration": "vitest run --config vitest.integration.config.mjs",
     "eval:data": "node eval/generate-dataset.js",
     "eval": "node eval/run.js",
     "eval:check": "node eval/run.js --provider stub --embedding stub --check",
