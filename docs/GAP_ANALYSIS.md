@@ -103,6 +103,8 @@ Ordered so each phase unlocks the next. Rough sizes assume one developer.
 
 ### Phase 0 — Foundations (≈1 week)
 
+> **Correction (2026-11-25):** the status below overstates this phase. The foundations (tooling, containers, CI) exist, but **no test touches a real database**, and the staff-level audit found that the tenant-isolation plugin throws on every query (TEN-01, open P0; see [`STAFF_ENGINEERING_AUDIT.md`](STAFF_ENGINEERING_AUDIT.md)). Treat this phase as **partially complete**: the real-MongoDB item is not done, it is milestone M1.0 of the staff transformation roadmap, using MongoDB replica-set service containers in CI (decision D1). Current status of the work lives in [`STAFF_TRANSFORMATION_PROGRESS.md`](STAFF_TRANSFORMATION_PROGRESS.md). The original note follows unchanged.
+>
 > **Status (2026-11-24): done**, and then some. 17 direct dependencies (was 163); 159 backend and 31 frontend tests; Dockerfiles and compose; CI with tests, an AI quality gate, dependency audits, image builds and a full-stack smoke test that checks graceful shutdown; CodeQL and Dependabot. Production work beyond the original list: health/readiness probes, graceful shutdown, Prometheus metrics, AI provider fallback with circuit breakers, real email delivery, `TRUST_PROXY`/cookie/Redis-TLS settings, a deployment guide, a runbook and a post-deploy check script. **Open:** API-level tests against a real MongoDB (the `mongodb-memory-server` item).
 
 1. Trim `backend/package.json` to real direct dependencies; add `npm test` with Vitest or Jest + supertest and `mongodb-memory-server`.
