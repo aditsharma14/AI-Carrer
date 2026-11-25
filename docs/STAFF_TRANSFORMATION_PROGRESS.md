@@ -22,7 +22,7 @@ The standard is not lower for audit and documentation tasks; it is different, be
 | --- | --- | --- |
 | Phase 0 audit completion | **COMPLETED** (evidence reproducible from `docs/audit-evidence/`) | Already met |
 | Phase 0 approval | **APPROVED WITH CONDITIONS** (2026-11-25, by the user); see [`PHASE_0_APPROVAL_REVIEW.md`](PHASE_0_APPROVAL_REVIEW.md). Conditions: commit the governance documents and evidence; correct `GAP_ANALYSIS.md`; record D1; keep TEN-01 and TEN-02 open until real-MongoDB and tenant-isolation tests pass; preserve all P0 gates and dependencies | Met once the documentation commit is reviewed and made |
-| Authorization to start Phase 1 | **NOT GRANTED** | A separate explicit authorization from the user, starting exclusively with M1.0 |
+| Authorization to start Phase 1 | **GRANTED FOR M1.0 ONLY** (2026-11-25); M1.1 and every other milestone NOT AUTHORIZED | A separate explicit authorization per milestone |
 | Phase 1 completion | **NOT STARTED** | Every Phase 1 exit criterion met, with CI evidence |
 | Production readiness | **NOT ASSESSED** | Phase 10; this programme does not claim it |
 
@@ -116,7 +116,7 @@ The standard is not lower for audit and documentation tasks; it is different, be
 
 | Milestone | Status | Notes |
 | --- | --- | --- |
-| M1.0 Integration harness | NOT STARTED | Decision 1 decided (CI replica-set service containers); awaiting authorization to start |
+| M1.0 Integration harness | **VERIFICATION REQUIRED** | Implemented on branch `m1.0-integration-harness` (local, not pushed). The integration tests have **not been executed against a real MongoDB** (no Docker or MongoDB on the development machine); they will first run in CI after a push is authorized. See [`INTEGRATION_TESTING.md`](INTEGRATION_TESTING.md). TEN-01 and TEN-02 remain OPEN |
 | M1.1 Tenant safety net (TEN-01, TEN-02) | NOT STARTED | |
 | M1.2 UI/API contract (API-01, PROD-01) | NOT STARTED | Needs decision 2 |
 | M1.3 Fast security and resilience fixes (SEC-01, SEC-03, OPS-01) | NOT STARTED | |
